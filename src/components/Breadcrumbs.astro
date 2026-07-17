@@ -1,0 +1,55 @@
+---
+interface Crumb {
+  label: string;
+  /** 最後の項目（現在地）は href を省略する */
+  href?: string;
+}
+
+interface Props {
+  items: Crumb[];
+}
+
+const { items } = Astro.props;
+const crumbs: Crumb[] = [{ label: 'ホーム', href: '/' }, ...items];
+
+/** パンくずの構造化データ（BreadcrumbList） */
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: crumbs.map((crumb, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: crumb.label,
+    ...(crumb.href ? { item: new URL(crumb.href, Astro.site).toString() } : {}),
+  })),
+};
+---
+
+<nav aria-label="パンくずリスト" class="text-xs">
+  <ol class="flex flex-wrap items-center gap-x-2 gap-y-1">
+    {
+      crumbs.map((crumb, i) => (
+        <li class="flex items-center gap-x-2">
+          {i > 0 && (
+            <span aria-hidden="true" class="text-line-strong">
+              /
+            </span>
+          )}
+          {crumb.href ? (
+            <a
+              href={crumb.href}
+              class="text-muted underline underline-offset-2 hover:text-ink"
+            >
+              {crumb.label}
+            </a>
+          ) : (
+            <span aria-current="page" class="text-body">
+              {crumb.label}
+            </span>
+          )}
+        </li>
+      ))
+    }
+  </ol>
+</nav>
+<script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

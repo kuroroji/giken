@@ -1,0 +1,19 @@
+# ビルド成果物
+dist/
+.astro/
+
+# 依存パッケージ
+node_modules/
+
+# ログ
+npm-debug.log*
+pnpm-debug.log*
+
+# 環境変数（秘密情報はここに置く。Gitには入れない）
+.env
+.env.production
+
+# OS固有
+.DS_Store
+Thumbs.db
+desktop.ini

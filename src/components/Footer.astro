@@ -1,0 +1,62 @@
+---
+import { SITE } from '@/data/site';
+
+const year = new Date().getFullYear();
+const copyrightYears =
+  year > SITE.since ? `${SITE.since}–${year}` : `${SITE.since}`;
+
+const contentLinks = [
+  { label: '記事一覧', href: '/articles/' },
+  { label: 'カテゴリー', href: '/category/' },
+  { label: '機材・ツール', href: '/equipment/' },
+  { label: 'プロフィール', href: '/profile/' },
+];
+
+const siteLinks = [
+  { label: 'お問い合わせ', href: '/contact/' },
+  { label: 'プライバシーポリシー', href: '/privacy-policy/' },
+  { label: '広告・アフィリエイトについて', href: '/disclosure/' },
+  { label: 'RSS', href: '/rss.xml' },
+];
+---
+
+<footer class="mt-16 border-t border-line bg-surface">
+  <div class="mx-auto max-w-site px-4 py-10 sm:px-6">
+    <div class="grid gap-8 sm:grid-cols-3">
+      <div class="sm:col-span-1">
+        <p class="font-bold text-ink">{SITE.name}</p>
+        <p class="mt-1 font-mono text-[0.625rem] tracking-widest text-muted uppercase">
+          {SITE.nameEn}
+        </p>
+        <p class="mt-3 text-sm text-muted">{SITE.description}</p>
+      </div>
+      <nav aria-label="コンテンツ">
+        <h2 class="font-mono text-xs tracking-widest text-muted uppercase">Contents</h2>
+        <ul class="mt-3 space-y-2 text-sm">
+          {contentLinks.map((item) => (
+            <li>
+              <a href={item.href} class="text-body hover:text-ink hover:underline">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <nav aria-label="サイト情報">
+        <h2 class="font-mono text-xs tracking-widest text-muted uppercase">About</h2>
+        <ul class="mt-3 space-y-2 text-sm">
+          {siteLinks.map((item) => (
+            <li>
+              <a href={item.href} class="text-body hover:text-ink hover:underline">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+    <p class="mt-10 border-t border-line pt-6 text-center text-xs text-muted">
+      © {copyrightYears} {SITE.name}
+    </p>
+  </div>
+</footer>

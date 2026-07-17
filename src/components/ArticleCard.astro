@@ -1,0 +1,59 @@
+---
+import type { Article } from '@/utils/articles';
+import { getCategory } from '@/data/categories';
+import { formatDate, toISODate } from '@/utils/date';
+
+interface Props {
+  article: Article;
+  /** ページの見出し構造に合わせてタイトルのタグを変えられる */
+  titleTag?: 'h2' | 'h3';
+}
+
+const { article, titleTag: TitleTag = 'h3' } = Astro.props;
+const { title, description, publishedAt, category, thumbnail, thumbnailAlt } =
+  article.data;
+const categoryInfo = getCategory(category);
+const href = `/articles/${article.id}/`;
+---
+
+<article
+  class="overflow-hidden rounded-card border border-line bg-surface transition-colors hover:border-line-strong"
+>
+  <a href={href} class="flex h-full flex-col">
+    {
+      thumbnail ? (
+        <img
+          src={thumbnail}
+          alt={thumbnailAlt ?? ''}
+          width="1200"
+          height="630"
+          loading="lazy"
+          decoding="async"
+          class="aspect-[1200/630] w-full border-b border-line object-cover"
+        />
+      ) : (
+        <div
+          aria-hidden="true"
+          class="flex aspect-[1200/630] w-full flex-col items-center justify-center gap-1 border-b border-line bg-accent-faint"
+        >
+          <span class="font-mono text-[0.625rem] tracking-widest text-accent-strong uppercase">
+            Kuroroji Giken
+          </span>
+          <span class="text-sm font-bold text-ink">{categoryInfo?.name}</span>
+        </div>
+      )
+    }
+    <div class="flex flex-1 flex-col gap-2 p-4">
+      <p class="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs">
+        <span class="rounded-sm bg-accent-soft px-1.5 py-0.5 font-bold text-ink"
+          >{categoryInfo?.name}</span
+        >
+        <time datetime={toISODate(publishedAt)} class="font-mono text-muted"
+          >{formatDate(publishedAt)}</time
+        >
+      </p>
+      <TitleTag class="text-base leading-snug font-bold text-ink">{title}</TitleTag>
+      <p class="line-clamp-2 text-sm text-muted">{description}</p>
+    </div>
+  </a>
+</article>

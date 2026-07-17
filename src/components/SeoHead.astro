@@ -1,0 +1,71 @@
+---
+import { SITE } from '@/data/site';
+
+interface Props {
+  /** ページタイトル（サイト名は自動で後ろに付く） */
+  title: string;
+  description: string;
+  /** トップページのみ true（タイトルの形式が変わる） */
+  isHome?: boolean;
+  ogType?: 'website' | 'article';
+  /** OGP画像のパス（省略時はサイト共通画像） */
+  ogImage?: string;
+  /** 検索エンジンに載せないページは true（404など） */
+  noindex?: boolean;
+  /** 構造化データ（JSON-LD）の配列 */
+  jsonLd?: Record<string, unknown>[];
+}
+
+const {
+  title,
+  description,
+  isHome = false,
+  ogType = 'website',
+  ogImage = '/ogp.png',
+  noindex = false,
+  jsonLd = [],
+} = Astro.props;
+
+const pageTitle = isHome ? `${SITE.name}｜${SITE.tagline}` : `${title}｜${SITE.name}`;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImageUrl = new URL(ogImage, Astro.site);
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{pageTitle}</title>
+<meta name="description" content={description} />
+{noindex && <meta name="robots" content="noindex" />}
+<link rel="canonical" href={canonical} />
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+<meta name="theme-color" content="#f59e0b" />
+<meta name="generator" content={Astro.generator} />
+
+{/* OGP */}
+<meta property="og:site_name" content={SITE.name} />
+<meta property="og:type" content={ogType} />
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={ogImageUrl} />
+<meta property="og:locale" content="ja_JP" />
+
+{/* Twitter Card */}
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={pageTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageUrl} />
+
+{/* RSS */}
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  title={`${SITE.name} RSS`}
+  href={new URL('/rss.xml', Astro.site)}
+/>
+
+{/* 構造化データ */}
+{jsonLd.map((data) => (
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(data)} />
+))}

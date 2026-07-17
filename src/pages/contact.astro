@@ -1,0 +1,47 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import { CONTACT } from '@/data/site';
+---
+
+<BaseLayout
+  title="お問い合わせ"
+  description="くろろじ技研へのお問い合わせ方法のご案内です。"
+>
+  <PageHeader title="お問い合わせ" labelEn="Contact" />
+  <div class="mx-auto max-w-article px-4 py-8 sm:px-6">
+    <Breadcrumbs items={[{ label: 'お問い合わせ' }]} />
+
+    <div class="article-body mt-6">
+      <p>{CONTACT.note}</p>
+      {
+        CONTACT.email && (
+          <p>
+            メールでのご連絡：
+            <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
+          </p>
+        )
+      }
+
+      <h2>お問い合わせの前に</h2>
+      <ul>
+        <li>記事の内容に関するご指摘・訂正のご連絡は歓迎します。</li>
+        <li>製品・サービスのレビュー依頼は、実際に試したうえで率直に書くことをご了承いただける場合のみお受けします。</li>
+        <li>個別の技術サポート（環境構築の代行など）は行っていません。</li>
+      </ul>
+    </div>
+
+    <div
+      class="mt-8 rounded-card border border-dashed border-line-strong bg-surface p-6 text-center"
+    >
+      <p class="font-mono text-xs tracking-widest text-muted uppercase">
+        Coming Soon
+      </p>
+      <p class="mt-2 text-sm font-bold text-ink">お問い合わせフォーム（準備中）</p>
+      <p class="mt-1 text-xs text-muted">
+        フォームからの送信機能は現在開発中です。公開までしばらくお待ちください。
+      </p>
+    </div>
+  </div>
+</BaseLayout>

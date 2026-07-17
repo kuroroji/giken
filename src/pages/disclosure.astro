@@ -1,0 +1,43 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import { SITE } from '@/data/site';
+---
+
+<BaseLayout
+  title="広告・アフィリエイトについて"
+  description={`${SITE.name}における広告およびアフィリエイトプログラムの利用についての表記です。`}
+>
+  <PageHeader title="広告・アフィリエイトについて" labelEn="Disclosure" />
+  <div class="mx-auto max-w-article px-4 py-8 sm:px-6">
+    <Breadcrumbs items={[{ label: '広告・アフィリエイトについて' }]} />
+
+    <div class="article-body mt-6">
+      <h2>アフィリエイトプログラムの利用について</h2>
+      <p>
+        当サイト（{SITE.name}）は、アフィリエイトプログラムに参加し、記事内で商品やサービスを紹介する場合があります。記事内のリンクを経由して購入・申し込みが発生した場合、提携事業者から当サイトに紹介料が支払われることがあります。
+      </p>
+      <p>
+        アフィリエイトリンクを含む記事には、記事の冒頭にその旨を表記します。
+      </p>
+
+      <h2>紹介する商品・サービスの選定について</h2>
+      <p>
+        当サイトで紹介する商品・サービスは、紹介料の有無にかかわらず、運営者が実際に試したうえで「読者に役立つ」と判断したものを選んでいます。次の方針を守ります。
+      </p>
+      <ul>
+        <li>実際に使用・検証していないものを、使用したかのように紹介しない</li>
+        <li>紹介料の高さを理由に、評価を変えない</li>
+        <li>デメリットや向かない人についても記載する</li>
+      </ul>
+
+      <h2>価格・仕様について</h2>
+      <p>
+        記事内の価格や仕様は、記事公開時点または更新時点の情報です。最新の価格・仕様・キャンペーン内容は、必ず各公式サイト・販売ページでご確認ください。
+      </p>
+
+      <p>制定日：2026年7月18日</p>
+    </div>
+  </div>
+</BaseLayout>

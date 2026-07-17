@@ -1,0 +1,40 @@
+---
+import type { EquipmentItem } from '@/data/equipment';
+
+interface Props {
+  item: EquipmentItem;
+}
+
+const { item } = Astro.props;
+const isActive = item.status === '稼働中';
+---
+
+<article class="flex flex-col gap-2 rounded-card border border-line bg-surface p-4">
+  <div class="flex items-start justify-between gap-3">
+    <h3 class="text-sm leading-snug font-bold text-ink">
+      {
+        item.url ? (
+          <a
+            href={item.url}
+            class="underline underline-offset-4 decoration-line-strong hover:text-accent-strong"
+          >
+            {item.name}
+          </a>
+        ) : (
+          item.name
+        )
+      }
+    </h3>
+    <span
+      class:list={[
+        'shrink-0 rounded-sm border px-1.5 py-0.5 font-mono text-[0.625rem]',
+        isActive
+          ? 'border-accent bg-accent-soft text-ink'
+          : 'border-line-strong bg-paper text-muted',
+      ]}
+    >
+      {item.status}
+    </span>
+  </div>
+  <p class="text-xs leading-relaxed text-muted">{item.description}</p>
+</article>

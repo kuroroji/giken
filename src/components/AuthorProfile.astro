@@ -1,0 +1,29 @@
+---
+import { AUTHOR } from '@/data/site';
+---
+
+<aside
+  aria-label="著者プロフィール"
+  class="flex gap-4 rounded-card border border-line bg-surface p-5"
+>
+  <span
+    aria-hidden="true"
+    class="flex size-14 shrink-0 items-center justify-center rounded-full border border-line bg-accent-soft text-xl font-bold text-ink"
+  >
+    {AUTHOR.name.charAt(0)}
+  </span>
+  <div class="min-w-0">
+    <p class="text-sm">
+      <span class="font-bold text-ink">{AUTHOR.name}</span>
+      <span class="ml-2 text-xs text-muted">{AUTHOR.role}</span>
+    </p>
+    <p class="mt-1.5 text-xs leading-relaxed text-muted">{AUTHOR.bio}</p>
+    <p class="mt-2 text-xs">
+      <a
+        href="/profile/"
+        class="text-accent-strong underline underline-offset-2 hover:text-ink"
+        >プロフィール詳細</a
+      >
+    </p>
+  </div>
+</aside>

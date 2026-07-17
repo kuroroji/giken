@@ -1,0 +1,122 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Hero from '@/components/Hero.astro';
+import FeaturedArticles from '@/components/FeaturedArticles.astro';
+import LatestArticles from '@/components/LatestArticles.astro';
+import CategoryGrid from '@/components/CategoryGrid.astro';
+import EquipmentCard from '@/components/EquipmentCard.astro';
+import AuthorProfile from '@/components/AuthorProfile.astro';
+import { SITE, AUTHOR } from '@/data/site';
+import { EQUIPMENT } from '@/data/equipment';
+import { getPublishedArticles, pickFeatured } from '@/utils/articles';
+
+const articles = await getPublishedArticles();
+const featured = pickFeatured(articles, 3);
+const latest = articles.slice(0, 6);
+
+const categoryCounts = new Map<string, number>();
+for (const article of articles) {
+  categoryCounts.set(
+    article.data.category,
+    (categoryCounts.get(article.data.category) ?? 0) + 1,
+  );
+}
+
+const activeEquipment = EQUIPMENT.filter((e) => e.status === '稼働中').slice(0, 6);
+
+/** サイトの方針 */
+const policies = [
+  {
+    title: '実際に試したものだけ',
+    body: 'スペック表の転記はしません。導入して、制作フローで使って、その結果を記録します。',
+  },
+  {
+    title: '「何が楽になるか」を先に',
+    body: '機能の羅列より、導入するとどの作業がどのくらい楽になるのかを優先して伝えます。',
+  },
+  {
+    title: '失敗も記録する',
+    body: 'うまくいかなかった検証や設定でハマった話も、同じ場所で転ぶ人を減らすために残します。',
+  },
+];
+
+/** トップページの構造化データ（WebSite） */
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: SITE.name,
+    alternateName: SITE.nameEn,
+    description: SITE.description,
+    url: Astro.site?.toString(),
+    publisher: {
+      '@type': 'Person',
+      name: AUTHOR.name,
+    },
+  },
+];
+---
+
+<BaseLayout title={SITE.name} description={SITE.description} isHome jsonLd={jsonLd}>
+  <Hero />
+
+  <div class="mx-auto max-w-site space-y-14 px-4 py-12 sm:px-6 sm:py-16">
+    <FeaturedArticles articles={featured} />
+
+    <LatestArticles articles={latest} />
+
+    <section aria-labelledby="category-heading">
+      <h2 id="category-heading" class="text-xl font-bold sm:text-2xl">
+        <span class="mr-2 inline-block h-4 w-1 bg-accent" aria-hidden="true"></span>カテゴリー
+      </h2>
+      <div class="mt-5">
+        <CategoryGrid counts={categoryCounts} />
+      </div>
+    </section>
+
+    <section aria-labelledby="policy-heading">
+      <h2 id="policy-heading" class="text-xl font-bold sm:text-2xl">
+        <span class="mr-2 inline-block h-4 w-1 bg-accent" aria-hidden="true"></span>くろろじ技研の方針
+      </h2>
+      <div class="mt-5 grid gap-4 sm:grid-cols-3">
+        {
+          policies.map((policy, i) => (
+            <div class="rounded-card border border-line bg-surface p-5">
+              <p class="font-mono text-xs text-accent-strong">
+                {String(i + 1).padStart(2, '0')}
+              </p>
+              <h3 class="mt-1 font-bold text-ink">{policy.title}</h3>
+              <p class="mt-2 text-sm text-muted">{policy.body}</p>
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <section aria-labelledby="equipment-heading">
+      <div class="flex items-baseline justify-between gap-4">
+        <h2 id="equipment-heading" class="text-xl font-bold sm:text-2xl">
+          <span class="mr-2 inline-block h-4 w-1 bg-accent" aria-hidden="true"></span>使用中のツール・機材
+        </h2>
+        <a
+          href="/equipment/"
+          class="text-sm text-accent-strong underline underline-offset-4 hover:text-ink"
+        >
+          すべて見る
+        </a>
+      </div>
+      <div class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {activeEquipment.map((item) => <EquipmentCard item={item} />)}
+      </div>
+    </section>
+
+    <section aria-labelledby="author-heading">
+      <h2 id="author-heading" class="text-xl font-bold sm:text-2xl">
+        <span class="mr-2 inline-block h-4 w-1 bg-accent" aria-hidden="true"></span>運営者
+      </h2>
+      <div class="mt-5 max-w-2xl">
+        <AuthorProfile />
+      </div>
+    </section>
+  </div>
+</BaseLayout>

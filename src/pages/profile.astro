@@ -1,0 +1,98 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import { SITE, AUTHOR } from '@/data/site';
+
+const socialLinks = [
+  { label: 'YouTube', url: AUTHOR.links.youtube },
+  { label: 'X（旧Twitter）', url: AUTHOR.links.x },
+].filter((link) => link.url !== '');
+
+/** 運営者の構造化データ（Person + WebSite運営情報） */
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    mainEntity: {
+      '@type': 'Person',
+      name: AUTHOR.name,
+      description: AUTHOR.bio,
+      jobTitle: AUTHOR.role,
+      url: new URL('/profile/', Astro.site).toString(),
+      ...(socialLinks.length > 0
+        ? { sameAs: socialLinks.map((link) => link.url) }
+        : {}),
+    },
+  },
+];
+---
+
+<BaseLayout
+  title="プロフィール"
+  description={`${SITE.name}の運営者プロフィールです。${AUTHOR.bio}`}
+  jsonLd={jsonLd}
+>
+  <PageHeader title="プロフィール" labelEn="Profile" />
+  <div class="mx-auto max-w-article px-4 py-8 sm:px-6">
+    <Breadcrumbs items={[{ label: 'プロフィール' }]} />
+
+    <div class="mt-6 flex items-center gap-5">
+      <span
+        aria-hidden="true"
+        class="flex size-20 shrink-0 items-center justify-center rounded-full border border-line bg-accent-soft text-3xl font-bold text-ink"
+      >
+        {AUTHOR.name.charAt(0)}
+      </span>
+      <div>
+        <p class="text-xl font-bold text-ink">{AUTHOR.name}</p>
+        <p class="mt-1 text-sm text-muted">{AUTHOR.role}</p>
+      </div>
+    </div>
+
+    <div class="article-body mt-8">
+      <p>{AUTHOR.bio}</p>
+
+      <h2>このサイトについて</h2>
+      <p>
+        「{SITE.name}」は、{AUTHOR.name}が個人で運営する技術メディアです。
+        {SITE.description}
+      </p>
+      <p>
+        単なる商品紹介ではなく、「実際に導入して、何が楽になったか」を軸に記事を書いています。うまくいかなかった検証も含めて記録するのが、このサイトの方針です。
+      </p>
+
+      <h2>主に扱うテーマ</h2>
+      <ul>
+        <li>AIツールの活用と業務自動化</li>
+        <li>動画制作・YouTube運営の効率化</li>
+        <li>配信・録画環境の構築</li>
+        <li>PC・周辺機器、ゲーム環境</li>
+        <li>個人クリエイター向けサービスと自作ツール</li>
+      </ul>
+
+      {
+        socialLinks.length > 0 && (
+          <>
+            <h2>リンク</h2>
+            <ul>
+              {socialLinks.map((link) => (
+                <li>
+                  <a href={link.url} rel="noopener">
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </>
+        )
+      }
+
+      <h2>お問い合わせ</h2>
+      <p>
+        サイトへのご意見・ご依頼は<a href="/contact/">お問い合わせ案内</a
+        >をご覧ください。
+      </p>
+    </div>
+  </div>
+</BaseLayout>

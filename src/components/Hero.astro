@@ -1,0 +1,37 @@
+---
+import { SITE } from '@/data/site';
+import LabStatus from '@/components/LabStatus.astro';
+---
+
+<div class="border-b border-line bg-surface">
+  <div class="mx-auto max-w-site px-4 py-10 sm:px-6 sm:py-14">
+    <div class="grid items-center gap-8 lg:grid-cols-[1fr_20rem] lg:gap-12">
+      <div>
+        <p class="font-mono text-xs tracking-widest text-accent-strong uppercase">
+          Personal Tech Lab
+        </p>
+        <h1 class="mt-3 text-2xl leading-snug font-bold text-ink sm:text-3xl lg:text-4xl">
+          {SITE.tagline}
+        </h1>
+        <p class="mt-4 max-w-xl text-sm leading-relaxed text-muted sm:text-base">
+          {SITE.description}
+        </p>
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a
+            href="/articles/"
+            class="inline-block rounded-card bg-ink px-5 py-2.5 text-sm font-bold text-white transition-colors hover:bg-body"
+          >
+            新着記事を見る
+          </a>
+          <a
+            href="/equipment/"
+            class="inline-block rounded-card border border-line-strong bg-surface px-5 py-2.5 text-sm font-bold text-ink transition-colors hover:border-ink"
+          >
+            使用中のツールを見る
+          </a>
+        </div>
+      </div>
+      <LabStatus />
+    </div>
+  </div>
+</div>

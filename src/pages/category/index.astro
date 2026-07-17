@@ -1,0 +1,30 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import CategoryGrid from '@/components/CategoryGrid.astro';
+import { getPublishedArticles } from '@/utils/articles';
+
+const articles = await getPublishedArticles();
+const counts = new Map<string, number>();
+for (const article of articles) {
+  counts.set(article.data.category, (counts.get(article.data.category) ?? 0) + 1);
+}
+---
+
+<BaseLayout
+  title="カテゴリー一覧"
+  description="くろろじ技研のカテゴリー一覧です。AI・自動化、動画・YouTube制作、配信・録画、PC・機材などのテーマから記事を探せます。"
+>
+  <PageHeader
+    title="カテゴリー一覧"
+    labelEn="Categories"
+    lede="テーマごとに記事をまとめています。気になる分野から読み始めてください。"
+  />
+  <div class="mx-auto max-w-site px-4 py-8 sm:px-6">
+    <Breadcrumbs items={[{ label: 'カテゴリー一覧' }]} />
+    <div class="mt-6">
+      <CategoryGrid counts={counts} />
+    </div>
+  </div>
+</BaseLayout>

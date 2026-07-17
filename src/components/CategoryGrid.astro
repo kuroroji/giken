@@ -1,0 +1,31 @@
+---
+import { CATEGORIES } from '@/data/categories';
+
+interface Props {
+  /** カテゴリーごとの記事数（slug → 件数） */
+  counts?: Map<string, number>;
+}
+
+const { counts } = Astro.props;
+---
+
+<div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+  {
+    CATEGORIES.map((category) => (
+      <a
+        href={`/category/${category.slug}/`}
+        class="flex flex-col gap-1 rounded-card border border-line bg-surface p-4 transition-colors hover:border-line-strong"
+      >
+        <span class="flex items-baseline justify-between gap-2">
+          <span class="font-bold text-ink">{category.name}</span>
+          {counts && (
+            <span class="font-mono text-xs text-muted">
+              {counts.get(category.slug) ?? 0}件
+            </span>
+          )}
+        </span>
+        <span class="line-clamp-2 text-xs text-muted">{category.description}</span>
+      </a>
+    ))
+  }
+</div>

@@ -1,0 +1,26 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PageHeader from '@/components/PageHeader.astro';
+import Breadcrumbs from '@/components/Breadcrumbs.astro';
+import ArticleCard from '@/components/ArticleCard.astro';
+import { getPublishedArticles } from '@/utils/articles';
+
+const articles = await getPublishedArticles();
+---
+
+<BaseLayout
+  title="記事一覧"
+  description="くろろじ技研の記事一覧です。AI・自動化、動画制作、配信・録画、機材などのレポートを新着順に掲載しています。"
+>
+  <PageHeader
+    title="記事一覧"
+    labelEn="Articles"
+    lede={`公開中のレポート ${articles.length}件を新着順に掲載しています。`}
+  />
+  <div class="mx-auto max-w-site px-4 py-8 sm:px-6">
+    <Breadcrumbs items={[{ label: '記事一覧' }]} />
+    <div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      {articles.map((article) => <ArticleCard article={article} titleTag="h2" />)}
+    </div>
+  </div>
+</BaseLayout>

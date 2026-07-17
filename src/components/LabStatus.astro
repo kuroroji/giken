@@ -1,0 +1,49 @@
+---
+import { countByStatus } from '@/data/equipment';
+import { getPublishedArticles } from '@/utils/articles';
+import { formatDate } from '@/utils/date';
+
+/**
+ * 「くろろじ技研 稼働状況」パネル。
+ * 数値は手入力ではなく、記事データと機材データから自動集計される。
+ */
+const articles = await getPublishedArticles();
+
+const lastUpdated = articles
+  .flatMap((a) => [a.data.publishedAt, a.data.updatedAt].filter((d) => d != null))
+  .reduce((max, d) => (d > max ? d : max), new Date(0));
+
+// ローカル（日本時間）基準の表記で比較する（UTC変換だと日付が1日ずれるため）
+const isToday = formatDate(lastUpdated) === formatDate(new Date());
+
+const rows = [
+  { label: '検証中のツール', value: `${countByStatus('検証中')}件` },
+  { label: '公開済みレポート', value: `${articles.length}件` },
+  { label: '使用中の制作ツール', value: `${countByStatus('稼働中')}件` },
+];
+---
+
+<aside
+  aria-label="くろろじ技研 稼働状況"
+  class="rounded-card border border-line bg-surface"
+>
+  <div class="flex items-center gap-2 border-b border-line px-4 py-2.5">
+    <span class="size-2 rounded-full bg-accent" aria-hidden="true"></span>
+    <span class="font-mono text-[0.625rem] tracking-widest text-muted uppercase">Lab Status</span>
+    <span class="text-xs font-bold text-ink">稼働状況</span>
+  </div>
+  <dl class="divide-y divide-line">
+    {rows.map((row) => (
+      <div class="flex items-baseline justify-between gap-4 px-4 py-2.5">
+        <dt class="text-xs text-muted">{row.label}</dt>
+        <dd class="font-mono text-sm font-bold text-ink">{row.value}</dd>
+      </div>
+    ))}
+    <div class="flex items-baseline justify-between gap-4 px-4 py-2.5">
+      <dt class="text-xs text-muted">最終更新</dt>
+      <dd class="font-mono text-sm font-bold text-ink">
+        {isToday ? '本日' : formatDate(lastUpdated)}
+      </dd>
+    </div>
+  </dl>
+</aside>
