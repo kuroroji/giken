@@ -58,8 +58,8 @@ draft: true
 
 <p class="store-links">
   <a class="store-btn store-btn--battlenet" href="https://shop.battle.net/ja-jp/product/diablo-iii" target="_blank" rel="noopener">Battle.net</a>
-  <a class="store-btn store-btn--switch" href="https://store-jp.nintendo.com/search/?q=%E3%83%87%E3%82%A3%E3%82%A2%E3%83%96%E3%83%AD3" target="_blank" rel="noopener">Switch</a>
-  <a class="store-btn store-btn--ps" href="https://store.playstation.com/ja-jp/search/%E3%83%87%E3%82%A3%E3%82%A2%E3%83%96%E3%83%AD3" target="_blank" rel="noopener">PS Store</a>
+  <a class="store-btn store-btn--switch" href="https://store-jp.nintendo.com/item/software/D70010000013613" target="_blank" rel="noopener">Switch</a>
+  <a class="store-btn store-btn--ps" href="https://store.playstation.com/ja-jp/product/JP0082-CUSA00630_00-D3ETERNALCOLL000" target="_blank" rel="noopener">PS Store</a>
 </p>
 
 **ハクスラARPG / PC・PS4・Switchほか**
@@ -99,9 +99,10 @@ draft: true
 <p class="img-credit">画像出典: Steamストアページ</p>
 
 <p class="store-links">
+  <a class="store-btn store-btn--switch" href="https://store-jp.nintendo.com/item/software/D70010000013175" target="_blank" rel="noopener">Switch</a>
+  <a class="store-btn store-btn--ps" href="https://store.playstation.com/ja-jp/product/UP4016-PPSA15552_00-DEADCELLSPS5SIEA" target="_blank" rel="noopener">PS Store</a>
+  <a class="store-btn store-btn--xbox" href="https://www.xbox.com/ja-jp/games/store/-/BQSCNS1T8PHQ" target="_blank" rel="noopener">Xbox</a>
   <a class="store-btn store-btn--steam" href="https://store.steampowered.com/app/588650/" target="_blank" rel="noopener">Steam</a>
-  <a class="store-btn store-btn--switch" href="https://store-jp.nintendo.com/search/?q=Dead%20Cells" target="_blank" rel="noopener">Switch</a>
-  <a class="store-btn store-btn--ps" href="https://store.playstation.com/ja-jp/search/Dead%20Cells" target="_blank" rel="noopener">PS Store</a>
 </p>
 
 **ローグライト2Dアクション / PC・Switch・PS4・スマホほか**
@@ -121,9 +122,10 @@ draft: true
 <p class="img-credit">画像出典: Steamストアページ</p>
 
 <p class="store-links">
+  <a class="store-btn store-btn--switch" href="https://store-jp.nintendo.com/item/software/D70010000037893" target="_blank" rel="noopener">Switch</a>
+  <a class="store-btn store-btn--ps" href="https://store.playstation.com/ja-jp/product/JP0365-CUSA06660_00-DANGANRONPARLDJP" target="_blank" rel="noopener">PS Store</a>
+  <a class="store-btn store-btn--xbox" href="https://www.xbox.com/ja-jp/games/store/-/9N07T7TGP6JG" target="_blank" rel="noopener">Xbox</a>
   <a class="store-btn store-btn--steam" href="https://store.steampowered.com/app/413410/" target="_blank" rel="noopener">Steam</a>
-  <a class="store-btn store-btn--switch" href="https://store-jp.nintendo.com/search/?q=%E3%83%80%E3%83%B3%E3%82%AC%E3%83%B3%E3%83%AD%E3%83%B3%E3%83%91" target="_blank" rel="noopener">Switch</a>
-  <a class="store-btn store-btn--ps" href="https://store.playstation.com/ja-jp/search/%E3%83%80%E3%83%B3%E3%82%AC%E3%83%B3%E3%83%AD%E3%83%B3%E3%83%91" target="_blank" rel="noopener">PS Store</a>
 </p>
 
 **推理アドベンチャー / PS4・Switch・PC・スマホほか**
@@ -143,9 +145,10 @@ draft: true
 <p class="img-credit">画像出典: Steamストアページ</p>
 
 <p class="store-links">
+  <a class="store-btn store-btn--switch" href="https://store-jp.nintendo.com/item/software/D70010000059001" target="_blank" rel="noopener">Switch</a>
+  <a class="store-btn store-btn--ps" href="https://store.playstation.com/ja-jp/product/EB0324-PPSA21703_00-0027916840515656" target="_blank" rel="noopener">PS Store</a>
+  <a class="store-btn store-btn--xbox" href="https://www.xbox.com/ja-jp/games/store/-/9PD5BM2Z8C4L" target="_blank" rel="noopener">Xbox</a>
   <a class="store-btn store-btn--steam" href="https://store.steampowered.com/app/1794680/" target="_blank" rel="noopener">Steam</a>
-  <a class="store-btn store-btn--switch" href="https://store-jp.nintendo.com/search/?q=Vampire%20Survivors" target="_blank" rel="noopener">Switch</a>
-  <a class="store-btn store-btn--xbox" href="https://www.xbox.com/ja-JP/Search/Results?q=Vampire%20Survivors" target="_blank" rel="noopener">Xbox</a>
 </p>
 
 **ヴァンサバ / PC・Switch・スマホほか**
@@ -165,8 +168,10 @@ draft: true
 <p class="img-credit">画像出典: Steamストアページ</p>
 
 <p class="store-links">
+  <a class="store-btn store-btn--switch" href="https://store-jp.nintendo.com/item/software/D70010000085853" target="_blank" rel="noopener">Switch</a>
+  <a class="store-btn store-btn--ps" href="https://store.playstation.com/ja-jp/product/UP4108-PPSA25843_00-WARRIORSABYSS000" target="_blank" rel="noopener">PS Store</a>
+  <a class="store-btn store-btn--xbox" href="https://www.xbox.com/ja-jp/games/store/-/9NFXNPZRKXBF" target="_blank" rel="noopener">Xbox</a>
   <a class="store-btn store-btn--steam" href="https://store.steampowered.com/app/3178350/" target="_blank" rel="noopener">Steam</a>
-  <a class="store-btn store-btn--ps" href="https://store.playstation.com/ja-jp/search/%E7%84%A1%E5%8F%8C%E3%82%A2%E3%83%93%E3%82%B9" target="_blank" rel="noopener">PS Store</a>
 </p>
 
 **ローグライト無双 / PS5・Steamほか**
@@ -248,8 +253,9 @@ draft: true
 <p class="img-credit">画像出典: モンカルファンタ公式サイト</p>
 
 <p class="store-links">
-  <a class="store-btn store-btn--switch" href="https://store-jp.nintendo.com/search/?q=%E3%83%A2%E3%83%B3%E3%82%AB%E3%83%AB%E3%83%95%E3%82%A1%E3%83%B3%E3%82%BF" target="_blank" rel="noopener">Switch</a>
-  <a class="store-btn store-btn--ps" href="https://store.playstation.com/ja-jp/search/%E3%83%A2%E3%83%B3%E3%82%AB%E3%83%AB%E3%83%95%E3%82%A1%E3%83%B3%E3%82%BF" target="_blank" rel="noopener">PS Store</a>
+  <a class="store-btn store-btn--switch" href="https://store-jp.nintendo.com/item/software/D70010000071175" target="_blank" rel="noopener">Switch</a>
+  <a class="store-btn store-btn--ps" href="https://store.playstation.com/ja-jp/product/EP3349-PPSA25359_00-EXPTRPG2024TRG01" target="_blank" rel="noopener">PS Store</a>
+  <a class="store-btn store-btn--steam" href="https://store.steampowered.com/app/3415020/" target="_blank" rel="noopener">Steam</a>
 </p>
 
 デモンキルデモンと同じエクスペリエンスさんの、**ドラクエっぽい王道コマンドRPGにハクスラを合体させた**1本。この組み合わせ、ありそうでなかなかないんですよ。気づくと「ずっとやりたくなる」中毒性と、冒険している感覚が両立していて、シンプルに「遊んでいて楽しかったな」と言えるゲームです。
@@ -261,9 +267,9 @@ draft: true
 <p class="img-credit">画像出典: Steamストアページ</p>
 
 <p class="store-links">
+  <a class="store-btn store-btn--switch" href="https://store-jp.nintendo.com/item/software/D70010000075221" target="_blank" rel="noopener">Switch</a>
+  <a class="store-btn store-btn--ps" href="https://store.playstation.com/ja-jp/product/JP3372-PPSA20160_00-0341996981178297" target="_blank" rel="noopener">PS Store</a>
   <a class="store-btn store-btn--steam" href="https://store.steampowered.com/app/2680380/" target="_blank" rel="noopener">Steam</a>
-  <a class="store-btn store-btn--switch" href="https://store-jp.nintendo.com/search/?q=%E3%83%8F%E3%82%A4%E3%82%AF%20%E3%83%8E%E3%83%BC%E3%82%B6%E3%83%B3%E3%83%A9%E3%82%A4%E3%83%84" target="_blank" rel="noopener">Switch</a>
-  <a class="store-btn store-btn--ps" href="https://store.playstation.com/ja-jp/search/HYKE" target="_blank" rel="noopener">PS Store</a>
 </p>
 
 ストーリーが主軸の2DアクションRPGで、**キャラクターの見栄えのクオリティがめちゃくちゃ高い**。正直、操作性やゲームバランスには難しさがあって、そこは課題だと思います。それでも、雰囲気ゲーと呼ばれたとしても楽しんでほしい作品ですし、こういうゲームが増えてくれると本当に嬉しい。なかなか作れるものじゃないですから。
@@ -287,9 +293,10 @@ draft: true
 <p class="img-credit">画像出典: Steamストアページ</p>
 
 <p class="store-links">
+  <a class="store-btn store-btn--switch" href="https://store-jp.nintendo.com/item/software/D70010000046188" target="_blank" rel="noopener">Switch</a>
+  <a class="store-btn store-btn--ps" href="https://store.playstation.com/ja-jp/product/UP3463-PPSA07586_00-8119804844737273" target="_blank" rel="noopener">PS Store</a>
+  <a class="store-btn store-btn--xbox" href="https://www.xbox.com/ja-jp/games/store/-/9NLLTTJZH40L" target="_blank" rel="noopener">Xbox</a>
   <a class="store-btn store-btn--steam" href="https://store.steampowered.com/app/1244090/" target="_blank" rel="noopener">Steam</a>
-  <a class="store-btn store-btn--switch" href="https://store-jp.nintendo.com/search/?q=Sea%20of%20Stars" target="_blank" rel="noopener">Switch</a>
-  <a class="store-btn store-btn--ps" href="https://store.playstation.com/ja-jp/search/Sea%20of%20Stars" target="_blank" rel="noopener">PS Store</a>
 </p>
 
 2DドットのRPGで、とにかく**クオリティが凄まじい**。新しいルールがどうこうという話ではなく、圧倒的な完成度で殴ってくるタイプの作品です。続きも気になっているゲームです。
