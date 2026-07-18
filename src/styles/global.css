@@ -355,7 +355,7 @@
 
 .bg-ink-navy {
   background-color: var(--color-ink);
-  background-image: linear-gradient(135deg, #111 45%, #0d1526 82%, #13203c 100%);
+  background-image: linear-gradient(135deg, #111 45%, #1c1c21 82%, #2a2a31 100%);
 }
 
 .bg-ink-violet {

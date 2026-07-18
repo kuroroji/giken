@@ -1,10 +1,11 @@
 ---
 import Button from '@/components/Button.astro';
 import Logo from '@/components/Logo.astro';
+import { CHANNEL } from '@/data/business';
 
 const navItems = [
   { label: 'ホーム', href: '/' },
-  { label: 'チャンネル', href: '/#channel' },
+  { label: 'チャンネル', href: CHANNEL.url, external: true },
   { label: '動画プロモーション', href: '/promotion/' },
   { label: 'コラム', href: '/articles/' },
   { label: 'プロフィール', href: '/profile/' },
@@ -42,13 +43,15 @@ const isActive = (href: string) => {
           <li class="shrink-0">
             <a
               href={item.href}
+              target={item.external ? '_blank' : undefined}
+              rel={item.external ? 'noopener' : undefined}
               aria-current={isActive(item.href) ? 'page' : undefined}
               class:list={[
                 'nav-link inline-block py-1 whitespace-nowrap transition-colors',
                 isActive(item.href) ? 'font-bold text-ink' : 'text-body hover:text-ink',
               ]}
             >
-              {item.label}
+              {item.label}{item.external && <span aria-hidden="true" class="ml-0.5 text-[0.7em]">↗</span>}
             </a>
           </li>
         ))}
