@@ -1,5 +1,6 @@
 ---
 import { SITE } from '@/data/site';
+import Button from '@/components/Button.astro';
 
 const navItems = [
   { label: 'ホーム', href: '/' },
@@ -16,44 +17,37 @@ const isActive = (href: string) => {
 };
 ---
 
-{/* 追従ヘッダー：すりガラス+読み込み時にスッと降りてくる */}
-<header
-  class="site-header sticky top-0 z-40 border-b border-line/80 bg-surface/75 backdrop-blur-md"
->
-  <div class="mx-auto max-w-site px-4 sm:px-6">
-    <div class="flex flex-wrap items-center justify-between gap-x-6 gap-y-1.5 py-3 sm:py-4">
-      <a href="/" class="inline-flex items-baseline gap-2">
-        <span class="text-lg font-extrabold text-ink sm:text-xl">{SITE.name}</span>
-        <span class="hidden font-mono text-[0.625rem] tracking-widest text-muted uppercase sm:inline"
-          >{SITE.nameEn}</span
-        >
-      </a>
-      <div class="flex flex-wrap items-center gap-x-5 gap-y-1.5">
-        <nav aria-label="メインメニュー">
-          <ul class="flex flex-wrap gap-x-5 gap-y-1 text-sm">
-            {navItems.map((item) => (
-              <li>
-                <a
-                  href={item.href}
-                  aria-current={isActive(item.href) ? 'page' : undefined}
-                  class:list={[
-                    'nav-link inline-block py-1 transition-colors',
-                    isActive(item.href) ? 'font-bold text-ink' : 'text-body hover:text-ink',
-                  ]}
-                >
-                  {item.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
-        <a
-          href="/contact/"
-          class="inline-block rounded-card bg-ink px-4 py-1.5 text-sm font-bold text-white transition-colors hover:bg-body"
-        >
-          お問い合わせ
-        </a>
-      </div>
+{/* 浮遊するピル型ガラスヘッダー：読み込み時にスッと降りてくる */}
+<header class="site-header sticky top-0 z-40 px-3 pt-3 sm:px-4">
+  <div
+    class="glass mx-auto flex max-w-site flex-wrap items-center justify-between gap-x-6 gap-y-1.5 rounded-[1.75rem] px-5 py-2.5 sm:rounded-full sm:px-7"
+  >
+    <a href="/" class="inline-flex items-baseline gap-2">
+      <span class="text-lg font-extrabold text-ink sm:text-xl">{SITE.name}</span>
+      <span class="hidden font-mono text-[0.625rem] tracking-widest text-muted uppercase sm:inline"
+        >{SITE.nameEn}</span
+      >
+    </a>
+    <div class="flex flex-wrap items-center gap-x-5 gap-y-1.5">
+      <nav aria-label="メインメニュー">
+        <ul class="flex flex-wrap gap-x-5 gap-y-1 text-sm">
+          {navItems.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                aria-current={isActive(item.href) ? 'page' : undefined}
+                class:list={[
+                  'nav-link inline-block py-1 transition-colors',
+                  isActive(item.href) ? 'font-bold text-ink' : 'text-body hover:text-ink',
+                ]}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+      <Button href="/contact/" variant="dark" size="sm">お問い合わせ</Button>
     </div>
   </div>
 </header>

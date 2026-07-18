@@ -1,0 +1,57 @@
+---
+/**
+ * サイト共通のボタン（横長のピル型・ガラスデザイン）。
+ * href を渡すとリンクに、渡さなければ <button> になる。
+ *
+ * variant:
+ *   dark  … 黒ガラス（最優先のCTA用）
+ *   glass … 白ガラス（標準）
+ *   light … 白ガラス強め（黒背景セクション内のCTA用）
+ */
+interface Props {
+  href?: string;
+  variant?: 'dark' | 'glass' | 'light';
+  size?: 'md' | 'sm';
+  external?: boolean;
+  type?: 'button' | 'submit';
+}
+
+const {
+  href,
+  variant = 'glass',
+  size = 'md',
+  external = false,
+  type = 'button',
+} = Astro.props;
+
+const base =
+  'inline-block rounded-full text-center font-bold backdrop-blur-md transition-all';
+const sizes = {
+  md: 'px-6 py-2.5 text-sm',
+  sm: 'px-4 py-1.5 text-sm',
+};
+const variants = {
+  dark: 'border border-white/15 bg-ink/85 text-white shadow-[0_8px_30px_rgb(17_17_17/0.18)] hover:bg-ink',
+  glass:
+    'border border-white/70 bg-surface/60 text-ink shadow-[0_8px_30px_rgb(17_17_17/0.05)] hover:border-ink',
+  light: 'border border-white/40 bg-white/85 text-ink hover:bg-white',
+};
+const classes = [base, sizes[size], variants[variant]];
+---
+
+{
+  href ? (
+    <a
+      href={href}
+      target={external ? '_blank' : undefined}
+      rel={external ? 'noopener' : undefined}
+      class:list={classes}
+    >
+      <slot />
+    </a>
+  ) : (
+    <button type={type} class:list={classes}>
+      <slot />
+    </button>
+  )
+}

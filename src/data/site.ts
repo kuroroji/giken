@@ -26,8 +26,10 @@ export const AUTHOR = {
   name: 'くろろじ',
   role: 'ゲーム発掘YouTuber',
   bio: '新作から埋もれた良作まで、実際に遊んでから紹介するゲーム発掘YouTuber。YouTubeチャンネル「くろろじちゃんねる」を運営しながら、ゲーム会社向けの動画プロモーションや、ゲームの届け方に関する相談も行っている。',
-  /** プロフィール画像（public/images/ 配下に置く） */
-  avatar: '/images/profile.png',
+  /** プロフィール画像（顔アップ。public/images/ 配下に置く） */
+  avatar: '/images/profile.jpg',
+  /** 立ち絵（透過PNG。ファーストビューで使用） */
+  standingImage: '/images/kuroroji-standing.png',
   /**
    * SNS等のリンク。URLを設定すると各ページに表示される。
    * 空文字 '' のままなら表示されない。

@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import ArticleCard from '@/components/ArticleCard.astro';
+import Button from '@/components/Button.astro';
 import { SITE, AUTHOR } from '@/data/site';
 import { CHANNEL, PROMOTION, CONSULTATION } from '@/data/business';
 import { CATEGORIES } from '@/data/categories';
@@ -35,51 +36,35 @@ const sections = {
 ---
 
 <BaseLayout title={SITE.name} description={SITE.description} isHome jsonLd={jsonLd}>
-  {/* ============ 1. ファーストビュー（白） ============ */}
+  {/* ============ 1. ファーストビュー（白・方眼が流れる） ============ */}
   <section class="hero-bg relative overflow-hidden border-b border-line">
     {/* ダイナミックな装飾（モノクロ・CSSのみ） */}
     <div aria-hidden="true" class="pointer-events-none absolute inset-0">
-      {/* 画面外にはみ出す大リング */}
       <span
         class="spin-slow absolute -top-32 -right-32 size-[30rem] rounded-full border border-line-strong/70 border-t-ink/40 sm:size-[36rem]"
       ></span>
-      <span class="absolute -bottom-24 -left-24 size-[22rem] rounded-full border border-line-strong/50"></span>
-      {/* 斜めライン */}
+      <span class="drift absolute -bottom-24 -left-24 size-[22rem] rounded-full border border-line-strong/50"></span>
       <span class="absolute bottom-[26%] left-[-6%] h-px w-[46%] -rotate-6 bg-line-strong/70"></span>
-      {/* 浮遊するドット・図形 */}
       <span class="float-slow absolute top-[16%] left-[7%] size-3 rounded-full bg-ink/20"></span>
       <span class="float-slower absolute top-[64%] right-[9%] size-2 rounded-full bg-ink/25"></span>
       <span class="float-slow absolute bottom-[18%] left-[18%] size-7 rotate-12 border border-line-strong/70"></span>
-      <span class="float-slower absolute top-[30%] left-[44%] hidden size-2 rounded-full bg-ink/10 lg:block"></span>
     </div>
 
-    <div class="relative mx-auto max-w-site px-4 py-12 sm:px-6 sm:py-16 lg:py-20">
-      <div class="grid items-center gap-8 lg:grid-cols-[1fr_19rem] lg:gap-14">
-        <div>
+    <div class="relative mx-auto max-w-site px-4 pt-12 sm:px-6 sm:pt-16 lg:pt-20">
+      <div class="grid items-end gap-6 lg:grid-cols-[1fr_22rem] lg:gap-10">
+        <div class="pb-10 sm:pb-14 lg:pb-20">
           <p class="font-mono text-xs tracking-widest text-muted uppercase">
             Game Discovery / YouTube / Promotion
           </p>
-          <h1 class="mt-4 text-4xl leading-[1.15] font-extrabold text-ink sm:text-6xl">
+          <h1 class="mt-4 text-4xl leading-[1.2] font-bold text-ink sm:text-6xl">
             {SITE.taglineLines.map((line) => <span class="block">{line}</span>)}
           </h1>
           <p class="mt-5 max-w-xl text-sm leading-relaxed text-body sm:text-base">
             {SITE.description}
           </p>
           <div class="mt-7 flex flex-wrap items-center gap-3">
-            <a
-              href={CHANNEL.url}
-              target="_blank"
-              rel="noopener"
-              class="inline-block rounded-card bg-ink px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-body"
-            >
-              YouTubeを見る
-            </a>
-            <a
-              href="/contact/"
-              class="glass inline-block rounded-card px-6 py-3 text-sm font-bold text-ink transition-colors hover:border-ink"
-            >
-              動画案件を相談する
-            </a>
+            <Button href={CHANNEL.url} variant="dark" external>YouTubeを見る</Button>
+            <Button href="/contact/" variant="glass">動画案件を相談する</Button>
             <a
               href="/articles/"
               class="nav-link inline-block py-2 text-sm font-bold text-body hover:text-ink"
@@ -87,37 +72,52 @@ const sections = {
               記事を読む
             </a>
           </div>
+
+          {/* スクロール誘導 */}
+          <div aria-hidden="true" class="mt-10 flex flex-col items-start gap-1.5 lg:mt-14">
+            <span class="font-mono text-[0.625rem] tracking-widest text-muted uppercase">Scroll</span>
+            <span class="relative ml-3 block h-8 w-px overflow-hidden bg-line-strong">
+              <span class="scroll-hint-dot absolute top-0 left-1/2 h-3 w-px -translate-x-1/2 bg-ink"></span>
+            </span>
+          </div>
         </div>
 
-        {/* プロフィール（ガラスフレーム） */}
-        <div class="glass mx-auto w-full max-w-[13rem] rounded-2xl p-2.5 sm:max-w-[15rem] lg:max-w-none">
+        {/* 立ち絵：背後のリングと方眼の上に立つ */}
+        <div class="relative mx-auto w-60 sm:w-72 lg:w-full">
+          <span
+            aria-hidden="true"
+            class="drift-rev absolute top-[12%] left-1/2 size-[85%] -translate-x-1/2 rounded-full border border-line-strong/80 bg-surface/50"
+          ></span>
           <img
-            src={AUTHOR.avatar}
-            alt="くろろじのプロフィールイラスト"
+            src={AUTHOR.standingImage}
+            alt="くろろじのイラスト"
             width="720"
-            height="720"
-            class="aspect-square w-full rounded-xl object-cover object-top"
+            height="931"
+            class="relative w-full drop-shadow-[0_16px_40px_rgb(17_17_17/0.18)]"
           />
         </div>
-      </div>
-
-      {/* スクロール誘導 */}
-      <div aria-hidden="true" class="mt-8 flex flex-col items-center gap-1.5 lg:mt-10">
-        <span class="font-mono text-[0.625rem] tracking-widest text-muted uppercase">Scroll</span>
-        <span class="relative block h-8 w-px overflow-hidden bg-line-strong">
-          <span class="scroll-hint-dot absolute top-0 left-1/2 h-3 w-px -translate-x-1/2 bg-ink"></span>
-        </span>
       </div>
     </div>
   </section>
 
   {/* ============ 2. くろろじちゃんねる紹介（黒） ============ */}
-  <section id="channel" aria-labelledby="channel-heading" class="scroll-mt-24 bg-ink text-paper">
-    <div class="mx-auto max-w-site px-4 py-16 sm:px-6 sm:py-20">
+  <section
+    id="channel"
+    aria-labelledby="channel-heading"
+    class="relative scroll-mt-24 overflow-hidden bg-ink text-paper"
+  >
+    {/* 黒背景の中を漂う装飾 */}
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+      <span class="drift absolute -top-24 right-[8%] size-[24rem] rounded-full bg-white/[0.04]"></span>
+      <span class="drift-rev absolute -bottom-32 left-[4%] size-[20rem] rounded-full bg-white/[0.05]"></span>
+      <span class="spin-slow absolute top-[20%] -left-24 size-[20rem] rounded-full border border-white/10"></span>
+      <span class="float-slow absolute top-[30%] right-[16%] size-2 rounded-full bg-white/30"></span>
+    </div>
+    <div class="relative mx-auto max-w-site px-4 py-16 sm:px-6 sm:py-20">
       <p class="font-mono text-xs tracking-widest text-line-strong uppercase">
         {sections.channel.no} — {sections.channel.en}
       </p>
-      <h2 id="channel-heading" class="mt-2 text-2xl font-extrabold text-white sm:text-3xl">
+      <h2 id="channel-heading" class="mt-2 text-2xl font-bold text-white sm:text-3xl">
         {CHANNEL.name}
       </h2>
       <p class="mt-4 max-w-2xl text-sm leading-relaxed text-line-strong sm:text-base">
@@ -134,25 +134,28 @@ const sections = {
         }
       </div>
       <div class="mt-8">
-        <a
-          href={CHANNEL.url}
-          target="_blank"
-          rel="noopener"
-          class="inline-block rounded-card bg-white px-6 py-3 text-sm font-bold text-ink transition-colors hover:bg-line"
-        >
-          チャンネルを見る
-        </a>
+        <Button href={CHANNEL.url} variant="light" external>チャンネルを見る</Button>
       </div>
     </div>
   </section>
 
   {/* ============ 3. 動画プロモーション・案件実績（白） ============ */}
-  <section id="promotion" aria-labelledby="promotion-heading" class="scroll-mt-24 bg-surface">
-    <div class="mx-auto max-w-site px-4 py-16 sm:px-6 sm:py-20">
+  <section
+    id="promotion"
+    aria-labelledby="promotion-heading"
+    class="relative scroll-mt-24 overflow-hidden bg-surface"
+  >
+    {/* 白背景の中を漂う装飾 */}
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+      <span class="drift absolute -top-28 left-[10%] size-[26rem] rounded-full bg-paper"></span>
+      <span class="drift-rev absolute right-[-8%] bottom-[10%] size-[22rem] rounded-full border border-line"></span>
+      <span class="float-slower absolute top-[24%] right-[10%] size-2 rounded-full bg-ink/15"></span>
+    </div>
+    <div class="relative mx-auto max-w-site px-4 py-16 sm:px-6 sm:py-20">
       <p class="font-mono text-xs tracking-widest text-muted uppercase">
         {sections.promotion.no} — {sections.promotion.en}
       </p>
-      <h2 id="promotion-heading" class="mt-2 text-2xl font-extrabold sm:text-3xl">
+      <h2 id="promotion-heading" class="mt-2 text-2xl font-bold sm:text-3xl">
         動画プロモーション
       </h2>
       <p class="mt-4 max-w-2xl text-sm leading-relaxed text-body sm:text-base">
@@ -163,7 +166,7 @@ const sections = {
       <div class="mt-4 grid gap-4 lg:grid-cols-3">
         {
           PROMOTION.services.map((service) => (
-            <div class="rounded-card border border-line bg-paper p-5">
+            <div class="glass rounded-card p-5">
               <h4 class="font-bold text-ink">{service.title}</h4>
               <p class="mt-2 text-xs text-muted">{service.body}</p>
               <ul class="mt-3 space-y-1.5 text-sm text-body">
@@ -184,7 +187,7 @@ const sections = {
       <ul class="mt-4 flex flex-wrap gap-2">
         {
           PROMOTION.genres.map((genre) => (
-            <li class="rounded-card border border-line bg-paper px-3 py-1.5 text-sm text-body">
+            <li class="rounded-full border border-line bg-paper/70 px-4 py-1.5 text-sm text-body backdrop-blur-sm">
               {genre}
             </li>
           ))
@@ -205,32 +208,31 @@ const sections = {
       </ul>
 
       <div class="mt-10 flex flex-wrap gap-3">
-        <a
-          href={PROMOTION.playlistUrl}
-          target="_blank"
-          rel="noopener"
-          class="glass inline-block rounded-card px-6 py-3 text-sm font-bold text-ink transition-colors hover:border-ink"
-        >
+        <Button href={PROMOTION.playlistUrl} variant="glass" external>
           過去のプロモーション動画を見る
-        </a>
-        <a
-          href="/contact/"
-          class="inline-block rounded-card bg-ink px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-body"
-        >
-          動画プロモーションを相談する
-        </a>
+        </Button>
+        <Button href="/contact/" variant="dark">動画プロモーションを相談する</Button>
       </div>
     </div>
   </section>
 
   {/* ============ 4. メディア記事（黒） ============ */}
-  <section id="media" aria-labelledby="media-heading" class="scroll-mt-24 bg-ink text-paper">
-    <div class="mx-auto max-w-site px-4 py-16 sm:px-6 sm:py-20">
+  <section
+    id="media"
+    aria-labelledby="media-heading"
+    class="relative scroll-mt-24 overflow-hidden bg-ink text-paper"
+  >
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+      <span class="drift-rev absolute -top-32 left-[16%] size-[22rem] rounded-full bg-white/[0.04]"></span>
+      <span class="drift absolute right-[6%] -bottom-24 size-[26rem] rounded-full bg-white/[0.05]"></span>
+      <span class="spin-slow absolute -right-28 top-[10%] size-[22rem] rounded-full border border-white/10"></span>
+    </div>
+    <div class="relative mx-auto max-w-site px-4 py-16 sm:px-6 sm:py-20">
       <p class="font-mono text-xs tracking-widest text-line-strong uppercase">
         {sections.media.no} — {sections.media.en}
       </p>
       <div class="mt-2 flex flex-wrap items-baseline justify-between gap-4">
-        <h2 id="media-heading" class="text-2xl font-extrabold text-white sm:text-3xl">メディア</h2>
+        <h2 id="media-heading" class="text-2xl font-bold text-white sm:text-3xl">メディア</h2>
         <a
           href="/articles/"
           class="text-sm font-bold text-paper underline underline-offset-4 hover:text-white"
@@ -243,7 +245,7 @@ const sections = {
           CATEGORIES.map((category) => (
             <a
               href={`/category/${category.slug}/`}
-              class="rounded-card border border-white/25 px-3 py-1.5 text-sm text-paper transition-colors hover:border-white hover:text-white"
+              class="rounded-full border border-white/25 px-4 py-1.5 text-sm text-paper backdrop-blur-sm transition-colors hover:border-white hover:text-white"
             >
               {category.name}
             </a>
@@ -257,12 +259,20 @@ const sections = {
   </section>
 
   {/* ============ 5. お問い合わせ（白） ============ */}
-  <section id="contact" aria-labelledby="contact-heading" class="scroll-mt-24 bg-surface">
-    <div class="mx-auto max-w-site px-4 py-16 sm:px-6 sm:py-20">
+  <section
+    id="contact"
+    aria-labelledby="contact-heading"
+    class="relative scroll-mt-24 overflow-hidden bg-surface"
+  >
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+      <span class="drift absolute -bottom-32 right-[12%] size-[24rem] rounded-full bg-paper"></span>
+      <span class="drift-rev absolute -top-24 left-[-6%] size-[18rem] rounded-full border border-line"></span>
+    </div>
+    <div class="relative mx-auto max-w-site px-4 py-16 sm:px-6 sm:py-20">
       <p class="font-mono text-xs tracking-widest text-muted uppercase">
         {sections.contact.no} — {sections.contact.en}
       </p>
-      <h2 id="contact-heading" class="mt-2 text-2xl font-extrabold sm:text-3xl">お問い合わせ</h2>
+      <h2 id="contact-heading" class="mt-2 text-2xl font-bold sm:text-3xl">お問い合わせ</h2>
       <div class="mt-8 grid gap-4 lg:grid-cols-2">
         <div class="glass rounded-card p-6">
           <h3 class="font-bold text-ink">動画プロモーション・案件のご相談</h3>
@@ -277,12 +287,7 @@ const sections = {
         </div>
       </div>
       <div class="mt-8">
-        <a
-          href="/contact/"
-          class="inline-block rounded-card bg-ink px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-body"
-        >
-          お問い合わせフォームへ
-        </a>
+        <Button href="/contact/" variant="dark">お問い合わせフォームへ</Button>
       </div>
     </div>
   </section>

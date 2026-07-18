@@ -53,10 +53,10 @@
     line-height: 1.4;
   }
 
-  /* 大見出しは太いゴシックで力強く */
+  /* キャッチコピーと見出し（h1・h2）だけ明朝体。それ以外はゴシックのまま */
   h1, h2 {
-    font-weight: 800;
-    letter-spacing: 0.01em;
+    font-family: var(--font-serif);
+    letter-spacing: 0.03em;
   }
 
   /* キーボード操作時のフォーカス表示（消さない） */
@@ -261,7 +261,7 @@
 /* ============================================================
    ファーストビューの背景と装飾
    ============================================================ */
-/* 方眼＋にじむ影：ガラスパネルのぼかしが活きる下地 */
+/* 方眼＋にじむ影：ガラスパネルのぼかしが活きる下地。方眼はゆっくり流れる */
 .hero-bg {
   background-image:
     radial-gradient(46rem 46rem at 90% 0%, rgb(17 17 17 / 0.09), transparent 60%),
@@ -273,6 +273,43 @@
     auto,
     2.5rem 2.5rem,
     2.5rem 2.5rem;
+  animation: grid-pan 9s linear infinite;
+}
+
+@keyframes grid-pan {
+  from {
+    background-position:
+      0 0,
+      0 0,
+      0 0,
+      0 0;
+  }
+  to {
+    background-position:
+      0 0,
+      0 0,
+      2.5rem 2.5rem,
+      2.5rem 2.5rem;
+  }
+}
+
+/* ゆっくり漂う装飾（各セクションの背景に使用） */
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(2rem, -1.5rem);
+  }
+}
+
+.drift {
+  animation: drift 16s ease-in-out infinite;
+}
+
+.drift-rev {
+  animation: drift 22s ease-in-out infinite reverse;
 }
 
 /* ゆっくり回転する装飾（大きなリングなどに使用） */
@@ -328,6 +365,9 @@
   .float-slow,
   .float-slower,
   .spin-slow,
+  .drift,
+  .drift-rev,
+  .hero-bg,
   .scroll-hint-dot {
     animation: none;
   }

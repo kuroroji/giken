@@ -4,6 +4,7 @@ import PageHeader from '@/components/PageHeader.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import { CONTACT } from '@/data/site';
 import { CONSULTATION, CONTACT_TOPICS } from '@/data/business';
+import Button from '@/components/Button.astro';
 
 /**
  * お問い合わせフォーム。
@@ -139,12 +140,7 @@ const labelClass = 'block text-sm font-bold text-ink';
       </div>
 
       <div>
-        <button
-          type="submit"
-          class="inline-block rounded-card bg-ink px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-body"
-        >
-          内容を確認する
-        </button>
+        <Button type="submit" variant="dark">内容を確認する</Button>
       </div>
 
       {/* 送信未接続の案内（正直に表示する） */}
