@@ -13,7 +13,7 @@ draft: true
 
 この記事は、僕・くろろじが人生で本当にハマったゲーム(殿堂入りの7本)と、やり込めてはいないけれど「これは斬新だった」「今後に期待している」というゲームをまとめたものです。
 
-検索で上位を取るための記事ではなくて、「くろろじってどんなゲームを面白いと思う人なの?」に答えるための記事です。YouTubeの概要欄やコメント欄に常に置いておくので、動画から来てくれた人は、これを読めば僕の好みが大体わかると思います。
+「くろろじってどんなゲームを面白いと思う人なの?」に答えるための記事です。YouTubeの概要欄やコメント欄に常に置いておくので、動画から来てくれた人は、これを読めば僕の好みが大体わかると思います。
 
 選定基準はシンプルです。
 
@@ -54,6 +54,14 @@ draft: true
 
 ![ディアブロ3のキービジュアル](/images/articles/games/diablo3.jpg)
 
+<p class="img-credit">画像出典: Blizzard公式サイト</p>
+
+<p class="store-links">
+  <a class="store-btn store-btn--battlenet" href="https://shop.battle.net/ja-jp/product/diablo-iii" target="_blank" rel="noopener">Battle.net</a>
+  <a class="store-btn store-btn--switch" href="https://store-jp.nintendo.com/search/?q=%E3%83%87%E3%82%A3%E3%82%A2%E3%83%96%E3%83%AD3" target="_blank" rel="noopener">Switch</a>
+  <a class="store-btn store-btn--ps" href="https://store.playstation.com/ja-jp/search/%E3%83%87%E3%82%A3%E3%82%A2%E3%83%96%E3%83%AD3" target="_blank" rel="noopener">PS Store</a>
+</p>
+
 **ハクスラARPG / PC・PS4・Switchほか**
 
 僕のゲーム人生を語るうえで外せない1本で、複数シーズンにわたって遊び込みました。クラスは「これ」と決めずに遊ぶタイプでしたが、気づくとデーモンハンターかモンクを選びがちでしたね。
@@ -65,6 +73,12 @@ draft: true
 ## 2. スプラトゥーン3
 
 ![スプラトゥーン3のキービジュアル](/images/articles/games/splatoon3.jpg)
+
+<p class="img-credit">画像出典: 任天堂公式サイト</p>
+
+<p class="store-links">
+  <a class="store-btn store-btn--switch" href="https://store-jp.nintendo.com/search/?q=%E3%82%B9%E3%83%97%E3%83%A9%E3%83%88%E3%82%A5%E3%83%BC%E3%83%B33" target="_blank" rel="noopener">Switch</a>
+</p>
 
 **対戦アクション / Switch**
 
@@ -82,6 +96,14 @@ draft: true
 
 ![Dead Cellsのキービジュアル](/images/articles/games/deadcells.jpg)
 
+<p class="img-credit">画像出典: Steamストアページ</p>
+
+<p class="store-links">
+  <a class="store-btn store-btn--steam" href="https://store.steampowered.com/app/588650/" target="_blank" rel="noopener">Steam</a>
+  <a class="store-btn store-btn--switch" href="https://store-jp.nintendo.com/search/?q=Dead%20Cells" target="_blank" rel="noopener">Switch</a>
+  <a class="store-btn store-btn--ps" href="https://store.playstation.com/ja-jp/search/Dead%20Cells" target="_blank" rel="noopener">PS Store</a>
+</p>
+
 **ローグライト2Dアクション / PC・Switch・PS4・スマホほか**
 
 僕が2018年頃に初めて遊んだローグライト2Dアクションで、このゲーム体験が本当に楽しかったんです。死んだら最初からやり直し。それなのに「もう1回」が止まらない。
@@ -95,6 +117,14 @@ draft: true
 ## 4. ダンガンロンパシリーズ
 
 ![ダンガンロンパのキービジュアル](/images/articles/games/danganronpa.jpg)
+
+<p class="img-credit">画像出典: Steamストアページ</p>
+
+<p class="store-links">
+  <a class="store-btn store-btn--steam" href="https://store.steampowered.com/app/413410/" target="_blank" rel="noopener">Steam</a>
+  <a class="store-btn store-btn--switch" href="https://store-jp.nintendo.com/search/?q=%E3%83%80%E3%83%B3%E3%82%AC%E3%83%B3%E3%83%AD%E3%83%B3%E3%83%91" target="_blank" rel="noopener">Switch</a>
+  <a class="store-btn store-btn--ps" href="https://store.playstation.com/ja-jp/search/%E3%83%80%E3%83%B3%E3%82%AC%E3%83%B3%E3%83%AD%E3%83%B3%E3%83%91" target="_blank" rel="noopener">PS Store</a>
+</p>
 
 **推理アドベンチャー / PS4・Switch・PC・スマホほか**
 
@@ -110,6 +140,14 @@ draft: true
 
 ![ヴァンパイアサバイバーズのキービジュアル](/images/articles/games/vampire-survivors.jpg)
 
+<p class="img-credit">画像出典: Steamストアページ</p>
+
+<p class="store-links">
+  <a class="store-btn store-btn--steam" href="https://store.steampowered.com/app/1794680/" target="_blank" rel="noopener">Steam</a>
+  <a class="store-btn store-btn--switch" href="https://store-jp.nintendo.com/search/?q=Vampire%20Survivors" target="_blank" rel="noopener">Switch</a>
+  <a class="store-btn store-btn--xbox" href="https://www.xbox.com/ja-JP/Search/Results?q=Vampire%20Survivors" target="_blank" rel="noopener">Xbox</a>
+</p>
+
 **ヴァンサバ / PC・Switch・スマホほか**
 
 僕のチャンネルではヴァンサバライクのゲームをたくさん紹介していますが、やっぱり大元である『ヴァンパイアサバイバーズ』のクオリティは別格です。
@@ -124,6 +162,13 @@ draft: true
 
 ![無双アビスのキービジュアル](/images/articles/games/musou-abyss.jpg)
 
+<p class="img-credit">画像出典: Steamストアページ</p>
+
+<p class="store-links">
+  <a class="store-btn store-btn--steam" href="https://store.steampowered.com/app/3178350/" target="_blank" rel="noopener">Steam</a>
+  <a class="store-btn store-btn--ps" href="https://store.playstation.com/ja-jp/search/%E7%84%A1%E5%8F%8C%E3%82%A2%E3%83%93%E3%82%B9" target="_blank" rel="noopener">PS Store</a>
+</p>
+
 **ローグライト無双 / PS5・Steamほか**
 
 「無双×ローグライト」という力技を、コーエーテクモが本気でやったゲームです。これがめちゃくちゃにハマりました。
@@ -137,6 +182,12 @@ draft: true
 ## 7. デモンキルデモン 〜黄泉1984〜
 
 ![デモンキルデモン 黄泉1984のキービジュアル](/images/articles/games/demonkilldemon.jpg)
+
+<p class="img-credit">画像出典: エクスペリエンス公式サイト</p>
+
+<p class="store-links">
+  <a class="store-btn store-btn--switch" href="https://store-jp.nintendo.com/search/?q=%E3%83%87%E3%83%A2%E3%83%B3%E3%82%AD%E3%83%AB%E3%83%87%E3%83%A2%E3%83%B3" target="_blank" rel="noopener">Switch</a>
+</p>
 
 **3Dダンジョン探索ハクスラRPG / Switch**
 
@@ -156,11 +207,25 @@ draft: true
 
 ![ディアブロ4のキービジュアル](/images/articles/games/diablo4.jpg)
 
+<p class="img-credit">画像出典: Steamストアページ</p>
+
+<p class="store-links">
+  <a class="store-btn store-btn--steam" href="https://store.steampowered.com/app/2344520/" target="_blank" rel="noopener">Steam</a>
+  <a class="store-btn store-btn--ps" href="https://store.playstation.com/ja-jp/search/%E3%83%87%E3%82%A3%E3%82%A2%E3%83%96%E3%83%AD4" target="_blank" rel="noopener">PS Store</a>
+  <a class="store-btn store-btn--xbox" href="https://www.xbox.com/ja-JP/Search/Results?q=Diablo%20IV" target="_blank" rel="noopener">Xbox</a>
+</p>
+
 ディアブロ3の続編で、**今も進化を続けているハクスラ**です。シーズンごとのアップデートに振り回されながら、環境の変化ごと楽しんでいく。そういう付き合い方ができるゲームで、ハクスラの「今」を体験したい人におすすめしたい1本です。
 
 ### 深 四のの目 -陰陽の巫女-
 
 ![深 四のの目 -陰陽の巫女- のキービジュアル](/images/articles/games/shinonome.jpg)
+
+<p class="img-credit">画像出典: Steamストアページ</p>
+
+<p class="store-links">
+  <a class="store-btn store-btn--steam" href="https://store.steampowered.com/app/2948080/" target="_blank" rel="noopener">Steam</a>
+</p>
 
 **ホラー×ローグライクアクション**という、僕の中ではすごく斬新だった組み合わせの1本です。公式ジャンルは「思考型ローグライクホラーアクション」。ホラーの緊張感の中でローグライクの試行錯誤をやらせてくる発想に、「その手があったか」と思わされました。
 
@@ -168,11 +233,24 @@ draft: true
 
 ![Hell Maidenのキービジュアル](/images/articles/games/hellmaiden.jpg)
 
+<p class="img-credit">画像出典: Steamストアページ</p>
+
+<p class="store-links">
+  <a class="store-btn store-btn--steam" href="https://store.steampowered.com/app/3372060/" target="_blank" rel="noopener">Steam</a>
+</p>
+
 ダンテの『神曲』をモチーフにした、デッキ構築型のヴァンサバライク。この系統では珍しく**ストーリーの軸がしっかりしていて、アニメーションの作画クオリティがめちゃくちゃ高い**んです。2026年7月に早期アクセスが始まったばかりで、今後にすごく期待しているタイトルです。
 
 ### モンカルファンタ 〜勇者と水晶の少女〜
 
 ![モンカルファンタのキービジュアル](/images/articles/games/monkaru.jpg)
+
+<p class="img-credit">画像出典: モンカルファンタ公式サイト</p>
+
+<p class="store-links">
+  <a class="store-btn store-btn--switch" href="https://store-jp.nintendo.com/search/?q=%E3%83%A2%E3%83%B3%E3%82%AB%E3%83%AB%E3%83%95%E3%82%A1%E3%83%B3%E3%82%BF" target="_blank" rel="noopener">Switch</a>
+  <a class="store-btn store-btn--ps" href="https://store.playstation.com/ja-jp/search/%E3%83%A2%E3%83%B3%E3%82%AB%E3%83%AB%E3%83%95%E3%82%A1%E3%83%B3%E3%82%BF" target="_blank" rel="noopener">PS Store</a>
+</p>
 
 デモンキルデモンと同じエクスペリエンスさんの、**ドラクエっぽい王道コマンドRPGにハクスラを合体させた**1本。この組み合わせ、ありそうでなかなかないんですよ。気づくと「ずっとやりたくなる」中毒性と、冒険している感覚が両立していて、シンプルに「遊んでいて楽しかったな」と言えるゲームです。
 
@@ -180,11 +258,25 @@ draft: true
 
 ![ハイク ノーザンライツのキービジュアル](/images/articles/games/hyke.jpg)
 
+<p class="img-credit">画像出典: Steamストアページ</p>
+
+<p class="store-links">
+  <a class="store-btn store-btn--steam" href="https://store.steampowered.com/app/2680380/" target="_blank" rel="noopener">Steam</a>
+  <a class="store-btn store-btn--switch" href="https://store-jp.nintendo.com/search/?q=%E3%83%8F%E3%82%A4%E3%82%AF%20%E3%83%8E%E3%83%BC%E3%82%B6%E3%83%B3%E3%83%A9%E3%82%A4%E3%83%84" target="_blank" rel="noopener">Switch</a>
+  <a class="store-btn store-btn--ps" href="https://store.playstation.com/ja-jp/search/HYKE" target="_blank" rel="noopener">PS Store</a>
+</p>
+
 ストーリーが主軸の2DアクションRPGで、**キャラクターの見栄えのクオリティがめちゃくちゃ高い**。正直、操作性やゲームバランスには難しさがあって、そこは課題だと思います。それでも、雰囲気ゲーと呼ばれたとしても楽しんでほしい作品ですし、こういうゲームが増えてくれると本当に嬉しい。なかなか作れるものじゃないですから。
 
 ### 鋼の戦騎ARMIS
 
 ![鋼の戦騎ARMISのキービジュアル](/images/articles/games/armis.jpg)
+
+<p class="img-credit">画像出典: Steamストアページ</p>
+
+<p class="store-links">
+  <a class="store-btn store-btn--steam" href="https://store.steampowered.com/app/3214220/" target="_blank" rel="noopener">Steam</a>
+</p>
 
 **ロボットアニメのようなドラマチックなストーリーライン×ヴァンサバ系**という、個人的にすごく珍しい組み合わせの1本。「その手があったか」枠として推したいゲームです。
 
@@ -192,15 +284,30 @@ draft: true
 
 ![Sea of Starsのキービジュアル](/images/articles/games/sea-of-stars.jpg)
 
+<p class="img-credit">画像出典: Steamストアページ</p>
+
+<p class="store-links">
+  <a class="store-btn store-btn--steam" href="https://store.steampowered.com/app/1244090/" target="_blank" rel="noopener">Steam</a>
+  <a class="store-btn store-btn--switch" href="https://store-jp.nintendo.com/search/?q=Sea%20of%20Stars" target="_blank" rel="noopener">Switch</a>
+  <a class="store-btn store-btn--ps" href="https://store.playstation.com/ja-jp/search/Sea%20of%20Stars" target="_blank" rel="noopener">PS Store</a>
+</p>
+
 2DドットのRPGで、とにかく**クオリティが凄まじい**。新しいルールがどうこうという話ではなく、圧倒的な完成度で殴ってくるタイプの作品です。続きも気になっているゲームです。
 
 ### SANABI(サンナビ)
 
 ![SANABIのキービジュアル](/images/articles/games/sanabi.jpg)
 
+<p class="img-credit">画像出典: Steamストアページ</p>
+
+<p class="store-links">
+  <a class="store-btn store-btn--steam" href="https://store.steampowered.com/app/1562700/" target="_blank" rel="noopener">Steam</a>
+  <a class="store-btn store-btn--switch" href="https://store-jp.nintendo.com/search/?q=SANABI" target="_blank" rel="noopener">Switch</a>
+</p>
+
 最後は正直枠です。実はまだ、全然遊べていません。でも**チェーンアクションの気持ちよさと、感動するストーリーがすごいらしい**と聞いていて、パッケージ版までいただいているので、絶対に遊びたい1本。「もっと評価されてほしいタイトル」として名前を挙げておきます。
 
-## まとめ|このリストが「くろろじ」です
+## まとめ
 
 殿堂入りの7本と注目タイトルたち。改めて並べてみると、ハクスラ・ローグライク系を主軸にしながら、対戦も推理アドベンチャーも混ざった雑食っぷりが出たリストになりました。「物語」「上達」「新しいルールの発見」——3つの軸で遊んでいる人間だということが伝わっていたら嬉しいです。
 

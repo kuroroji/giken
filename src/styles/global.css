@@ -195,6 +195,43 @@
   margin-top: 2.5em;
 }
 
+/* 画像の出典クレジット（画像直下に小さく表示） */
+.article-body .img-credit {
+  margin-top: 0.4em;
+  font-size: 0.75rem;
+  color: var(--color-muted);
+}
+
+/* ストアへのリンクボタン（ブランドカラーで色分け） */
+.article-body .store-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.8em;
+}
+
+.article-body .store-btn {
+  display: inline-block;
+  border-radius: 9999px;
+  padding: 0.35em 1.1em;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: #fff;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+
+.article-body .store-btn:hover {
+  opacity: 0.8;
+  color: #fff;
+}
+
+.article-body .store-btn--switch { background-color: #e60012; }
+.article-body .store-btn--ps { background-color: #0070d1; }
+.article-body .store-btn--xbox { background-color: #107c10; }
+.article-body .store-btn--steam { background-color: #1b2838; }
+.article-body .store-btn--battlenet { background-color: #0074e0; }
+
 /* 折りたたみ（FAQ等）。Markdown内の <details><summary> に適用される */
 .article-body details {
   border: 1px solid var(--color-line);
