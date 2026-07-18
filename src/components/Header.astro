@@ -51,7 +51,7 @@ const isActive = (href: string) => {
                 isActive(item.href) ? 'font-bold text-ink' : 'text-body hover:text-ink',
               ]}
             >
-              {item.label}{item.external && <span aria-hidden="true" class="ml-0.5 text-[0.7em]">↗</span>}
+              {item.label}{item.external && <svg aria-hidden="true" class="mb-0.5 ml-1 inline size-[0.8em]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" /><path d="M15 3h6v6" /><path d="M10 14L21 3" /></svg>}
             </a>
           </li>
         ))}
