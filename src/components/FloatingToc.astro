@@ -1,0 +1,123 @@
+---
+import type { MarkdownHeading } from 'astro';
+
+interface Props {
+  headings: MarkdownHeading[];
+}
+
+const { headings } = Astro.props;
+/** フローティング目次は h2（親階層）だけを載せる */
+const h2Headings = headings.filter((h) => h.depth === 2);
+---
+
+{
+  h2Headings.length > 0 && (
+    <div
+      id="floating-toc"
+      class="pointer-events-none fixed bottom-4 left-4 z-40 translate-y-6 opacity-0 transition-all duration-300 ease-out"
+    >
+      <div
+        id="floating-toc-panel"
+        class="glass absolute bottom-full left-0 mb-3 hidden max-h-[60vh] w-72 max-w-[calc(100vw-2rem)] overflow-y-auto rounded-card p-4"
+      >
+        <p class="flex items-center gap-2">
+          <span class="font-mono text-[0.625rem] tracking-widest text-muted uppercase">
+            Contents
+          </span>
+          <span class="text-sm font-bold text-ink">目次</span>
+        </p>
+        <ol class="mt-2.5 space-y-2 text-sm">
+          {h2Headings.map((heading, index) => (
+            <li class="flex gap-2">
+              <span class="w-4 shrink-0 text-right font-mono text-muted">
+                {index + 1}.
+              </span>
+              <a
+                href={`#${heading.slug}`}
+                class="text-body hover:text-ink hover:underline underline-offset-4"
+              >
+                {heading.text}
+              </a>
+            </li>
+          ))}
+        </ol>
+      </div>
+      <button
+        id="floating-toc-button"
+        type="button"
+        aria-expanded="false"
+        aria-controls="floating-toc-panel"
+        class="glass flex cursor-pointer items-center gap-2 rounded-full px-4 py-2.5 text-sm font-bold text-ink transition-colors hover:border-line-strong"
+      >
+        <span aria-hidden="true" class="font-mono text-xs">☰</span>
+        目次
+      </button>
+    </div>
+  )
+}
+
+<script>
+  const root = document.getElementById('floating-toc');
+  const button = document.getElementById('floating-toc-button');
+  const panel = document.getElementById('floating-toc-panel');
+
+  if (root && button && panel) {
+    let visible = false;
+
+    const closePanel = () => {
+      panel.classList.add('hidden');
+      button.setAttribute('aria-expanded', 'false');
+    };
+
+    const setVisible = (shouldShow: boolean) => {
+      if (shouldShow === visible) return;
+      visible = shouldShow;
+      root.classList.toggle('opacity-0', !visible);
+      root.classList.toggle('translate-y-6', !visible);
+      root.classList.toggle('pointer-events-none', !visible);
+      if (!visible) closePanel();
+    };
+
+    /** 記事冒頭の目次が画面の上に消えたら出す（戻ったら引っ込める） */
+    const sentinel = document.querySelector('nav[aria-label="目次"]');
+    if (sentinel) {
+      const observer = new IntersectionObserver((entries) => {
+        for (const entry of entries) {
+          setVisible(!entry.isIntersecting && entry.boundingClientRect.bottom < 0);
+        }
+      });
+      observer.observe(sentinel);
+    }
+
+    const onScroll = () => {
+      if (!sentinel) setVisible(window.scrollY > 600);
+    };
+
+    button.addEventListener('click', () => {
+      const isOpen = !panel.classList.contains('hidden');
+      if (isOpen) {
+        closePanel();
+      } else {
+        panel.classList.remove('hidden');
+        button.setAttribute('aria-expanded', 'true');
+      }
+    });
+
+    /** 目次内のリンクを押したら閉じる */
+    panel.addEventListener('click', (event) => {
+      if (event.target instanceof Element && event.target.closest('a')) {
+        closePanel();
+      }
+    });
+
+    /** パネルの外側を押したら閉じる */
+    document.addEventListener('click', (event) => {
+      if (event.target instanceof Node && !root.contains(event.target)) {
+        closePanel();
+      }
+    });
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  }
+</script>

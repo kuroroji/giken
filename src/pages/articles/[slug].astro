@@ -3,6 +3,7 @@ import { render } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import TableOfContents from '@/components/TableOfContents.astro';
+import FloatingToc from '@/components/FloatingToc.astro';
 import AffiliateDisclosure from '@/components/AffiliateDisclosure.astro';
 import AuthorProfile from '@/components/AuthorProfile.astro';
 import RelatedArticles from '@/components/RelatedArticles.astro';
@@ -41,6 +42,9 @@ const { prev, next } = pickAdjacent(article, articles);
 const hasReviewInfo =
   data.productName || data.rating || data.pros.length > 0 || data.cons.length > 0;
 
+/** OGP画像。手動サムネイルがなければ自動生成画像（/og/…）を使う */
+const ogImage = data.thumbnail ?? `/og/${article.id}.png`;
+
 /** 記事の構造化データ（Article） */
 const jsonLd = [
   {
@@ -55,7 +59,7 @@ const jsonLd = [
       name: data.author,
       url: new URL('/profile/', Astro.site).toString(),
     },
-    image: new URL(data.thumbnail ?? '/ogp.png', Astro.site).toString(),
+    image: new URL(ogImage, Astro.site).toString(),
     mainEntityOfPage: new URL(Astro.url.pathname, Astro.site).toString(),
   },
 ];
@@ -65,7 +69,7 @@ const jsonLd = [
   title={data.title}
   description={data.description}
   ogType="article"
-  ogImage={data.thumbnail}
+  ogImage={ogImage}
   jsonLd={jsonLd}
 >
   <article>
@@ -138,12 +142,18 @@ const jsonLd = [
         ) : (
           <div
             aria-hidden="true"
-            class="mt-6 flex aspect-[1200/630] w-full flex-col items-center justify-center gap-1 rounded-card border border-line bg-accent-faint"
+            class="mt-6 flex w-full flex-col items-center justify-center gap-3 rounded-card bg-ink px-6 py-10 text-center"
           >
-            <span class="font-mono text-xs tracking-widest text-accent-strong uppercase">
+            <span class="font-mono text-sm tracking-[0.35em] text-white/60 uppercase">
               Kuroroji Giken
             </span>
-            <span class="font-bold text-ink">{category?.name}</span>
+            <span class="font-serif text-base leading-snug font-bold tracking-wide text-white sm:text-2xl">
+              {
+                data.eyecatchLines.length > 0
+                  ? data.eyecatchLines.map((line) => <span class="block">{line}</span>)
+                  : data.title
+              }
+            </span>
           </div>
         )
       }
@@ -286,5 +296,7 @@ const jsonLd = [
     <div class="mx-auto max-w-site px-4 pb-12 sm:px-6">
       <RelatedArticles articles={related} />
     </div>
+
+    <FloatingToc headings={headings} />
   </article>
 </BaseLayout>

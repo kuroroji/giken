@@ -1,0 +1,61 @@
+<svg viewBox="0 0 720 560" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ゲーム実況の始め方5ステップ。直撮り、投稿、楽しさの確認、機材購入、改善の順に進む">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="#111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <style>
+    .box { fill: #fff; stroke: #111; stroke-width: 1.5; }
+    .num-circle { fill: #111; }
+    .num { font-family: sans-serif; font-size: 15px; fill: #fff; font-weight: 700; }
+    .label { font-family: sans-serif; font-size: 17px; fill: #111; font-weight: 600; }
+    .sub { font-family: sans-serif; font-size: 12px; fill: #555; }
+    .flow { stroke: #111; stroke-width: 1.5; }
+  </style>
+
+  <!-- STEP 1 -->
+  <rect class="box" x="110" y="16" width="500" height="76" rx="12"/>
+  <circle class="num-circle" cx="152" cy="54" r="16"/>
+  <text class="num" x="152" y="60" text-anchor="middle">1</text>
+  <text class="label" x="186" y="48">スマホの直撮りで撮ってみる</text>
+  <text class="sub" x="186" y="72">費用0円。テレビの前にスマホを置くだけ</text>
+
+  <line class="flow" x1="360" y1="92" x2="360" y2="116" marker-end="url(#arrow)"/>
+
+  <!-- STEP 2 -->
+  <rect class="box" x="110" y="122" width="500" height="76" rx="12"/>
+  <circle class="num-circle" cx="152" cy="160" r="16"/>
+  <text class="num" x="152" y="166" text-anchor="middle">2</text>
+  <text class="label" x="186" y="154">YouTubeに投稿してみる</text>
+  <text class="sub" x="186" y="178">サブアカウント・限定公開でOK</text>
+
+  <line class="flow" x1="360" y1="198" x2="360" y2="222" marker-end="url(#arrow)"/>
+
+  <!-- STEP 3 -->
+  <rect class="box" x="110" y="228" width="500" height="76" rx="12"/>
+  <circle class="num-circle" cx="152" cy="266" r="16"/>
+  <text class="num" x="152" y="272" text-anchor="middle">3</text>
+  <text class="label" x="186" y="260">「もう1本作りたいか」を確かめる</text>
+  <text class="sub" x="186" y="284">見るのは再生数じゃなく、自分の気持ち</text>
+
+  <line class="flow" x1="360" y1="304" x2="360" y2="328" marker-end="url(#arrow)"/>
+
+  <!-- STEP 4 -->
+  <rect class="box" x="110" y="334" width="500" height="76" rx="12"/>
+  <circle class="num-circle" cx="152" cy="372" r="16"/>
+  <text class="num" x="152" y="378" text-anchor="middle">4</text>
+  <text class="label" x="186" y="366">機材を一つずつ買う</text>
+  <text class="sub" x="186" y="390">続けたいと思えた人だけでいい</text>
+
+  <line class="flow" x1="360" y1="410" x2="360" y2="434" marker-end="url(#arrow)"/>
+
+  <!-- STEP 5 -->
+  <rect class="box" x="110" y="440" width="500" height="76" rx="12"/>
+  <circle class="num-circle" cx="152" cy="478" r="16"/>
+  <text class="num" x="152" y="484" text-anchor="middle">5</text>
+  <text class="label" x="186" y="472">少しずつ画質・音質を良くしていく</text>
+  <text class="sub" x="186" y="496">楽しさを保てる範囲で</text>
+
+  <!-- 注記 -->
+  <text class="sub" x="360" y="544" text-anchor="middle">機材を買うのはステップ4。始めるのに初期投資は要らない</text>
+</svg>

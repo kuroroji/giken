@@ -71,7 +71,7 @@
   }
 
   ::selection {
-    background-color: var(--color-accent-soft);
+    background-color: rgb(59 130 246 / 0.3);
   }
 }
 
@@ -184,14 +184,65 @@
 }
 
 .article-body th {
-  background-color: var(--color-paper);
-  color: var(--color-ink);
+  background-color: var(--color-ink);
+  color: #fff;
+  border-color: var(--color-ink);
 }
 
 .article-body hr {
   border: none;
   border-top: 1px solid var(--color-line);
   margin-top: 2.5em;
+}
+
+/* 折りたたみ（FAQ等）。Markdown内の <details><summary> に適用される */
+.article-body details {
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+  background-color: var(--color-surface);
+}
+
+.article-body details + details {
+  margin-top: 0.6em;
+}
+
+.article-body summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 0.9em 1.1em;
+  font-weight: 600;
+  color: var(--color-ink);
+  position: relative;
+  padding-right: 2.5em;
+}
+
+.article-body summary::-webkit-details-marker {
+  display: none;
+}
+
+/* 開閉インジケーター（+ / −） */
+.article-body summary::after {
+  content: '+';
+  position: absolute;
+  right: 1.1em;
+  top: 50%;
+  transform: translateY(-50%);
+  font-weight: 400;
+  color: var(--color-muted);
+  transition: transform 0.2s ease;
+}
+
+.article-body details[open] summary::after {
+  content: '−';
+}
+
+.article-body details > *:not(summary) {
+  padding: 0 1.1em;
+  margin-top: 0.5em;
+}
+
+.article-body details > *:last-child {
+  padding-bottom: 1em;
 }
 
 /* ============================================================
@@ -353,10 +404,10 @@
   }
 }
 
-/* 03 コラム：横に流れる縦線（2層で速度差をつける） */
+/* 03 コラム：斜めに流れるライン（2層で速度差をつける） */
 .vlines {
   background-image: repeating-linear-gradient(
-    90deg,
+    135deg,
     rgb(255 255 255 / 0.09) 0 1px,
     transparent 1px 72px
   );
@@ -365,22 +416,23 @@
 
 .vlines-sub {
   background-image: repeating-linear-gradient(
-    90deg,
+    135deg,
     rgb(255 255 255 / 0.05) 0 1px,
     transparent 1px 36px
   );
   animation: vlines-pan-rev 34s linear infinite;
 }
 
+/* 移動量は縞の周期（72px/36px）を135度方向に射影した値。ループの継ぎ目が出ないようにしている */
 @keyframes vlines-pan {
   to {
-    background-position: 72px 0;
+    background-position: 50.9px 50.9px;
   }
 }
 
 @keyframes vlines-pan-rev {
   to {
-    background-position: -36px 0;
+    background-position: -25.5px -25.5px;
   }
 }
 

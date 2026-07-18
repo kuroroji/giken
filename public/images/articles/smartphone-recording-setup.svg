@@ -1,0 +1,35 @@
+<svg viewBox="0 0 720 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="スマホ直撮りのセットアップ図。テレビの前に箱や本でスマホを立てかけて画面を撮影する">
+  <style>
+    .box { fill: #fff; stroke: #111; stroke-width: 1.5; }
+    .label { font-family: sans-serif; font-size: 16px; fill: #111; font-weight: 600; }
+    .sub { font-family: sans-serif; font-size: 12px; fill: #555; }
+    .line { stroke: #111; stroke-width: 1.5; fill: none; }
+    .dashed { stroke: #555; stroke-width: 1.5; fill: none; stroke-dasharray: 6 5; }
+  </style>
+
+  <!-- テレビ -->
+  <rect class="box" x="110" y="50" width="300" height="180" rx="8"/>
+  <text class="label" x="260" y="145" text-anchor="middle">ゲーム画面</text>
+  <!-- テレビの脚 -->
+  <rect class="box" x="248" y="230" width="24" height="16"/>
+  <rect class="box" x="192" y="246" width="136" height="8"/>
+  <text class="sub" x="260" y="282" text-anchor="middle">テレビ / モニター</text>
+
+  <!-- 箱 -->
+  <rect class="box" x="540" y="200" width="110" height="80" rx="4"/>
+  <text class="sub" x="595" y="244" text-anchor="middle">箱や本</text>
+
+  <!-- スマホ -->
+  <rect class="box" x="480" y="120" width="56" height="160" rx="10"/>
+  <circle cx="508" cy="138" r="4" fill="none" stroke="#111" stroke-width="1.5"/>
+  <text class="sub" x="508" y="304" text-anchor="middle">スマホ</text>
+  <text class="sub" x="565" y="326" text-anchor="middle">立てかけて撮るだけ</text>
+
+  <!-- 撮影範囲（破線） -->
+  <line class="dashed" x1="480" y1="140" x2="412" y2="62"/>
+  <line class="dashed" x1="480" y1="260" x2="412" y2="222"/>
+  <text class="sub" x="452" y="180" text-anchor="middle">撮影</text>
+
+  <!-- 注記 -->
+  <text class="sub" x="360" y="366" text-anchor="middle">準備はこれだけ。画質より「実況を体験してみること」が目的</text>
+</svg>

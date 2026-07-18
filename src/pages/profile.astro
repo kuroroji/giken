@@ -3,6 +3,10 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import PageHeader from '@/components/PageHeader.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import { SITE, AUTHOR } from '@/data/site';
+import { PROMOTION } from '@/data/business';
+
+/** noteの自己紹介記事（詳しい経歴はこちらに誘導する） */
+const NOTE_PROFILE_URL = 'https://note.com/kuroroji/n/n9af50794245b';
 
 const socialLinks = [
   { label: 'YouTube', url: AUTHOR.links.youtube },
@@ -70,6 +74,31 @@ const jsonLd = [
         <li>ゲーム・YouTube運営に関する記事メディアの執筆</li>
         <li>ゲームの届け方に関する相談対応</li>
       </ul>
+
+      <h2>経歴</h2>
+      <p>
+        22歳からWEB業界でキャリアを重ね、WEBデザイン、広告バナー制作、Spineアニメーション（ソーシャルゲームのキャラクター制作）、WEBコーディング、WEBメディアサイトの運用、SEOなど、制作から運用まで幅広い実務を約12年経験しました。
+      </p>
+      <p>
+        YouTubeへの動画投稿は29歳のときに趣味として開始。その後フリーランスとしてWEB制作の仕事を続けながら、36歳からYouTube活動を本格化し、毎日投稿を開始しました。2025年にゲームの発掘・紹介スタイルへ転換し、現在の「くろろじちゃんねる」の形になっています。
+      </p>
+      <p>
+        これまでの経緯をもっと詳しく知りたい方は、<a
+          href={NOTE_PROFILE_URL}
+          target="_blank"
+          rel="noopener">noteの自己紹介記事</a
+        >をご覧ください。
+      </p>
+
+      <h2>動画プロモーション実績</h2>
+      <ul>
+        {PROMOTION.clients.map((client) => <li>{client}</li>)}
+      </ul>
+      <p>
+        ゲーム会社・パブリッシャー様向けの動画プロモーションについては、<a
+          href="/contact/">お問い合わせ</a
+        >からご相談いただけます。
+      </p>
 
       {
         socialLinks.length > 0 && (

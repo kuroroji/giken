@@ -24,6 +24,12 @@ const articles = defineCollection({
     tags: z.array(z.string()).default([]),
     /** アイキャッチ画像のパス（例: /images/articles/xxx.svg）。省略時は自動生成の代替表示 */
     thumbnail: z.string().optional(),
+    /**
+     * 自動生成アイキャッチ・OGP画像でのタイトルの改行位置。
+     * 指定しない場合はタイトルがそのまま自動改行される。
+     * 例: eyecatchLines: ['【初心者講座】ゲーム実況の始め方を', '現役YouTuberが徹底解説']
+     */
+    eyecatchLines: z.array(z.string()).default([]),
     /** アイキャッチ画像の代替テキスト */
     thumbnailAlt: z.string().optional(),
     /** 著者名 */
