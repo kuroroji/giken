@@ -304,6 +304,59 @@
 }
 
 /* ============================================================
+   オーロラ演出（ぼかした色光をゆっくり漂わせる）
+   .aurora-layer を絶対配置の親に置き、.aurora-blob を数個入れる。
+   黒背景では .aurora-blob--dark を併用（発光ブレンド）。
+   ============================================================ */
+.aurora-layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.aurora-blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(70px);
+  opacity: 0.35;
+  mix-blend-mode: multiply;
+  animation: aurora-drift 20s ease-in-out infinite alternate;
+}
+
+.aurora-blob--dark {
+  mix-blend-mode: screen;
+  opacity: 0.3;
+}
+
+@keyframes aurora-drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(6%, -8%, 0) scale(1.15);
+  }
+  100% {
+    transform: translate3d(-5%, 6%, 0) scale(0.95);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .aurora-blob {
+    animation: none;
+  }
+}
+
+/* サイト全体: ごく薄いオーロラの色味を背景に敷く（固定・非アニメーション） */
+body {
+  background-image:
+    radial-gradient(60rem 40rem at 8% -5%, rgb(125 211 252 / 0.1), transparent 60%),
+    radial-gradient(55rem 40rem at 100% 30%, rgb(167 139 250 / 0.08), transparent 60%),
+    radial-gradient(50rem 45rem at 30% 110%, rgb(110 231 216 / 0.09), transparent 60%);
+  background-attachment: fixed;
+}
+
+/* ============================================================
    ガラス風パネル（すりガラス）
    使い方: class="glass" を付けるだけ。角丸は別途 rounded-* を付ける。
    ============================================================ */

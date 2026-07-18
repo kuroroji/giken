@@ -17,6 +17,12 @@ const description =
 <BaseLayout title="動画プロモーション" description={description}>
   {/* ファーストビュー(黒): トップとの反転でLPだと分かる導入 */}
   <section class="relative overflow-hidden border-b border-line bg-ink">
+    {/* 黒地に映えるオーロラ演出 */}
+    <div aria-hidden="true" class="aurora-layer">
+      <span class="aurora-blob aurora-blob--dark top-[-20%] left-[-10%] h-[28rem] w-[36rem] bg-[#34d399]"></span>
+      <span class="aurora-blob aurora-blob--dark top-[0%] right-[-8%] h-[26rem] w-[32rem] bg-[#818cf8] [animation-delay:-8s]"></span>
+      <span class="aurora-blob aurora-blob--dark bottom-[-30%] left-[30%] h-[26rem] w-[40rem] bg-[#22d3ee] [animation-delay:-14s]"></span>
+    </div>
     <div class="relative mx-auto max-w-site px-4 py-10 sm:px-6 sm:py-16">
       <div class="grid items-end gap-8 lg:grid-cols-[1fr_20rem]">
         <div>
