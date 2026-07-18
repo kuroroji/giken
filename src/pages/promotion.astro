@@ -1,8 +1,8 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Button from '@/components/Button.astro';
-import { SITE, CONTACT } from '@/data/site';
-import { CHANNEL, PROMOTION, CONSULTATION, CONTACT_TOPICS } from '@/data/business';
+import { CONTACT } from '@/data/site';
+import { PROMOTION, CONSULTATION, CONTACT_TOPICS } from '@/data/business';
 
 /** 見本として掲載するプロモーション動画 */
 const sampleVideos = [
@@ -11,70 +11,101 @@ const sampleVideos = [
 ];
 
 const description =
-  'ゲーム会社・パブリッシャー様向けの動画プロモーションのご案内。実際のプレイを通して「どんなゲームで、誰におすすめか」が伝わる紹介動画を制作します。';
+  'ゲーム会社・パブリッシャー様向けの動画プロモーションのご案内。おすすめのゲームを、くろろじ自身が楽しみながら紹介して届けます。';
 ---
 
 <BaseLayout title="動画プロモーション" description={description}>
-  {/* ファーストビュー: CTAをここに置く */}
-  <section class="hero-bg relative overflow-hidden border-b border-line">
+  {/* ファーストビュー(黒): トップとの反転でLPだと分かる導入 */}
+  <section class="relative overflow-hidden border-b border-line bg-ink">
     <div class="relative mx-auto max-w-site px-4 py-14 sm:px-6 sm:py-20">
-      <p class="font-mono text-xs tracking-widest text-muted uppercase">
+      <p class="font-mono text-xs tracking-widest text-white/50 uppercase">
         Video Promotion
       </p>
-      <h1 class="mt-4 text-3xl leading-snug font-bold text-ink sm:text-5xl">
-        あなたのゲームを、<br />必要としているプレイヤーへ。
+      <h1 class="mt-4 font-serif text-3xl leading-snug font-bold text-white sm:text-5xl">
+        あなたのゲームを、<br />楽しみながら広めます。
       </h1>
-      <p class="mt-5 max-w-2xl text-sm leading-relaxed text-body sm:text-base">
-        新作ゲームの実況・紹介動画・まとめ企画など、タイトルの特徴に合わせたプロモーションをご提案します。「どんなゲームで、誰におすすめか」が伝わる紹介を大切にしています。
+      <p class="mt-5 max-w-2xl text-sm leading-relaxed text-white/80 sm:text-base">
+        実況・紹介動画・まとめ企画など、タイトルの特徴に合わせたプロモーションをご提案します。「宣伝します」よりも「おすすめのゲームとして、僕自身が楽しみながら紹介する」。それがくろろじのやり方です。
       </p>
       <div class="mt-7 flex max-w-md flex-col gap-3 sm:max-w-none sm:flex-row sm:items-center">
-        <Button href="#contact-form" variant="dark" class="w-full sm:w-auto"
+        <Button href="#contact-form" variant="light" class="w-full sm:w-auto"
           >動画プロモーションを相談する</Button
         >
         <Button href={PROMOTION.playlistUrl} variant="glass" external class="w-full sm:w-auto"
           >過去のプロモーション動画を見る</Button
         >
       </div>
-      <p class="mt-4 text-xs text-muted">
-        実績：{PROMOTION.clients.slice(0, 2).join('、')} ほか
+      <p class="mt-4 text-xs text-white/60">
+        実績:{PROMOTION.clients.slice(0, 2).join('、')} ほか
       </p>
     </div>
   </section>
 
-  {/* 実績とお客様の声 */}
-  <section class="border-b border-line bg-ink">
+  {/* 届く仕組み+実績(白) */}
+  <section class="border-b border-line">
     <div class="mx-auto max-w-site px-4 py-12 sm:px-6 sm:py-16">
-      <h2 class="font-serif text-2xl font-bold text-white sm:text-3xl">実績</h2>
-      <ul class="mt-6 grid gap-2 text-sm text-white/85 sm:grid-cols-2">
+      <h2 class="font-serif text-2xl font-bold text-ink sm:text-3xl">
+        「刺さる人」に届く仕組み
+      </h2>
+      <p class="mt-4 max-w-2xl text-sm leading-relaxed text-body">
+        くろろじちゃんねるの視聴者は、ハクスラ・ローグライク・インディーゲームを能動的に探しているゲーマーです。実際に遊んで「誰に刺さるか」を言語化して届けるので、ダウンロードや購入につながりやすいのが特徴です。
+      </p>
+      <svg viewBox="0 0 720 180" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ゲームをくろろじが遊び、誰に刺さるかを言語化して、ゲームを探している視聴者へ届ける流れ" class="mx-auto mt-8 w-full max-w-2xl">
+        <defs>
+          <marker id="pa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="#111" stroke-width="1.5" stroke-linecap="round"/>
+          </marker>
+        </defs>
+        <g font-family="sans-serif">
+          <rect x="16" y="60" width="170" height="60" rx="12" fill="#fff" stroke="#111" stroke-width="1.5"/>
+          <text x="101" y="86" text-anchor="middle" font-size="15" font-weight="600" fill="#111">貴社のゲーム</text>
+          <text x="101" y="106" text-anchor="middle" font-size="11" fill="#555">新作・インディー・埋もれた良作</text>
+          <line x1="186" y1="90" x2="264" y2="90" stroke="#111" stroke-width="1.5" marker-end="url(#pa)"/>
+          <rect x="270" y="45" width="180" height="90" rx="12" fill="#111"/>
+          <text x="360" y="80" text-anchor="middle" font-size="15" font-weight="600" fill="#fff">くろろじが遊ぶ</text>
+          <text x="360" y="102" text-anchor="middle" font-size="11" fill="#ccc">「誰に刺さるか」を言語化</text>
+          <line x1="450" y1="90" x2="528" y2="90" stroke="#111" stroke-width="1.5" marker-end="url(#pa)"/>
+          <rect x="534" y="60" width="170" height="60" rx="12" fill="#fff" stroke="#111" stroke-width="1.5"/>
+          <text x="619" y="86" text-anchor="middle" font-size="15" font-weight="600" fill="#111">3.3万人の視聴者</text>
+          <text x="619" y="106" text-anchor="middle" font-size="11" fill="#555">ゲームを探しているゲーマー</text>
+          <text x="360" y="168" text-anchor="middle" font-size="12" fill="#555">「面白そう」で終わらせず、「自分に合いそう」まで伝える</text>
+        </g>
+      </svg>
+
+      <h3 class="mt-12 font-serif text-xl font-bold text-ink">これまでの実績</h3>
+      <ul class="mt-5 grid gap-2 text-sm text-body sm:grid-cols-2">
         {PROMOTION.clients.map((client) => (
           <li class="flex gap-2">
-            <span aria-hidden="true" class="mt-2.5 block h-px w-3 shrink-0 bg-white/60" />
+            <span aria-hidden="true" class="mt-2.5 block h-px w-3 shrink-0 bg-ink" />
             {client}
           </li>
         ))}
       </ul>
-      <div class="glass-dark mt-8 rounded-card p-6">
-        <p class="font-mono text-xs tracking-widest text-white/60 uppercase">Voice</p>
-        <p class="mt-2 leading-relaxed text-white">
+      <div class="glass mt-6 rounded-card p-6">
+        <p class="font-mono text-xs tracking-widest text-muted uppercase">Voice</p>
+        <p class="mt-2 leading-relaxed text-ink">
           動画公開後に「売上が増えた」というお声を、これまでに<span class="font-bold">2件</span>の事例として伺っています。
         </p>
-        <p class="mt-2 text-xs text-white/60">
-          ※効果はタイトルや施策内容によって異なります。
-        </p>
+        <p class="mt-2 text-xs text-muted">※効果はタイトルや施策内容によって異なります。</p>
+      </div>
+      <div class="mt-6">
+        <Button href={PROMOTION.playlistUrl} variant="dark" external
+          >実績動画を再生リストで見る</Button
+        >
       </div>
     </div>
   </section>
 
-  {/* 見本動画 */}
-  <section class="border-b border-line bg-surface">
+  {/* 見本動画(黒) */}
+  <section class="border-b border-line bg-ink">
     <div class="mx-auto max-w-site px-4 py-12 sm:px-6 sm:py-16">
-      <h2 class="font-serif text-2xl font-bold text-ink sm:text-3xl">動画の見本</h2>
-      <p class="mt-3 max-w-2xl text-sm leading-relaxed text-body">
-        実際に公開しているプロモーション動画です。ゲームの手触りと「誰に刺さるか」が伝わる構成を心がけています。
+      <h2 class="font-serif text-2xl font-bold text-white sm:text-3xl">動画の見本</h2>
+      <p class="mt-3 max-w-2xl text-sm leading-relaxed text-white/80">
+        実際に公開しているプロモーション動画です。<span class="font-bold text-white">楽しみながら紹介するのが特徴です。</span>広告であっても、視聴者にとって「面白いゲームに出会える動画」であることを大切にしています。
       </p>
       <div class="mt-8 grid gap-6 sm:grid-cols-2">
         {sampleVideos.map((video) => (
-          <div class="aspect-video w-full overflow-hidden rounded-card border border-line">
+          <div class="aspect-video w-full overflow-hidden rounded-card border border-white/20">
             <iframe
               src={`https://www.youtube.com/embed/${video.id}`}
               title={video.title}
@@ -89,7 +120,7 @@ const description =
     </div>
   </section>
 
-  {/* 対応できること */}
+  {/* 対応できること+進め方(白) */}
   <section class="border-b border-line">
     <div class="mx-auto max-w-site px-4 py-12 sm:px-6 sm:py-16">
       <h2 class="font-serif text-2xl font-bold text-ink sm:text-3xl">対応できること</h2>
@@ -102,28 +133,64 @@ const description =
         ))}
       </div>
       <p class="mt-6 text-xs text-muted">{PROMOTION.disclosureNote}</p>
+
+      <h3 class="mt-12 font-serif text-xl font-bold text-ink">ご相談から公開までの流れ</h3>
+      <svg viewBox="0 0 720 150" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ご相談、ご提案、プレイと制作、公開、振り返りの5ステップ" class="mx-auto mt-6 w-full max-w-2xl">
+        <defs>
+          <marker id="pb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+            <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="#111" stroke-width="1.5" stroke-linecap="round"/>
+          </marker>
+        </defs>
+        <g font-family="sans-serif">
+          {['ご相談', 'ご提案', 'プレイ・制作', '公開', '振り返り'].map((label, i) => (
+            <>
+              <rect x={16 + i * 144} y="40" width="120" height="56" rx="10" fill={i === 3 ? '#111' : '#fff'} stroke="#111" stroke-width="1.5"/>
+              <text x={76 + i * 144} y="73" text-anchor="middle" font-size="14" font-weight="600" fill={i === 3 ? '#fff' : '#111'}>{label}</text>
+              {i < 4 && (
+                <line x1={136 + i * 144} y1="68" x2={154 + i * 144} y2="68" stroke="#111" stroke-width="1.5" marker-end="url(#pb)"/>
+              )}
+            </>
+          ))}
+          <text x="360" y="132" text-anchor="middle" font-size="12" fill="#555">ゲームタイトルと想定内容が決まっていれば、最初のご相談は数行のメッセージで大丈夫です</text>
+        </g>
+      </svg>
     </div>
   </section>
 
-  {/* ゲームに関する相談 */}
+  {/* ゲームに関する相談(白・ガラス) */}
   <section class="border-b border-line bg-surface">
     <div class="mx-auto max-w-site px-4 py-12 sm:px-6 sm:py-16">
       <h2 class="font-serif text-2xl font-bold text-ink sm:text-3xl">
         ゲームに関するご相談も受け付けています
       </h2>
       <p class="mt-4 max-w-2xl text-sm leading-relaxed text-body">
-        {CONSULTATION.description}
+        動画プロモーション以外にも、「ゲームの届け方」に関するお手伝いができます。実況者として、そして数多くのゲームを遊んで紹介してきた立場から、率直なフィードバックをお返しします。
       </p>
-      <ul class="mt-5 flex flex-wrap gap-2 text-xs">
-        {CONSULTATION.themes.map((theme) => (
-          <li class="rounded-full border border-line px-3 py-1 text-body">{theme}</li>
-        ))}
-      </ul>
-      <p class="mt-4 text-xs text-muted">{CONSULTATION.note}</p>
+      <div class="mt-7 grid gap-5 sm:grid-cols-3">
+        <div class="glass rounded-card p-5">
+          <h3 class="font-bold text-ink">チュートリアルの分かりやすさ</h3>
+          <p class="mt-2 text-sm leading-relaxed text-body">
+            序盤で魅力が伝わるか、初見プレイヤーがつまずくポイントはどこかを、実際に遊んで共有します。
+          </p>
+        </div>
+        <div class="glass rounded-card p-5">
+          <h3 class="font-bold text-ink">YouTubeでウケる傾向</h3>
+          <p class="mt-2 text-sm leading-relaxed text-body">
+            実況・配信で紹介されやすいゲームの傾向や、動画映えする要素についてお伝えします。
+          </p>
+        </div>
+        <div class="glass rounded-card p-5">
+          <h3 class="font-bold text-ink">ゲームへのフィードバック</h3>
+          <p class="mt-2 text-sm leading-relaxed text-body">
+            「誰に刺さりそうか」「どう紹介すると伝わるか」という視点で、ゲームへの率直な感想をお返しします。
+          </p>
+        </div>
+      </div>
+      <p class="mt-5 text-xs text-muted">{CONSULTATION.note}</p>
     </div>
   </section>
 
-  {/* お問い合わせフォーム */}
+  {/* お問い合わせフォーム(黒で締め) */}
   <section id="contact-form" class="bg-ink">
     <div class="mx-auto max-w-article px-4 py-12 sm:px-6 sm:py-16">
       <h2 class="font-serif text-2xl font-bold text-white sm:text-3xl">お問い合わせ</h2>
@@ -133,44 +200,23 @@ const description =
       <form class="mt-8 space-y-5" method="post" action="#contact-form">
         <div>
           <label for="pf-company" class="block text-sm font-bold text-white">会社名</label>
-          <input
-            id="pf-company"
-            name="company"
-            type="text"
-            class="mt-1.5 w-full rounded-card border border-white/25 bg-white/10 px-4 py-2.5 text-sm text-white placeholder-white/40"
-            placeholder="株式会社◯◯"
-          />
+          <input id="pf-company" name="company" type="text" placeholder="株式会社◯◯"
+            class="mt-1.5 w-full rounded-card border border-white/25 bg-white/10 px-4 py-2.5 text-sm text-white placeholder-white/40" />
         </div>
         <div>
           <label for="pf-name" class="block text-sm font-bold text-white">お名前 *</label>
-          <input
-            id="pf-name"
-            name="name"
-            type="text"
-            required
-            class="mt-1.5 w-full rounded-card border border-white/25 bg-white/10 px-4 py-2.5 text-sm text-white placeholder-white/40"
-            placeholder="山田 太郎"
-          />
+          <input id="pf-name" name="name" type="text" required placeholder="山田 太郎"
+            class="mt-1.5 w-full rounded-card border border-white/25 bg-white/10 px-4 py-2.5 text-sm text-white placeholder-white/40" />
         </div>
         <div>
           <label for="pf-email" class="block text-sm font-bold text-white">メールアドレス *</label>
-          <input
-            id="pf-email"
-            name="email"
-            type="email"
-            required
-            class="mt-1.5 w-full rounded-card border border-white/25 bg-white/10 px-4 py-2.5 text-sm text-white placeholder-white/40"
-            placeholder="you@example.com"
-          />
+          <input id="pf-email" name="email" type="email" required placeholder="you@example.com"
+            class="mt-1.5 w-full rounded-card border border-white/25 bg-white/10 px-4 py-2.5 text-sm text-white placeholder-white/40" />
         </div>
         <div>
           <label for="pf-topic" class="block text-sm font-bold text-white">ご用件 *</label>
-          <select
-            id="pf-topic"
-            name="topic"
-            required
-            class="mt-1.5 w-full rounded-card border border-white/25 bg-white/10 px-4 py-2.5 text-sm text-white"
-          >
+          <select id="pf-topic" name="topic" required
+            class="mt-1.5 w-full rounded-card border border-white/25 bg-white/10 px-4 py-2.5 text-sm text-white">
             {CONTACT_TOPICS.map((topic) => (
               <option value={topic} class="text-ink">{topic}</option>
             ))}
@@ -179,13 +225,9 @@ const description =
         </div>
         <div>
           <label for="pf-message" class="block text-sm font-bold text-white">ご相談内容 *</label>
-          <textarea
-            id="pf-message"
-            name="message"
-            rows="5"
-            required
-            class="mt-1.5 w-full rounded-card border border-white/25 bg-white/10 px-4 py-2.5 text-sm text-white placeholder-white/40"
-            placeholder="ゲームタイトル、希望される施策、時期などをご記入ください"></textarea>
+          <textarea id="pf-message" name="message" rows="5" required
+            placeholder="ゲームタイトル、希望される施策、時期などをご記入ください"
+            class="mt-1.5 w-full rounded-card border border-white/25 bg-white/10 px-4 py-2.5 text-sm text-white placeholder-white/40"></textarea>
         </div>
         <Button type="submit" variant="light" class="w-full sm:w-auto">送信する</Button>
         <p class="text-xs leading-relaxed text-white/60">{CONTACT.note}</p>
