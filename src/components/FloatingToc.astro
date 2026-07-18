@@ -18,15 +18,15 @@ const h2Headings = headings.filter((h) => h.depth === 2);
     >
       <div
         id="floating-toc-panel"
-        class="glass absolute bottom-full left-0 mb-3 hidden max-h-[60vh] w-72 max-w-[calc(100vw-2rem)] overflow-y-auto rounded-card p-4"
+        class="glass absolute bottom-full left-0 mb-3 hidden max-h-[calc(100vh-8rem)] w-64 max-w-[calc(100vw-2rem)] overflow-y-auto rounded-card p-3.5"
       >
         <p class="flex items-center gap-2">
           <span class="font-mono text-[0.625rem] tracking-widest text-muted uppercase">
             Contents
           </span>
-          <span class="text-sm font-bold text-ink">目次</span>
+          <span class="text-xs font-bold text-ink">目次</span>
         </p>
-        <ol class="mt-2.5 space-y-2 text-sm">
+        <ol class="mt-2 space-y-1 text-xs leading-snug">
           {h2Headings.map((heading, index) => (
             <li class="flex gap-2">
               <span class="w-4 shrink-0 text-right font-mono text-muted">
@@ -63,11 +63,21 @@ const h2Headings = headings.filter((h) => h.depth === 2);
 
   if (root && button && panel) {
     let visible = false;
+    /** PC(sm以上)では目次を常設サイドバー的に扱う */
+    const isDesktop = window.matchMedia('(min-width: 640px)').matches;
 
     const closePanel = () => {
       panel.classList.add('hidden');
       button.setAttribute('aria-expanded', 'false');
     };
+
+    const openPanel = () => {
+      panel.classList.remove('hidden');
+      button.setAttribute('aria-expanded', 'true');
+    };
+
+    /** PCは最初から開いた状態にする(表示自体はスクロール後) */
+    if (isDesktop) openPanel();
 
     const setVisible = (shouldShow: boolean) => {
       if (shouldShow === visible) return;
@@ -75,7 +85,7 @@ const h2Headings = headings.filter((h) => h.depth === 2);
       root.classList.toggle('opacity-0', !visible);
       root.classList.toggle('translate-y-6', !visible);
       root.classList.toggle('pointer-events-none', !visible);
-      if (!visible) closePanel();
+      if (!visible && !isDesktop) closePanel();
     };
 
     /** 記事冒頭の目次が画面の上に消えたら出す（戻ったら引っ込める） */
@@ -98,21 +108,19 @@ const h2Headings = headings.filter((h) => h.depth === 2);
       if (isOpen) {
         closePanel();
       } else {
-        panel.classList.remove('hidden');
-        button.setAttribute('aria-expanded', 'true');
+        openPanel();
       }
     });
 
-    /** 目次内のリンクを押したら閉じる */
+    /** モバイルのみ: リンク選択・外側タップで閉じる(PCは開いたまま) */
     panel.addEventListener('click', (event) => {
-      if (event.target instanceof Element && event.target.closest('a')) {
+      if (!isDesktop && event.target instanceof Element && event.target.closest('a')) {
         closePanel();
       }
     });
 
-    /** パネルの外側を押したら閉じる */
     document.addEventListener('click', (event) => {
-      if (event.target instanceof Node && !root.contains(event.target)) {
+      if (!isDesktop && event.target instanceof Node && !root.contains(event.target)) {
         closePanel();
       }
     });
