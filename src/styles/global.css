@@ -373,15 +373,6 @@
   background-image: linear-gradient(135deg, #111 45%, #0e2b26 82%, #14483d 100%);
 }
 
-/* サイト全体: ごく薄いオーロラの色味を背景に敷く（固定・非アニメーション） */
-body {
-  background-image:
-    radial-gradient(60rem 40rem at 8% -5%, rgb(125 211 252 / 0.05), transparent 60%),
-    radial-gradient(55rem 40rem at 100% 30%, rgb(167 139 250 / 0.04), transparent 60%),
-    radial-gradient(50rem 45rem at 30% 110%, rgb(110 231 216 / 0.04), transparent 60%);
-  background-attachment: fixed;
-}
-
 /* ============================================================
    ガラス風パネル（すりガラス）
    使い方: class="glass" を付けるだけ。角丸は別途 rounded-* を付ける。

@@ -47,14 +47,7 @@ const bubbles = [
 
 <BaseLayout title={SITE.name} description={SITE.description} isHome jsonLd={jsonLd}>
   {/* ============ 1. ファーストビュー（白・方眼が流れる） ============ */}
-  <section class="hero-bg relative overflow-hidden border-b border-line">
-    {/* オーロラ演出（淡いパステルの光をゆっくり漂わせる） */}
-    <div aria-hidden="true" class="aurora-layer">
-      <span class="aurora-blob top-[-12%] left-[-8%] h-[26rem] w-[34rem] bg-[#7dd3fc]"></span>
-      <span class="aurora-blob top-[8%] right-[-6%] h-[24rem] w-[30rem] bg-[#a78bfa] [animation-delay:-7s]"></span>
-      <span class="aurora-blob top-[-6%] left-[45%] h-[18rem] w-[22rem] bg-[#f9a8d4] [animation-delay:-4s]"></span>
-      <span class="aurora-blob bottom-[-14%] left-[22%] h-[24rem] w-[36rem] bg-[#6ee7d8] [animation-delay:-13s]"></span>
-    </div>
+  <section class="relative overflow-hidden border-b border-line">
     {/* ダイナミックな装飾（モノクロ・CSSのみ） */}
     <div aria-hidden="true" class="pointer-events-none absolute inset-0">
       <span
@@ -90,7 +83,7 @@ const bubbles = [
             <Button href={CHANNEL.url} variant="youtube" external class="w-full sm:w-auto"
               >YouTubeを見る</Button
             >
-            <Button href="/contact/" variant="glass" class="w-full sm:w-auto"
+            <Button href="/contact/" variant="accent" class="w-full sm:w-auto"
               >動画案件を相談する</Button
             >
             <Button
@@ -376,7 +369,7 @@ const bubbles = [
         </div>
       </div>
       <div class="mt-8 text-center sm:text-left">
-        <Button href="/contact/" variant="dark">お問い合わせフォームへ</Button>
+        <Button href="/contact/" variant="accent">お問い合わせフォームへ</Button>
       </div>
     </div>
   </section>
