@@ -10,7 +10,7 @@
  */
 interface Props {
   href?: string;
-  variant?: 'dark' | 'glass' | 'light';
+  variant?: 'dark' | 'glass' | 'light' | 'youtube' | 'accent';
   size?: 'md' | 'sm';
   external?: boolean;
   type?: 'button' | 'submit';
@@ -35,6 +35,12 @@ const sizes = {
 };
 const variants = {
   dark: 'border border-white/15 bg-ink/85 text-white shadow-[0_8px_30px_rgb(17_17_17/0.18)] hover:bg-ink',
+  /** YouTube導線用: 赤の横グラデーション */
+  youtube:
+    'border border-white/20 bg-gradient-to-r from-[#ff4e45] to-[#b31217] text-white shadow-[0_8px_30px_rgb(179_18_23/0.35)] hover:brightness-110',
+  /** お問い合わせ導線用: 藍→紫の横グラデーション */
+  accent:
+    'border border-white/20 bg-gradient-to-r from-[#3b5bdb] to-[#7048e8] text-white shadow-[0_8px_30px_rgb(59_91_219/0.35)] hover:brightness-110',
   glass:
     'border border-white/70 bg-surface/60 text-ink shadow-[0_8px_30px_rgb(17_17_17/0.05)] hover:border-ink',
   light: 'border border-white/40 bg-white/85 text-ink hover:bg-white',
