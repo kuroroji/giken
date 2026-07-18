@@ -99,39 +99,6 @@ const labelClass = 'block text-sm font-bold text-ink';
       </div>
 
       <div>
-        <label for="game-title" class={labelClass}>ゲームタイトル・サービス名</label>
-        <input id="game-title" name="gameTitle" type="text" class:list={['mt-1.5', inputClass]} />
-      </div>
-
-      <div>
-        <label for="url" class={labelClass}>関連URL（ストアページ・公式サイトなど）</label>
-        <input id="url" name="url" type="url" placeholder="https://" class:list={['mt-1.5', inputClass]} />
-      </div>
-
-      <div class="grid gap-5 sm:grid-cols-2">
-        <div>
-          <label for="timing" class={labelClass}>希望時期</label>
-          <input
-            id="timing"
-            name="timing"
-            type="text"
-            placeholder="例：2026年9月ごろ"
-            class:list={['mt-1.5', inputClass]}
-          />
-        </div>
-        <div>
-          <label for="budget" class={labelClass}>ご予算</label>
-          <input
-            id="budget"
-            name="budget"
-            type="text"
-            placeholder="例：未定・応相談"
-            class:list={['mt-1.5', inputClass]}
-          />
-        </div>
-      </div>
-
-      <div>
         <label for="detail" class={labelClass}>詳細内容 <span aria-hidden="true">*</span></label>
         <textarea id="detail" name="detail" rows="6" required class:list={['mt-1.5', inputClass]}
         ></textarea>
