@@ -1,12 +1,12 @@
 ---
-import { SITE } from '@/data/site';
 import Button from '@/components/Button.astro';
+import Logo from '@/components/Logo.astro';
 
 const navItems = [
   { label: 'ホーム', href: '/' },
   { label: 'チャンネル', href: '/#channel' },
   { label: '動画プロモーション', href: '/#promotion' },
-  { label: 'メディア', href: '/articles/' },
+  { label: 'コラム', href: '/articles/' },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -22,11 +22,8 @@ const isActive = (href: string) => {
   <div
     class="glass mx-auto flex max-w-site flex-wrap items-center justify-between gap-x-6 gap-y-1.5 rounded-[1.75rem] px-5 py-2.5 sm:rounded-full sm:px-7"
   >
-    <a href="/" class="inline-flex items-baseline gap-2">
-      <span class="text-lg font-extrabold text-ink sm:text-xl">{SITE.name}</span>
-      <span class="hidden font-mono text-[0.625rem] tracking-widest text-muted uppercase sm:inline"
-        >{SITE.nameEn}</span
-      >
+    <a href="/" class="inline-block">
+      <Logo />
     </a>
     <div class="flex flex-wrap items-center gap-x-5 gap-y-1.5">
       <nav aria-label="メインメニュー">

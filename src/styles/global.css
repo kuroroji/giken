@@ -293,6 +293,138 @@
   }
 }
 
+/* ============================================================
+   セクション別の背景アニメーション
+   ============================================================ */
+
+/* 01 チャンネル：流れる斜めライン */
+.diag-lines {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    rgb(255 255 255 / 0.06) 0 1px,
+    transparent 1px 90px
+  );
+  animation: diag-pan 14s linear infinite;
+}
+
+@keyframes diag-pan {
+  to {
+    background-position: 127.28px 0;
+  }
+}
+
+/* 01 チャンネル：うねる波（横に流れ続ける） */
+@keyframes wave-slide {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.wave-track {
+  display: flex;
+  width: 200%;
+  animation: wave-slide 26s linear infinite;
+}
+
+.wave-track-rev {
+  animation-duration: 40s;
+  animation-direction: reverse;
+}
+
+/* 02 プロモーション：幾何学パターン（ドット+格子がゆっくり流れる） */
+.geo-pattern {
+  background-image:
+    radial-gradient(circle, rgb(17 17 17 / 0.08) 1.5px, transparent 1.5px),
+    repeating-linear-gradient(0deg, rgb(17 17 17 / 0.04) 0 1px, transparent 1px 48px),
+    repeating-linear-gradient(90deg, rgb(17 17 17 / 0.04) 0 1px, transparent 1px 48px);
+  background-size:
+    24px 24px,
+    48px 48px,
+    48px 48px;
+  animation: geo-pan 24s linear infinite;
+}
+
+@keyframes geo-pan {
+  to {
+    background-position:
+      24px 24px,
+      0 48px,
+      48px 0;
+  }
+}
+
+/* 03 コラム：奥行きのある3Dグリッド（床が手前に流れてくる） */
+.grid3d {
+  background-image:
+    linear-gradient(to right, rgb(255 255 255 / 0.1) 1px, transparent 1px),
+    linear-gradient(to top, rgb(255 255 255 / 0.1) 1px, transparent 1px);
+  background-size: 3rem 3rem;
+  transform: perspective(36rem) rotateX(62deg);
+  transform-origin: bottom center;
+  animation: grid3d-move 2.8s linear infinite;
+  mask-image: linear-gradient(to top, black 30%, transparent 90%);
+  -webkit-mask-image: linear-gradient(to top, black 30%, transparent 90%);
+}
+
+@keyframes grid3d-move {
+  to {
+    background-position:
+      0 0,
+      0 3rem;
+  }
+}
+
+/* 04 お問い合わせ：下から浮かび上がるバブル */
+.bubble {
+  position: absolute;
+  bottom: -8rem;
+  border-radius: 9999px;
+  border: 1px solid var(--color-line-strong);
+  background-color: rgb(255 255 255 / 0.55);
+  animation-name: bubble-rise;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes bubble-rise {
+  0% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  12% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-48rem) translateX(2rem);
+    opacity: 0;
+  }
+}
+
+/* フッター：ゆっくり漂うパーティクル */
+.particle {
+  position: absolute;
+  border-radius: 9999px;
+  background-color: rgb(255 255 255 / 0.4);
+  animation-name: particle-drift;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+}
+
+@keyframes particle-drift {
+  0%,
+  100% {
+    transform: translate(0, 0);
+    opacity: 0.25;
+  }
+  50% {
+    transform: translate(1.2rem, -1.8rem);
+    opacity: 0.85;
+  }
+}
+
 /* ゆっくり漂う装飾（各セクションの背景に使用） */
 @keyframes drift {
   0%,
@@ -368,6 +500,12 @@
   .drift,
   .drift-rev,
   .hero-bg,
+  .diag-lines,
+  .wave-track,
+  .geo-pattern,
+  .grid3d,
+  .bubble,
+  .particle,
   .scroll-hint-dot {
     animation: none;
   }

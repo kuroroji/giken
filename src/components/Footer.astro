@@ -1,6 +1,21 @@
 ---
 import { SITE, AUTHOR } from '@/data/site';
-import { CHANNEL } from '@/data/business';
+import { CHANNEL, COLUMN } from '@/data/business';
+import Logo from '@/components/Logo.astro';
+
+/** パーティクル装飾の配置（位置・大きさ・速さをばらけさせる） */
+const particles = [
+  { left: '6%', top: '18%', size: 4, duration: 11, delay: 0 },
+  { left: '16%', top: '68%', size: 3, duration: 14, delay: 2 },
+  { left: '28%', top: '32%', size: 5, duration: 9, delay: 5 },
+  { left: '40%', top: '76%', size: 3, duration: 16, delay: 1 },
+  { left: '52%', top: '22%', size: 4, duration: 12, delay: 7 },
+  { left: '63%', top: '58%', size: 3, duration: 10, delay: 3 },
+  { left: '74%', top: '30%', size: 5, duration: 15, delay: 6 },
+  { left: '84%', top: '70%', size: 3, duration: 11, delay: 4 },
+  { left: '92%', top: '40%', size: 4, duration: 13, delay: 8 },
+  { left: '48%', top: '48%', size: 2, duration: 18, delay: 9 },
+];
 
 const year = new Date().getFullYear();
 const copyrightYears =
@@ -9,7 +24,7 @@ const copyrightYears =
 const contentLinks = [
   { label: 'くろろじちゃんねる', href: CHANNEL.url, external: true },
   { label: '動画プロモーション', href: '/#promotion', external: false },
-  { label: 'メディア（記事一覧）', href: '/articles/', external: false },
+  { label: COLUMN.name, href: '/articles/', external: false },
   { label: 'お問い合わせ', href: '/contact/', external: false },
 ];
 
@@ -31,15 +46,22 @@ const snsLinks = [
 ].filter((link) => link.url !== '');
 ---
 
-{/* 黒背景の反転フッター：白ベースのページを黒で締める */}
-<footer class="mt-16 bg-ink text-paper">
-  <div class="mx-auto max-w-site px-4 py-12 sm:px-6">
+{/* 黒背景の反転フッター：パーティクルがゆっくり漂う */}
+<footer class="relative mt-16 overflow-hidden bg-ink text-paper">
+  <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+    {
+      particles.map((p) => (
+        <span
+          class="particle"
+          style={`left:${p.left};top:${p.top};width:${p.size}px;height:${p.size}px;animation-duration:${p.duration}s;animation-delay:${p.delay}s;`}
+        />
+      ))
+    }
+  </div>
+  <div class="relative mx-auto max-w-site px-4 py-12 sm:px-6">
     <div class="grid gap-8 sm:grid-cols-3">
       <div class="sm:col-span-1">
-        <p class="text-lg font-extrabold text-white">{SITE.name}</p>
-        <p class="mt-1 font-mono text-[0.625rem] tracking-widest text-line-strong uppercase">
-          {SITE.nameEn}
-        </p>
+        <Logo tone="light" />
         <p class="mt-3 text-sm text-line-strong">{SITE.description}</p>
         {
           snsLinks.length > 0 && (

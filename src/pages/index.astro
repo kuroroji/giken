@@ -3,7 +3,7 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import ArticleCard from '@/components/ArticleCard.astro';
 import Button from '@/components/Button.astro';
 import { SITE, AUTHOR } from '@/data/site';
-import { CHANNEL, PROMOTION, CONSULTATION } from '@/data/business';
+import { CHANNEL, PROMOTION, CONSULTATION, COLUMN } from '@/data/business';
 import { CATEGORIES } from '@/data/categories';
 import { getPublishedArticles } from '@/utils/articles';
 
@@ -30,9 +30,19 @@ const jsonLd = [
 const sections = {
   channel: { no: '01', en: 'Channel' },
   promotion: { no: '02', en: 'Promotion' },
-  media: { no: '03', en: 'Media' },
+  media: { no: '03', en: 'Column' },
   contact: { no: '04', en: 'Contact' },
 };
+
+/** お問い合わせセクションのバブル装飾（位置・大きさ・速さをばらけさせる） */
+const bubbles = [
+  { left: '8%', size: '3.5rem', duration: 17, delay: 0 },
+  { left: '22%', size: '2rem', duration: 13, delay: 4 },
+  { left: '45%', size: '5rem', duration: 21, delay: 2 },
+  { left: '62%', size: '2.5rem', duration: 12, delay: 7 },
+  { left: '78%', size: '4rem', duration: 18, delay: 5 },
+  { left: '91%', size: '1.75rem', duration: 14, delay: 9 },
+];
 ---
 
 <BaseLayout title={SITE.name} description={SITE.description} isHome jsonLd={jsonLd}>
@@ -106,12 +116,35 @@ const sections = {
     aria-labelledby="channel-heading"
     class="relative scroll-mt-24 overflow-hidden bg-ink text-paper"
   >
-    {/* 黒背景の中を漂う装飾 */}
+    {/* 流れる斜めライン+うねる波 */}
     <div aria-hidden="true" class="pointer-events-none absolute inset-0">
-      <span class="drift absolute -top-24 right-[8%] size-[24rem] rounded-full bg-white/[0.04]"></span>
-      <span class="drift-rev absolute -bottom-32 left-[4%] size-[20rem] rounded-full bg-white/[0.05]"></span>
-      <span class="spin-slow absolute top-[20%] -left-24 size-[20rem] rounded-full border border-white/10"></span>
-      <span class="float-slow absolute top-[30%] right-[16%] size-2 rounded-full bg-white/30"></span>
+      <div class="diag-lines absolute inset-0"></div>
+      <div class="absolute inset-x-0 bottom-0 h-24 overflow-hidden">
+        <div class="wave-track absolute bottom-0 left-0 h-full">
+          <svg class="h-full w-1/2 shrink-0" viewBox="0 0 720 80" preserveAspectRatio="none">
+            <path
+              d="M0 40 C120 5 240 75 360 40 C480 5 600 75 720 40 L720 80 L0 80 Z"
+              fill="rgb(255 255 255 / 0.06)"></path>
+          </svg>
+          <svg class="h-full w-1/2 shrink-0" viewBox="0 0 720 80" preserveAspectRatio="none">
+            <path
+              d="M0 40 C120 5 240 75 360 40 C480 5 600 75 720 40 L720 80 L0 80 Z"
+              fill="rgb(255 255 255 / 0.06)"></path>
+          </svg>
+        </div>
+        <div class="wave-track wave-track-rev absolute bottom-0 left-0 h-full">
+          <svg class="h-full w-1/2 shrink-0" viewBox="0 0 720 80" preserveAspectRatio="none">
+            <path
+              d="M0 58 C120 30 240 82 360 58 C480 34 600 84 720 58 L720 80 L0 80 Z"
+              fill="rgb(255 255 255 / 0.05)"></path>
+          </svg>
+          <svg class="h-full w-1/2 shrink-0" viewBox="0 0 720 80" preserveAspectRatio="none">
+            <path
+              d="M0 58 C120 30 240 82 360 58 C480 34 600 84 720 58 L720 80 L0 80 Z"
+              fill="rgb(255 255 255 / 0.05)"></path>
+          </svg>
+        </div>
+      </div>
     </div>
     <div class="relative mx-auto max-w-site px-4 py-16 sm:px-6 sm:py-20">
       <p class="font-mono text-xs tracking-widest text-line-strong uppercase">
@@ -125,9 +158,12 @@ const sections = {
       </p>
       <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {
-          CHANNEL.features.map((feature) => (
+          CHANNEL.features.map((feature, i) => (
             <div class="glass-dark rounded-card p-5">
-              <h3 class="text-sm font-bold text-white">{feature.title}</h3>
+              <p class="font-mono text-3xl font-bold text-white/25" aria-hidden="true">
+                {String(i + 1).padStart(2, '0')}
+              </p>
+              <h3 class="mt-2 text-sm font-bold text-white">{feature.title}</h3>
               <p class="mt-2 text-xs leading-relaxed text-line-strong">{feature.body}</p>
             </div>
           ))
@@ -145,11 +181,21 @@ const sections = {
     aria-labelledby="promotion-heading"
     class="relative scroll-mt-24 overflow-hidden bg-surface"
   >
-    {/* 白背景の中を漂う装飾 */}
+    {/* 幾何学パターン+回転する図形 */}
     <div aria-hidden="true" class="pointer-events-none absolute inset-0">
-      <span class="drift absolute -top-28 left-[10%] size-[26rem] rounded-full bg-paper"></span>
-      <span class="drift-rev absolute right-[-8%] bottom-[10%] size-[22rem] rounded-full border border-line"></span>
-      <span class="float-slower absolute top-[24%] right-[10%] size-2 rounded-full bg-ink/15"></span>
+      <div class="geo-pattern absolute inset-0"></div>
+      <svg class="spin-slow absolute -top-16 right-[6%] size-48 text-line-strong" viewBox="0 0 100 100" fill="none">
+        <polygon
+          points="50,6 88,28 88,72 50,94 12,72 12,28"
+          stroke="currentColor"
+          stroke-width="1.5"></polygon>
+      </svg>
+      <svg class="drift absolute bottom-[8%] left-[4%] size-32 text-line-strong" viewBox="0 0 100 100" fill="none">
+        <polygon points="50,10 92,85 8,85" stroke="currentColor" stroke-width="1.5"></polygon>
+      </svg>
+      <svg class="drift-rev absolute top-[38%] right-[20%] size-14 text-line-strong" viewBox="0 0 100 100" fill="none">
+        <path d="M50 15 V85 M15 50 H85" stroke="currentColor" stroke-width="6"></path>
+      </svg>
     </div>
     <div class="relative mx-auto max-w-site px-4 py-16 sm:px-6 sm:py-20">
       <p class="font-mono text-xs tracking-widest text-muted uppercase">
@@ -222,17 +268,18 @@ const sections = {
     aria-labelledby="media-heading"
     class="relative scroll-mt-24 overflow-hidden bg-ink text-paper"
   >
+    {/* 奥行きのある3Dグリッド（床が流れる） */}
     <div aria-hidden="true" class="pointer-events-none absolute inset-0">
-      <span class="drift-rev absolute -top-32 left-[16%] size-[22rem] rounded-full bg-white/[0.04]"></span>
-      <span class="drift absolute right-[6%] -bottom-24 size-[26rem] rounded-full bg-white/[0.05]"></span>
-      <span class="spin-slow absolute -right-28 top-[10%] size-[22rem] rounded-full border border-white/10"></span>
+      <div class="grid3d absolute inset-x-[-10%] bottom-0 h-3/5"></div>
     </div>
     <div class="relative mx-auto max-w-site px-4 py-16 sm:px-6 sm:py-20">
       <p class="font-mono text-xs tracking-widest text-line-strong uppercase">
         {sections.media.no} — {sections.media.en}
       </p>
       <div class="mt-2 flex flex-wrap items-baseline justify-between gap-4">
-        <h2 id="media-heading" class="text-2xl font-bold text-white sm:text-3xl">メディア</h2>
+        <h2 id="media-heading" class="text-2xl font-bold text-white sm:text-3xl">
+          {COLUMN.name}
+        </h2>
         <a
           href="/articles/"
           class="text-sm font-bold text-paper underline underline-offset-4 hover:text-white"
@@ -240,6 +287,7 @@ const sections = {
           すべての記事を見る
         </a>
       </div>
+      <p class="mt-3 max-w-2xl text-xs text-line-strong">{COLUMN.aiNote}</p>
       <div class="mt-4 flex flex-wrap gap-2">
         {
           CATEGORIES.map((category) => (
@@ -264,9 +312,16 @@ const sections = {
     aria-labelledby="contact-heading"
     class="relative scroll-mt-24 overflow-hidden bg-surface"
   >
+    {/* 浮かび上がるバブル */}
     <div aria-hidden="true" class="pointer-events-none absolute inset-0">
-      <span class="drift absolute -bottom-32 right-[12%] size-[24rem] rounded-full bg-paper"></span>
-      <span class="drift-rev absolute -top-24 left-[-6%] size-[18rem] rounded-full border border-line"></span>
+      {
+        bubbles.map((b) => (
+          <span
+            class="bubble"
+            style={`left:${b.left};width:${b.size};height:${b.size};animation-duration:${b.duration}s;animation-delay:${b.delay}s;`}
+          />
+        ))
+      }
     </div>
     <div class="relative mx-auto max-w-site px-4 py-16 sm:px-6 sm:py-20">
       <p class="font-mono text-xs tracking-widest text-muted uppercase">

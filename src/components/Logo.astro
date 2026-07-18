@@ -1,0 +1,50 @@
+---
+/**
+ * くろろじ技研のロゴ。
+ * 幾何学マーク（角丸スクエア + 再生ボタン + 検証ドット）+ 社名の構成。
+ * 色は currentColor を継承するので、黒背景では自動で白になる。
+ */
+import { SITE } from '@/data/site';
+
+interface Props {
+  /** フッターなど白文字で使う場合は 'light' */
+  tone?: 'dark' | 'light';
+}
+
+const { tone = 'dark' } = Astro.props;
+---
+
+<span class="inline-flex items-center gap-2.5">
+  <svg
+    viewBox="0 0 48 48"
+    fill="none"
+    aria-hidden="true"
+    class:list={['size-9 shrink-0', tone === 'light' ? 'text-white' : 'text-ink']}
+  >
+    {/* 角丸スクエア（研究室の枠） */}
+    <rect x="3" y="3" width="42" height="42" rx="13" stroke="currentColor" stroke-width="3.2"></rect>
+    {/* 再生ボタン（YouTube・動画） */}
+    <path
+      d="M20 17.2 L32.5 24 L20 30.8 Z"
+      fill="currentColor"
+      stroke="currentColor"
+      stroke-width="3"
+      stroke-linejoin="round"></path>
+    {/* 検証のドット（技研らしさ） */}
+    <circle cx="36.5" cy="36.5" r="2.6" fill="currentColor"></circle>
+  </svg>
+  <span class="flex flex-col leading-tight">
+    <span
+      class:list={[
+        'text-lg font-extrabold sm:text-xl',
+        tone === 'light' ? 'text-white' : 'text-ink',
+      ]}>{SITE.name}</span
+    >
+    <span
+      class:list={[
+        'font-mono text-[0.5625rem] tracking-[0.22em] uppercase',
+        tone === 'light' ? 'text-line-strong' : 'text-muted',
+      ]}>{SITE.nameEn}</span
+    >
+  </span>
+</span>

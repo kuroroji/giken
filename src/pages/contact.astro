@@ -31,28 +31,8 @@ const labelClass = 'block text-sm font-bold text-ink';
   <div class="mx-auto max-w-article px-4 py-8 sm:px-6">
     <Breadcrumbs items={[{ label: 'お問い合わせ' }]} />
 
-    {/* 無料相談の案内 */}
-    <section aria-labelledby="consultation-heading" class="glass mt-6 rounded-card p-6">
-      <h2 id="consultation-heading" class="font-sans text-base font-bold tracking-normal text-ink">
-        {CONSULTATION.title}
-      </h2>
-      <p class="mt-2 text-sm leading-relaxed text-body">{CONSULTATION.description}</p>
-      <p class="mt-3 text-sm font-bold text-ink">相談できるテーマの例</p>
-      <ul class="mt-2 space-y-1.5 text-sm text-body">
-        {
-          CONSULTATION.themes.map((theme) => (
-            <li class="flex gap-2">
-              <span aria-hidden="true" class="mt-2.5 block h-px w-3 shrink-0 bg-ink" />
-              {theme}
-            </li>
-          ))
-        }
-      </ul>
-      <p class="mt-3 text-xs text-muted">{CONSULTATION.note}</p>
-    </section>
-
-    {/* フォーム本体 */}
-    <form id="contact-form" class="mt-8 space-y-5" novalidate>
+    {/* フォーム本体（離脱を防ぐため、ページ上部にフォームを置く） */}
+    <form id="contact-form" class="mt-6 space-y-5" novalidate>
       <p class="text-xs text-muted">
         <span class="font-bold text-ink">*</span> の付いた項目は必須です。それ以外は分かる範囲でご記入ください。
       </p>
@@ -98,6 +78,24 @@ const labelClass = 'block text-sm font-bold text-ink';
           <option value="">選択してください</option>
           {CONTACT_TOPICS.map((topic) => <option value={topic}>{topic}</option>)}
         </select>
+
+        {/* 「ゲームに関する無料相談」を選んだときだけ表示される注釈 */}
+        <div id="consultation-note" hidden class="glass mt-3 rounded-card p-5">
+          <p class="text-sm font-bold text-ink">{CONSULTATION.title}</p>
+          <p class="mt-2 text-xs leading-relaxed text-body">{CONSULTATION.description}</p>
+          <p class="mt-2 text-xs font-bold text-ink">相談できるテーマの例</p>
+          <ul class="mt-1 space-y-1 text-xs text-body">
+            {
+              CONSULTATION.themes.map((theme) => (
+                <li class="flex gap-2">
+                  <span aria-hidden="true" class="mt-2 block h-px w-3 shrink-0 bg-ink" />
+                  {theme}
+                </li>
+              ))
+            }
+          </ul>
+          <p class="mt-2 text-xs text-muted">{CONSULTATION.note}</p>
+        </div>
       </div>
 
       <div>
@@ -160,6 +158,17 @@ const labelClass = 'block text-sm font-bold text-ink';
 <script>
   const form = document.getElementById('contact-form') as HTMLFormElement | null;
   const notice = document.getElementById('form-notice');
+
+  // 「ゲームに関する無料相談」を選んだときだけ、相談範囲の注釈を表示する
+  const topicSelect = document.getElementById('topic') as HTMLSelectElement | null;
+  const consultationNote = document.getElementById('consultation-note');
+  topicSelect?.addEventListener('change', () => {
+    if (topicSelect.value === 'ゲームに関する無料相談') {
+      consultationNote?.removeAttribute('hidden');
+    } else {
+      consultationNote?.setAttribute('hidden', '');
+    }
+  });
 
   form?.addEventListener('submit', (event) => {
     event.preventDefault();
