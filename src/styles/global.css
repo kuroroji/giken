@@ -226,6 +226,27 @@
   color: #fff;
 }
 
+/* 狭い画面ではボタンを2カラムのグリッドにしてカラム落ちを防ぐ */
+@media (max-width: 519px) {
+  .article-body .store-links {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .article-body .store-btn {
+    text-align: center;
+    padding-inline: 0.5em;
+  }
+}
+
+/* モバイルでは表のセル折り返しをやめ、横スクロールで見せる（縦長化を防ぐ） */
+@media (max-width: 639px) {
+  .article-body th,
+  .article-body td {
+    white-space: nowrap;
+  }
+}
+
 .article-body .store-btn--switch { background-color: #e60012; }
 .article-body .store-btn--ps { background-color: #0070d1; }
 .article-body .store-btn--xbox { background-color: #107c10; }
