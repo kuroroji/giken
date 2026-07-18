@@ -82,6 +82,10 @@ const bubbles = [
               記事を読む
             </a>
           </div>
+          {/* 信頼の裏付け（ファーストビュー内に実績を明示） */}
+          <p class="mt-4 text-xs text-muted">
+            動画プロモーション実績：{PROMOTION.clients.slice(0, 2).join('、')} ほか
+          </p>
 
           {/* スクロール誘導 */}
           <div aria-hidden="true" class="mt-10 flex flex-col items-start gap-1.5 lg:mt-14">
@@ -181,20 +185,29 @@ const bubbles = [
     aria-labelledby="promotion-heading"
     class="relative scroll-mt-24 overflow-hidden bg-surface"
   >
-    {/* 幾何学パターン+回転する図形 */}
+    {/* 幾何学パターン+回転する図形（ラインは1.5px固定） */}
     <div aria-hidden="true" class="pointer-events-none absolute inset-0">
       <div class="geo-pattern absolute inset-0"></div>
       <svg class="spin-slow absolute -top-16 right-[6%] size-48 text-line-strong" viewBox="0 0 100 100" fill="none">
         <polygon
           points="50,6 88,28 88,72 50,94 12,72 12,28"
           stroke="currentColor"
-          stroke-width="1.5"></polygon>
+          stroke-width="1.5"
+          vector-effect="non-scaling-stroke"></polygon>
       </svg>
       <svg class="drift absolute bottom-[8%] left-[4%] size-32 text-line-strong" viewBox="0 0 100 100" fill="none">
-        <polygon points="50,10 92,85 8,85" stroke="currentColor" stroke-width="1.5"></polygon>
+        <polygon
+          points="50,10 92,85 8,85"
+          stroke="currentColor"
+          stroke-width="1.5"
+          vector-effect="non-scaling-stroke"></polygon>
       </svg>
       <svg class="drift-rev absolute top-[38%] right-[20%] size-14 text-line-strong" viewBox="0 0 100 100" fill="none">
-        <path d="M50 15 V85 M15 50 H85" stroke="currentColor" stroke-width="6"></path>
+        <path
+          d="M50 15 V85 M15 50 H85"
+          stroke="currentColor"
+          stroke-width="1.5"
+          vector-effect="non-scaling-stroke"></path>
       </svg>
     </div>
     <div class="relative mx-auto max-w-site px-4 py-16 sm:px-6 sm:py-20">
@@ -268,9 +281,10 @@ const bubbles = [
     aria-labelledby="media-heading"
     class="relative scroll-mt-24 overflow-hidden bg-ink text-paper"
   >
-    {/* 奥行きのある3Dグリッド（床が流れる） */}
+    {/* 横に流れる縦線（2層・速度差あり） */}
     <div aria-hidden="true" class="pointer-events-none absolute inset-0">
-      <div class="grid3d absolute inset-x-[-10%] bottom-0 h-3/5"></div>
+      <div class="vlines absolute inset-0"></div>
+      <div class="vlines-sub absolute inset-0"></div>
     </div>
     <div class="relative mx-auto max-w-site px-4 py-16 sm:px-6 sm:py-20">
       <p class="font-mono text-xs tracking-widest text-line-strong uppercase">
@@ -330,13 +344,15 @@ const bubbles = [
       <h2 id="contact-heading" class="mt-2 text-2xl font-bold sm:text-3xl">お問い合わせ</h2>
       <div class="mt-8 grid gap-4 lg:grid-cols-2">
         <div class="glass rounded-card p-6">
-          <h3 class="font-bold text-ink">動画プロモーション・案件のご相談</h3>
+          <p class="font-mono text-3xl font-bold text-ink/20" aria-hidden="true">01</p>
+          <h3 class="mt-2 font-bold text-ink">動画プロモーション・案件のご相談</h3>
           <p class="mt-2 text-sm leading-relaxed text-body">
             ゲーム紹介動画・まとめ動画での紹介・配信など、内容に応じてご提案します。まずはゲームタイトルと想定内容をお聞かせください。
           </p>
         </div>
         <div class="glass rounded-card p-6">
-          <h3 class="font-bold text-ink">{CONSULTATION.title}</h3>
+          <p class="font-mono text-3xl font-bold text-ink/20" aria-hidden="true">02</p>
+          <h3 class="mt-2 font-bold text-ink">{CONSULTATION.title}</h3>
           <p class="mt-2 text-sm leading-relaxed text-body">{CONSULTATION.description}</p>
           <p class="mt-2 text-xs text-muted">{CONSULTATION.note}</p>
         </div>

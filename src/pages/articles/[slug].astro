@@ -6,7 +6,9 @@ import TableOfContents from '@/components/TableOfContents.astro';
 import AffiliateDisclosure from '@/components/AffiliateDisclosure.astro';
 import AuthorProfile from '@/components/AuthorProfile.astro';
 import RelatedArticles from '@/components/RelatedArticles.astro';
+import Button from '@/components/Button.astro';
 import { getCategory } from '@/data/categories';
+import { CHANNEL } from '@/data/business';
 import {
   getPublishedArticles,
   pickAdjacent,
@@ -151,6 +153,18 @@ const jsonLd = [
 
         <TableOfContents headings={headings} />
 
+        {/* 記事前半のテキストCTA（読み物の邪魔をしない軽い導線） */}
+        <p class="text-sm text-body">
+          <span aria-hidden="true" class="mr-1">▶</span>実際のプレイ映像・解説動画は
+          <a
+            href={CHANNEL.url}
+            target="_blank"
+            rel="noopener"
+            class="font-bold text-ink underline underline-offset-4 hover:text-accent-strong"
+            >{CHANNEL.name}</a
+          >で公開しています。
+        </p>
+
         {
           hasReviewInfo && (
             <aside
@@ -218,6 +232,21 @@ const jsonLd = [
             </section>
           )
         }
+
+        {/* 記事末尾のCTA（読了ユーザー向け・才流メソッドに基づく配置） */}
+        <aside aria-label="くろろじからのご案内" class="glass rounded-card p-6">
+          <p class="font-mono text-xs tracking-widest text-muted uppercase">From Kuroroji</p>
+          <p class="mt-1.5 font-bold text-ink">
+            この記事は、ゲーム発掘YouTuber くろろじが書いています
+          </p>
+          <p class="mt-2 text-sm leading-relaxed text-body">
+            YouTube「{CHANNEL.name}」でゲームの発掘・紹介動画を公開中です。ゲーム会社様向けの動画プロモーションのご相談も受け付けています。
+          </p>
+          <div class="mt-4 flex flex-wrap gap-3">
+            <Button href={CHANNEL.url} variant="dark" external>チャンネルを見る</Button>
+            <Button href="/contact/" variant="glass">動画プロモーションを相談する</Button>
+          </div>
+        </aside>
 
         <AuthorProfile />
 
