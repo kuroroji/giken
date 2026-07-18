@@ -2,7 +2,7 @@
 title: 【下書きの例】AIノイズ除去プラグイン比較（執筆中）
 description: この記事は下書き機能のサンプルです。frontmatterの draft を true にすると、開発中のプレビューでは見えますが、本番のビルドには含まれません。
 publishedAt: 2026-07-15
-category: lab-report
+category: youtube-guide
 tags: [下書き]
 draft: true
 sourceLinks: []

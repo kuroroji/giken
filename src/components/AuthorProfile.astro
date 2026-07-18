@@ -6,12 +6,14 @@ import { AUTHOR } from '@/data/site';
   aria-label="著者プロフィール"
   class="flex gap-4 rounded-card border border-line bg-surface p-5"
 >
-  <span
-    aria-hidden="true"
-    class="flex size-14 shrink-0 items-center justify-center rounded-full border border-line bg-accent-soft text-xl font-bold text-ink"
-  >
-    {AUTHOR.name.charAt(0)}
-  </span>
+  <img
+    src={AUTHOR.avatar}
+    alt=""
+    width="720"
+    height="720"
+    loading="lazy"
+    class="size-14 shrink-0 rounded-full border border-line object-cover object-top"
+  />
   <div class="min-w-0">
     <p class="text-sm">
       <span class="font-bold text-ink">{AUTHOR.name}</span>

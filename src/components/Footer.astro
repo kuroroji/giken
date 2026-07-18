@@ -1,41 +1,75 @@
 ---
-import { SITE } from '@/data/site';
+import { SITE, AUTHOR } from '@/data/site';
+import { CHANNEL } from '@/data/business';
 
 const year = new Date().getFullYear();
 const copyrightYears =
   year > SITE.since ? `${SITE.since}–${year}` : `${SITE.since}`;
 
 const contentLinks = [
-  { label: '記事一覧', href: '/articles/' },
-  { label: 'カテゴリー', href: '/category/' },
-  { label: '機材・ツール', href: '/equipment/' },
-  { label: 'プロフィール', href: '/profile/' },
+  { label: 'くろろじちゃんねる', href: CHANNEL.url, external: true },
+  { label: '動画プロモーション', href: '/#promotion', external: false },
+  { label: 'メディア（記事一覧）', href: '/articles/', external: false },
+  { label: 'お問い合わせ', href: '/contact/', external: false },
 ];
 
 const siteLinks = [
-  { label: 'お問い合わせ', href: '/contact/' },
+  { label: 'プロフィール', href: '/profile/' },
+  { label: '使用機材・ツール', href: '/equipment/' },
   { label: 'プライバシーポリシー', href: '/privacy-policy/' },
   { label: '広告・アフィリエイトについて', href: '/disclosure/' },
   { label: 'RSS', href: '/rss.xml' },
 ];
+
+/**
+ * SNSリンク領域。src/data/site.ts の AUTHOR.links にURLを設定すると表示される。
+ * 追加したい場合はここに1行足すだけでよい。
+ */
+const snsLinks = [
+  { label: 'YouTube', url: AUTHOR.links.youtube },
+  { label: 'X（旧Twitter）', url: AUTHOR.links.x },
+].filter((link) => link.url !== '');
 ---
 
-<footer class="mt-16 border-t border-line bg-surface">
-  <div class="mx-auto max-w-site px-4 py-10 sm:px-6">
+{/* 黒背景の反転フッター：白ベースのページを黒で締める */}
+<footer class="mt-16 bg-ink text-paper">
+  <div class="mx-auto max-w-site px-4 py-12 sm:px-6">
     <div class="grid gap-8 sm:grid-cols-3">
       <div class="sm:col-span-1">
-        <p class="font-bold text-ink">{SITE.name}</p>
-        <p class="mt-1 font-mono text-[0.625rem] tracking-widest text-muted uppercase">
+        <p class="font-serif text-lg font-bold tracking-wide text-white">{SITE.name}</p>
+        <p class="mt-1 font-mono text-[0.625rem] tracking-widest text-line-strong uppercase">
           {SITE.nameEn}
         </p>
-        <p class="mt-3 text-sm text-muted">{SITE.description}</p>
+        <p class="mt-3 text-sm text-line-strong">{SITE.description}</p>
+        {
+          snsLinks.length > 0 && (
+            <ul class="mt-4 flex flex-wrap gap-3">
+              {snsLinks.map((link) => (
+                <li>
+                  <a
+                    href={link.url}
+                    rel="noopener"
+                    class="text-sm text-paper underline underline-offset-4 hover:text-white"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )
+        }
       </div>
       <nav aria-label="コンテンツ">
-        <h2 class="font-mono text-xs tracking-widest text-muted uppercase">Contents</h2>
+        <h2 class="font-mono text-xs tracking-widest text-line-strong uppercase">Contents</h2>
         <ul class="mt-3 space-y-2 text-sm">
           {contentLinks.map((item) => (
             <li>
-              <a href={item.href} class="text-body hover:text-ink hover:underline">
+              <a
+                href={item.href}
+                rel={item.external ? 'noopener' : undefined}
+                target={item.external ? '_blank' : undefined}
+                class="text-paper hover:text-white hover:underline"
+              >
                 {item.label}
               </a>
             </li>
@@ -43,11 +77,11 @@ const siteLinks = [
         </ul>
       </nav>
       <nav aria-label="サイト情報">
-        <h2 class="font-mono text-xs tracking-widest text-muted uppercase">About</h2>
+        <h2 class="font-mono text-xs tracking-widest text-line-strong uppercase">About</h2>
         <ul class="mt-3 space-y-2 text-sm">
           {siteLinks.map((item) => (
             <li>
-              <a href={item.href} class="text-body hover:text-ink hover:underline">
+              <a href={item.href} class="text-paper hover:text-white hover:underline">
                 {item.label}
               </a>
             </li>
@@ -55,7 +89,7 @@ const siteLinks = [
         </ul>
       </nav>
     </div>
-    <p class="mt-10 border-t border-line pt-6 text-center text-xs text-muted">
+    <p class="mt-10 border-t border-body pt-6 text-center text-xs text-line-strong">
       © {copyrightYears} {SITE.name}
     </p>
   </div>

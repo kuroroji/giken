@@ -3,7 +3,7 @@ title: Whisperで動画の字幕を無料で作る手順【ローカル環境】
 description: OpenAIのWhisperをローカルPCで動かして、動画の字幕ファイル（SRT）を無料で作る手順を、実際の設定値と一緒に解説します。
 publishedAt: 2026-06-21
 updatedAt: 2026-07-05
-category: ai-automation
+category: youtube-guide
 tags: [Whisper, 字幕, 文字起こし, 無料ツール]
 featured: true
 sourceLinks:

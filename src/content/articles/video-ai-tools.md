@@ -2,7 +2,7 @@
 title: 動画制作で実際に使っているAIツール5選【2026年版】
 description: ゲーム動画を月8本投稿する中で、本当に制作に定着したAIツールだけを紹介します。話題になったが使わなくなったツールと、その理由も正直に書きます。
 publishedAt: 2026-07-10
-category: video-production
+category: youtube-guide
 tags: [AI, 動画編集, 効率化]
 featured: true
 affiliateDisclosure: true

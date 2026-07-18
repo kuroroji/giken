@@ -1,44 +1,13 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import Hero from '@/components/Hero.astro';
-import FeaturedArticles from '@/components/FeaturedArticles.astro';
-import LatestArticles from '@/components/LatestArticles.astro';
-import CategoryGrid from '@/components/CategoryGrid.astro';
-import EquipmentCard from '@/components/EquipmentCard.astro';
-import AuthorProfile from '@/components/AuthorProfile.astro';
+import ArticleCard from '@/components/ArticleCard.astro';
 import { SITE, AUTHOR } from '@/data/site';
-import { EQUIPMENT } from '@/data/equipment';
-import { getPublishedArticles, pickFeatured } from '@/utils/articles';
+import { CHANNEL, PROMOTION, CONSULTATION } from '@/data/business';
+import { CATEGORIES } from '@/data/categories';
+import { getPublishedArticles } from '@/utils/articles';
 
 const articles = await getPublishedArticles();
-const featured = pickFeatured(articles, 3);
 const latest = articles.slice(0, 6);
-
-const categoryCounts = new Map<string, number>();
-for (const article of articles) {
-  categoryCounts.set(
-    article.data.category,
-    (categoryCounts.get(article.data.category) ?? 0) + 1,
-  );
-}
-
-const activeEquipment = EQUIPMENT.filter((e) => e.status === '稼働中').slice(0, 6);
-
-/** サイトの方針 */
-const policies = [
-  {
-    title: '実際に試したものだけ',
-    body: 'スペック表の転記はしません。導入して、制作フローで使って、その結果を記録します。',
-  },
-  {
-    title: '「何が楽になるか」を先に',
-    body: '機能の羅列より、導入するとどの作業がどのくらい楽になるのかを優先して伝えます。',
-  },
-  {
-    title: '失敗も記録する',
-    body: 'うまくいかなかった検証や設定でハマった話も、同じ場所で転ぶ人を減らすために残します。',
-  },
-];
 
 /** トップページの構造化データ（WebSite） */
 const jsonLd = [
@@ -55,68 +24,274 @@ const jsonLd = [
     },
   },
 ];
+
+/** セクション見出し共通の番号ラベル */
+const sections = {
+  channel: { no: '01', en: 'Channel' },
+  promotion: { no: '02', en: 'Promotion' },
+  media: { no: '03', en: 'Media' },
+  contact: { no: '04', en: 'Contact' },
+};
 ---
 
 <BaseLayout title={SITE.name} description={SITE.description} isHome jsonLd={jsonLd}>
-  <Hero />
+  {/* ============ 1. ファーストビュー ============ */}
+  <section class="hero-bg relative overflow-hidden border-b border-line">
+    {/* 浮遊する装飾（モノクロ・CSSのみ） */}
+    <div aria-hidden="true" class="pointer-events-none absolute inset-0">
+      <span class="float-slow absolute top-[12%] left-[6%] size-3 rounded-full bg-ink/15"></span>
+      <span class="float-slower absolute top-[22%] right-[12%] size-16 rounded-full border border-line-strong/60"></span>
+      <span class="float-slow absolute bottom-[24%] left-[14%] size-8 rotate-12 border border-line-strong/50"></span>
+      <span class="float-slower absolute right-[6%] bottom-[16%] size-2 rounded-full bg-ink/20"></span>
+      <span class="float-slow absolute top-[58%] left-[46%] hidden size-2 rounded-full bg-ink/10 lg:block"></span>
+    </div>
 
-  <div class="mx-auto max-w-site space-y-14 px-4 py-12 sm:px-6 sm:py-16">
-    <FeaturedArticles articles={featured} />
+    <div
+      class="relative mx-auto flex min-h-[calc(100svh-8rem)] max-w-site flex-col justify-center px-4 py-16 sm:px-6 lg:min-h-[42rem]"
+    >
+      <div class="grid items-center gap-12 lg:grid-cols-[1fr_21rem] lg:gap-16">
+        <div>
+          <p class="font-mono text-xs tracking-widest text-muted uppercase">
+            Game Discovery / YouTube / Promotion
+          </p>
+          <h1 class="mt-5 text-4xl leading-tight font-bold text-ink sm:text-5xl lg:text-6xl">
+            {SITE.tagline}
+          </h1>
+          <p class="mt-6 max-w-xl text-sm leading-relaxed text-body sm:text-base">
+            {SITE.description}
+          </p>
+          <div class="mt-8 flex flex-wrap items-center gap-3">
+            <a
+              href={CHANNEL.url}
+              target="_blank"
+              rel="noopener"
+              class="inline-block rounded-card bg-ink px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-body"
+            >
+              YouTubeを見る
+            </a>
+            <a
+              href="/contact/"
+              class="glass inline-block rounded-card px-6 py-3 text-sm font-bold text-ink transition-colors hover:border-ink"
+            >
+              動画案件を相談する
+            </a>
+            <a
+              href="/articles/"
+              class="nav-link inline-block py-2 text-sm font-bold text-body hover:text-ink"
+            >
+              記事を読む
+            </a>
+          </div>
+        </div>
 
-    <LatestArticles articles={latest} />
-
-    <section aria-labelledby="category-heading">
-      <h2 id="category-heading" class="text-xl font-bold sm:text-2xl">
-        <span class="mr-2 inline-block h-4 w-1 bg-accent" aria-hidden="true"></span>カテゴリー
-      </h2>
-      <div class="mt-5">
-        <CategoryGrid counts={categoryCounts} />
+        {/* プロフィール（ガラスフレーム） */}
+        <div class="relative mx-auto w-full max-w-xs lg:max-w-none">
+          <div class="glass rounded-2xl p-3">
+            <img
+              src={AUTHOR.avatar}
+              alt="くろろじのプロフィールイラスト"
+              width="720"
+              height="720"
+              class="aspect-square w-full rounded-xl object-cover object-top"
+            />
+          </div>
+          <div class="glass absolute -bottom-4 left-1/2 -translate-x-1/2 rounded-card px-4 py-2 text-center whitespace-nowrap">
+            <p class="text-sm font-bold text-ink">{AUTHOR.name}</p>
+            <p class="font-mono text-[0.625rem] tracking-widest text-muted uppercase">
+              Game Discovery YouTuber
+            </p>
+          </div>
+        </div>
       </div>
-    </section>
 
-    <section aria-labelledby="policy-heading">
-      <h2 id="policy-heading" class="text-xl font-bold sm:text-2xl">
-        <span class="mr-2 inline-block h-4 w-1 bg-accent" aria-hidden="true"></span>くろろじ技研の方針
+      {/* スクロール誘導 */}
+      <div aria-hidden="true" class="mt-14 flex flex-col items-center gap-2 lg:mt-16">
+        <span class="font-mono text-[0.625rem] tracking-widest text-muted uppercase">Scroll</span>
+        <span class="relative block h-10 w-px overflow-hidden bg-line-strong">
+          <span class="scroll-hint-dot absolute top-0 left-1/2 h-3 w-px -translate-x-1/2 bg-ink"></span>
+        </span>
+      </div>
+    </div>
+  </section>
+
+  {/* ============ 2. くろろじちゃんねる紹介 ============ */}
+  <section id="channel" aria-labelledby="channel-heading" class="scroll-mt-24">
+    <div class="mx-auto max-w-site px-4 py-16 sm:px-6 sm:py-20">
+      <p class="font-mono text-xs tracking-widest text-muted uppercase">
+        {sections.channel.no} — {sections.channel.en}
+      </p>
+      <h2 id="channel-heading" class="mt-2 text-2xl font-bold sm:text-3xl">
+        {CHANNEL.name}
       </h2>
-      <div class="mt-5 grid gap-4 sm:grid-cols-3">
+      <p class="mt-4 max-w-2xl text-sm leading-relaxed text-body sm:text-base">
+        {CHANNEL.description}
+      </p>
+      <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {
-          policies.map((policy, i) => (
-            <div class="rounded-card border border-line bg-surface p-5">
-              <p class="font-mono text-xs text-accent-strong">
-                {String(i + 1).padStart(2, '0')}
-              </p>
-              <h3 class="mt-1 font-bold text-ink">{policy.title}</h3>
-              <p class="mt-2 text-sm text-muted">{policy.body}</p>
+          CHANNEL.features.map((feature) => (
+            <div class="glass rounded-card p-5">
+              <h3 class="text-sm font-bold text-ink">{feature.title}</h3>
+              <p class="mt-2 text-xs leading-relaxed text-muted">{feature.body}</p>
             </div>
           ))
         }
       </div>
-    </section>
-
-    <section aria-labelledby="equipment-heading">
-      <div class="flex items-baseline justify-between gap-4">
-        <h2 id="equipment-heading" class="text-xl font-bold sm:text-2xl">
-          <span class="mr-2 inline-block h-4 w-1 bg-accent" aria-hidden="true"></span>使用中のツール・機材
-        </h2>
+      <div class="mt-8">
         <a
-          href="/equipment/"
-          class="text-sm text-accent-strong underline underline-offset-4 hover:text-ink"
+          href={CHANNEL.url}
+          target="_blank"
+          rel="noopener"
+          class="inline-block rounded-card bg-ink px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-body"
         >
-          すべて見る
+          チャンネルを見る
         </a>
       </div>
-      <div class="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-        {activeEquipment.map((item) => <EquipmentCard item={item} />)}
-      </div>
-    </section>
+    </div>
+  </section>
 
-    <section aria-labelledby="author-heading">
-      <h2 id="author-heading" class="text-xl font-bold sm:text-2xl">
-        <span class="mr-2 inline-block h-4 w-1 bg-accent" aria-hidden="true"></span>運営者
+  {/* ============ 3. 動画プロモーション・案件実績 ============ */}
+  <section
+    id="promotion"
+    aria-labelledby="promotion-heading"
+    class="scroll-mt-24 border-y border-line bg-surface"
+  >
+    <div class="mx-auto max-w-site px-4 py-16 sm:px-6 sm:py-20">
+      <p class="font-mono text-xs tracking-widest text-muted uppercase">
+        {sections.promotion.no} — {sections.promotion.en}
+      </p>
+      <h2 id="promotion-heading" class="mt-2 text-2xl font-bold sm:text-3xl">
+        動画プロモーション
       </h2>
-      <div class="mt-5 max-w-2xl">
-        <AuthorProfile />
+      <p class="mt-4 max-w-2xl text-sm leading-relaxed text-body sm:text-base">
+        ゲーム会社・パブリッシャー様向けに、実際のプレイを通した動画プロモーションをお受けしています。「どんなゲームで、誰におすすめか」が伝わる紹介を大切にしています。
+      </p>
+
+      <h3 class="mt-10 text-lg font-bold text-ink">対応可能な内容</h3>
+      <div class="mt-4 grid gap-4 lg:grid-cols-3">
+        {
+          PROMOTION.services.map((service) => (
+            <div class="rounded-card border border-line bg-paper p-5">
+              <h4 class="font-bold text-ink">{service.title}</h4>
+              <p class="mt-2 text-xs text-muted">{service.body}</p>
+              <ul class="mt-3 space-y-1.5 text-sm text-body">
+                {service.points.map((point) => (
+                  <li class="flex gap-2">
+                    <span aria-hidden="true" class="mt-2.5 block h-px w-3 shrink-0 bg-ink" />
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))
+        }
       </div>
-    </section>
-  </div>
+      <p class="mt-4 text-xs text-muted">{PROMOTION.disclosureNote}</p>
+
+      <h3 class="mt-10 text-lg font-bold text-ink">得意ジャンル</h3>
+      <ul class="mt-4 flex flex-wrap gap-2">
+        {
+          PROMOTION.genres.map((genre) => (
+            <li class="rounded-card border border-line bg-paper px-3 py-1.5 text-sm text-body">
+              {genre}
+            </li>
+          ))
+        }
+      </ul>
+      <p class="mt-3 text-xs text-muted">{PROMOTION.genreNote}</p>
+
+      <h3 class="mt-10 text-lg font-bold text-ink">実績</h3>
+      <ul class="mt-4 space-y-2 text-sm text-body">
+        {
+          PROMOTION.clients.map((client) => (
+            <li class="flex gap-2">
+              <span aria-hidden="true" class="mt-2.5 block h-px w-3 shrink-0 bg-ink" />
+              {client}
+            </li>
+          ))
+        }
+      </ul>
+
+      <div class="mt-10 flex flex-wrap gap-3">
+        <a
+          href={PROMOTION.playlistUrl}
+          target="_blank"
+          rel="noopener"
+          class="glass inline-block rounded-card px-6 py-3 text-sm font-bold text-ink transition-colors hover:border-ink"
+        >
+          過去のプロモーション動画を見る
+        </a>
+        <a
+          href="/contact/"
+          class="inline-block rounded-card bg-ink px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-body"
+        >
+          動画プロモーションを相談する
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {/* ============ 4. メディア記事 ============ */}
+  <section id="media" aria-labelledby="media-heading" class="scroll-mt-24">
+    <div class="mx-auto max-w-site px-4 py-16 sm:px-6 sm:py-20">
+      <p class="font-mono text-xs tracking-widest text-muted uppercase">
+        {sections.media.no} — {sections.media.en}
+      </p>
+      <div class="mt-2 flex flex-wrap items-baseline justify-between gap-4">
+        <h2 id="media-heading" class="text-2xl font-bold sm:text-3xl">メディア</h2>
+        <a href="/articles/" class="nav-link text-sm font-bold text-body hover:text-ink">
+          すべての記事を見る
+        </a>
+      </div>
+      <div class="mt-4 flex flex-wrap gap-2">
+        {
+          CATEGORIES.map((category) => (
+            <a
+              href={`/category/${category.slug}/`}
+              class="rounded-card border border-line bg-surface px-3 py-1.5 text-sm text-body transition-colors hover:border-ink hover:text-ink"
+            >
+              {category.name}
+            </a>
+          ))
+        }
+      </div>
+      <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {latest.map((article) => <ArticleCard article={article} />)}
+      </div>
+    </div>
+  </section>
+
+  {/* ============ 5. お問い合わせ ============ */}
+  <section
+    id="contact"
+    aria-labelledby="contact-heading"
+    class="scroll-mt-24 border-t border-line bg-surface"
+  >
+    <div class="mx-auto max-w-site px-4 py-16 sm:px-6 sm:py-20">
+      <p class="font-mono text-xs tracking-widest text-muted uppercase">
+        {sections.contact.no} — {sections.contact.en}
+      </p>
+      <h2 id="contact-heading" class="mt-2 text-2xl font-bold sm:text-3xl">お問い合わせ</h2>
+      <div class="mt-8 grid gap-4 lg:grid-cols-2">
+        <div class="glass rounded-card p-6">
+          <h3 class="font-bold text-ink">動画プロモーション・案件のご相談</h3>
+          <p class="mt-2 text-sm leading-relaxed text-body">
+            ゲーム紹介動画・まとめ動画での紹介・配信など、内容に応じてご提案します。まずはゲームタイトルと想定内容をお聞かせください。
+          </p>
+        </div>
+        <div class="glass rounded-card p-6">
+          <h3 class="font-bold text-ink">{CONSULTATION.title}</h3>
+          <p class="mt-2 text-sm leading-relaxed text-body">{CONSULTATION.description}</p>
+          <p class="mt-2 text-xs text-muted">{CONSULTATION.note}</p>
+        </div>
+      </div>
+      <div class="mt-8">
+        <a
+          href="/contact/"
+          class="inline-block rounded-card bg-ink px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-body"
+        >
+          お問い合わせフォームへ
+        </a>
+      </div>
+    </div>
+  </section>
 </BaseLayout>

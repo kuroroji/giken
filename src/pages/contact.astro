@@ -3,45 +3,178 @@ import BaseLayout from '@/layouts/BaseLayout.astro';
 import PageHeader from '@/components/PageHeader.astro';
 import Breadcrumbs from '@/components/Breadcrumbs.astro';
 import { CONTACT } from '@/data/site';
+import { CONSULTATION, CONTACT_TOPICS } from '@/data/business';
+
+/**
+ * お問い合わせフォーム。
+ * 【重要】送信機能はまだ接続していない。送信ボタンを押すと
+ * 「準備中」の案内を表示するだけで、どこにも送信されない。
+ * 将来バックエンド（Cloudflare Workersなど）を用意したら、
+ * ページ下部のスクリプト内にある TODO の位置に送信処理を接続する。
+ */
+
+const inputClass =
+  'w-full rounded-card border border-line bg-surface px-3 py-2 text-sm text-body focus:border-ink';
+const labelClass = 'block text-sm font-bold text-ink';
 ---
 
 <BaseLayout
   title="お問い合わせ"
-  description="くろろじ技研へのお問い合わせ方法のご案内です。"
+  description="くろろじ技研へのお問い合わせフォームです。動画プロモーションのご相談、ゲームに関する無料相談、取材・コラボのご連絡を受け付けています。"
 >
-  <PageHeader title="お問い合わせ" labelEn="Contact" />
+  <PageHeader
+    title="お問い合わせ"
+    labelEn="Contact"
+    lede="動画プロモーションのご相談から、ゲームの届け方に関する簡単なご相談まで、お気軽にご連絡ください。"
+  />
   <div class="mx-auto max-w-article px-4 py-8 sm:px-6">
     <Breadcrumbs items={[{ label: 'お問い合わせ' }]} />
 
-    <div class="article-body mt-6">
-      <p>{CONTACT.note}</p>
-      {
-        CONTACT.email && (
-          <p>
-            メールでのご連絡：
-            <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
-          </p>
-        )
-      }
-
-      <h2>お問い合わせの前に</h2>
-      <ul>
-        <li>記事の内容に関するご指摘・訂正のご連絡は歓迎します。</li>
-        <li>製品・サービスのレビュー依頼は、実際に試したうえで率直に書くことをご了承いただける場合のみお受けします。</li>
-        <li>個別の技術サポート（環境構築の代行など）は行っていません。</li>
+    {/* 無料相談の案内 */}
+    <section aria-labelledby="consultation-heading" class="glass mt-6 rounded-card p-6">
+      <h2 id="consultation-heading" class="font-sans text-base font-bold tracking-normal text-ink">
+        {CONSULTATION.title}
+      </h2>
+      <p class="mt-2 text-sm leading-relaxed text-body">{CONSULTATION.description}</p>
+      <p class="mt-3 text-sm font-bold text-ink">相談できるテーマの例</p>
+      <ul class="mt-2 space-y-1.5 text-sm text-body">
+        {
+          CONSULTATION.themes.map((theme) => (
+            <li class="flex gap-2">
+              <span aria-hidden="true" class="mt-2.5 block h-px w-3 shrink-0 bg-ink" />
+              {theme}
+            </li>
+          ))
+        }
       </ul>
-    </div>
+      <p class="mt-3 text-xs text-muted">{CONSULTATION.note}</p>
+    </section>
 
-    <div
-      class="mt-8 rounded-card border border-dashed border-line-strong bg-surface p-6 text-center"
-    >
-      <p class="font-mono text-xs tracking-widest text-muted uppercase">
-        Coming Soon
+    {/* フォーム本体 */}
+    <form id="contact-form" class="mt-8 space-y-5" novalidate>
+      <p class="text-xs text-muted">
+        <span class="font-bold text-ink">*</span> の付いた項目は必須です。それ以外は分かる範囲でご記入ください。
       </p>
-      <p class="mt-2 text-sm font-bold text-ink">お問い合わせフォーム（準備中）</p>
-      <p class="mt-1 text-xs text-muted">
-        フォームからの送信機能は現在開発中です。公開までしばらくお待ちください。
-      </p>
-    </div>
+
+      <div>
+        <label for="company" class={labelClass}>会社名・団体名</label>
+        <input
+          id="company"
+          name="company"
+          type="text"
+          autocomplete="organization"
+          class:list={['mt-1.5', inputClass]}
+        />
+      </div>
+
+      <div>
+        <label for="name" class={labelClass}>お名前 <span aria-hidden="true">*</span></label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          required
+          autocomplete="name"
+          class:list={['mt-1.5', inputClass]}
+        />
+      </div>
+
+      <div>
+        <label for="email" class={labelClass}>メールアドレス <span aria-hidden="true">*</span></label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          required
+          autocomplete="email"
+          class:list={['mt-1.5', inputClass]}
+        />
+      </div>
+
+      <div>
+        <label for="topic" class={labelClass}>相談内容の種類 <span aria-hidden="true">*</span></label>
+        <select id="topic" name="topic" required class:list={['mt-1.5', inputClass]}>
+          <option value="">選択してください</option>
+          {CONTACT_TOPICS.map((topic) => <option value={topic}>{topic}</option>)}
+        </select>
+      </div>
+
+      <div>
+        <label for="game-title" class={labelClass}>ゲームタイトル・サービス名</label>
+        <input id="game-title" name="gameTitle" type="text" class:list={['mt-1.5', inputClass]} />
+      </div>
+
+      <div>
+        <label for="url" class={labelClass}>関連URL（ストアページ・公式サイトなど）</label>
+        <input id="url" name="url" type="url" placeholder="https://" class:list={['mt-1.5', inputClass]} />
+      </div>
+
+      <div class="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label for="timing" class={labelClass}>希望時期</label>
+          <input
+            id="timing"
+            name="timing"
+            type="text"
+            placeholder="例：2026年9月ごろ"
+            class:list={['mt-1.5', inputClass]}
+          />
+        </div>
+        <div>
+          <label for="budget" class={labelClass}>ご予算</label>
+          <input
+            id="budget"
+            name="budget"
+            type="text"
+            placeholder="例：未定・応相談"
+            class:list={['mt-1.5', inputClass]}
+          />
+        </div>
+      </div>
+
+      <div>
+        <label for="detail" class={labelClass}>詳細内容 <span aria-hidden="true">*</span></label>
+        <textarea id="detail" name="detail" rows="6" required class:list={['mt-1.5', inputClass]}
+        ></textarea>
+      </div>
+
+      <div>
+        <button
+          type="submit"
+          class="inline-block rounded-card bg-ink px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-body"
+        >
+          内容を確認する
+        </button>
+      </div>
+
+      {/* 送信未接続の案内（正直に表示する） */}
+      <div
+        id="form-notice"
+        hidden
+        role="status"
+        class="rounded-card border border-line bg-accent-faint px-4 py-3 text-sm text-body"
+      >
+        <p class="font-bold text-ink">入力内容に不備はありません。</p>
+        <p class="mt-1">{CONTACT.note}</p>
+      </div>
+    </form>
   </div>
 </BaseLayout>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement | null;
+  const notice = document.getElementById('form-notice');
+
+  form?.addEventListener('submit', (event) => {
+    event.preventDefault();
+    // novalidate を付けているため、ここで手動でネイティブ検証を走らせる
+    if (!form.reportValidity()) {
+      notice?.setAttribute('hidden', '');
+      return;
+    }
+    // TODO: 送信先（Cloudflare Workers等）ができたら、ここで fetch により送信する。
+    // 現在は送信機能が未接続であることを、隠さずユーザーに案内する。
+    notice?.removeAttribute('hidden');
+    notice?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+</script>

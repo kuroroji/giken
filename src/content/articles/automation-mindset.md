@@ -2,7 +2,7 @@
 title: AIで面倒な作業を自動化するときの考え方【プログラミング不要の範囲から】
 description: 「自動化したいけど何から手を付ければいいか分からない」人向けに、作業の分解の仕方と、自動化する・しないの判断基準を、動画制作の実例で解説します。
 publishedAt: 2026-03-29
-category: ai-automation
+category: youtube-guide
 tags: [自動化, 考え方, 効率化]
 sourceLinks: []
 ---
@@ -60,4 +60,4 @@ sourceLinks: []
 - チャンネルの個性が出る作業は残す
 - 小さく作って、ダメならすぐ捨てる
 
-具体的なツールの導入記録は、[AI・自動化カテゴリー](/category/ai-automation/)に随時追加していきます。
+具体的なツールの導入記録は、[YouTubeの始め方カテゴリー](/category/youtube-guide/)に随時追加していきます。

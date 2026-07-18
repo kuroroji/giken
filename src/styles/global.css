@@ -8,21 +8,22 @@
        --container-site → max-w-site
    ============================================================ */
 @theme {
-  /* --- 色 --- */
-  --color-paper: #f7f7f5;          /* ページ背景（ごく薄い暖色グレー） */
+  /* --- 色（モノクロ構成：白ベースに黒を効かせる） --- */
+  --color-paper: #f8f8f7;          /* ページ背景（ごく薄いグレー） */
   --color-surface: #ffffff;        /* カード・パネルの背景 */
-  --color-ink: #1c1c1e;            /* 見出し（黒に近いチャコール） */
-  --color-body: #3a3a40;           /* 本文 */
-  --color-muted: #66666e;          /* 補足テキスト・日付など */
-  --color-line: #e2e2df;           /* 境界線（標準） */
-  --color-line-strong: #c8c8c3;    /* 境界線（強調） */
-  --color-accent: #f59e0b;         /* アクセント（アンバー）: 装飾・帯 */
-  --color-accent-strong: #a16207;  /* アクセント（濃）: リンク文字に使える濃さ */
-  --color-accent-soft: #fef3c7;    /* アクセント（淡）: バッジ背景など */
-  --color-accent-faint: #fffbeb;   /* アクセント（極淡）: 注記ボックス背景 */
+  --color-ink: #111111;            /* 見出し（黒） */
+  --color-body: #333336;           /* 本文 */
+  --color-muted: #6f6f74;          /* 補足テキスト・日付など */
+  --color-line: #e6e6e4;           /* 境界線（標準） */
+  --color-line-strong: #b9b9b6;    /* 境界線（強調） */
+  --color-accent: #111111;         /* アクセント（黒）: 装飾・帯 */
+  --color-accent-strong: #111111;  /* アクセント（濃）: リンク文字 */
+  --color-accent-soft: #ececea;    /* アクセント（淡）: バッジ背景など */
+  --color-accent-faint: #f4f4f2;   /* アクセント（極淡）: 注記ボックス背景 */
 
   /* --- フォント --- */
   --font-sans: system-ui, -apple-system, "Segoe UI", "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic UI", Meiryo, sans-serif;
+  --font-serif: "Hiragino Mincho ProN", "Yu Mincho", "Noto Serif JP", "BIZ UDMincho", serif;
   --font-mono: ui-monospace, "Cascadia Mono", Consolas, Menlo, monospace;
 
   /* --- 幅 --- */
@@ -52,10 +53,21 @@
     line-height: 1.4;
   }
 
+  /* 大見出しは明朝体でシックに（h3以下と本文は読みやすいゴシックのまま） */
+  h1, h2 {
+    font-family: var(--font-serif);
+    letter-spacing: 0.03em;
+  }
+
   /* キーボード操作時のフォーカス表示（消さない） */
   :focus-visible {
     outline: 2px solid var(--color-accent-strong);
     outline-offset: 2px;
+  }
+
+  /* 追従ヘッダーの高さぶん、ページ内リンク（目次など）の着地位置を下げる */
+  [id] {
+    scroll-margin-top: 6.5rem;
   }
 
   ::selection {
@@ -180,4 +192,124 @@
   border: none;
   border-top: 1px solid var(--color-line);
   margin-top: 2.5em;
+}
+
+/* ============================================================
+   ガラス風パネル（すりガラス）
+   使い方: class="glass" を付けるだけ。角丸は別途 rounded-* を付ける。
+   ============================================================ */
+@utility glass {
+  background-color: color-mix(in srgb, var(--color-surface) 62%, transparent);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border: 1px solid color-mix(in srgb, #ffffff 70%, var(--color-line));
+  box-shadow: 0 8px 30px rgb(17 17 17 / 0.05);
+}
+
+/* ============================================================
+   ヘッダー・ナビゲーションのアニメーション（CSSのみ・軽量）
+   ============================================================ */
+@keyframes header-drop {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.site-header {
+  animation: header-drop 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* ナビリンク：下線が左から右へスッと伸びる */
+.nav-link {
+  position: relative;
+  padding-bottom: 2px;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background-color: var(--color-ink);
+  transform: scaleX(0);
+  transform-origin: right center;
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after,
+.nav-link[aria-current='page']::after {
+  transform: scaleX(1);
+  transform-origin: left center;
+}
+
+/* ============================================================
+   ファーストビューの背景と装飾
+   ============================================================ */
+/* 薄い方眼＋にじむ影：ガラスパネルのぼかしが活きる下地 */
+.hero-bg {
+  background-image:
+    radial-gradient(42rem 42rem at 88% 8%, rgb(17 17 17 / 0.05), transparent 62%),
+    radial-gradient(34rem 34rem at 4% 90%, rgb(17 17 17 / 0.04), transparent 62%),
+    linear-gradient(to right, rgb(17 17 17 / 0.035) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(17 17 17 / 0.035) 1px, transparent 1px);
+  background-size:
+    auto,
+    auto,
+    2.5rem 2.5rem,
+    2.5rem 2.5rem;
+}
+
+/* 浮遊する装飾（ゆっくり上下） */
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+.float-slow {
+  animation: float-y 7s ease-in-out infinite;
+}
+
+.float-slower {
+  animation: float-y 10s ease-in-out infinite reverse;
+}
+
+/* スクロール誘導：縦線の中を点が流れる */
+@keyframes scroll-hint {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(400%);
+  }
+}
+
+.scroll-hint-dot {
+  animation: scroll-hint 1.8s ease-in-out infinite;
+}
+
+/* 動きを控えたい設定のユーザーにはアニメーションを止める */
+@media (prefers-reduced-motion: reduce) {
+  .site-header,
+  .float-slow,
+  .float-slower,
+  .scroll-hint-dot {
+    animation: none;
+  }
+
+  .nav-link::after {
+    transition: none;
+  }
 }

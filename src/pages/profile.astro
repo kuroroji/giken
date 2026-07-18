@@ -38,12 +38,13 @@ const jsonLd = [
     <Breadcrumbs items={[{ label: 'プロフィール' }]} />
 
     <div class="mt-6 flex items-center gap-5">
-      <span
-        aria-hidden="true"
-        class="flex size-20 shrink-0 items-center justify-center rounded-full border border-line bg-accent-soft text-3xl font-bold text-ink"
-      >
-        {AUTHOR.name.charAt(0)}
-      </span>
+      <img
+        src={AUTHOR.avatar}
+        alt="くろろじのプロフィールイラスト"
+        width="720"
+        height="720"
+        class="size-20 shrink-0 rounded-full border border-line object-cover object-top"
+      />
       <div>
         <p class="text-xl font-bold text-ink">{AUTHOR.name}</p>
         <p class="mt-1 text-sm text-muted">{AUTHOR.role}</p>
@@ -55,20 +56,19 @@ const jsonLd = [
 
       <h2>このサイトについて</h2>
       <p>
-        「{SITE.name}」は、{AUTHOR.name}が個人で運営する技術メディアです。
+        「{SITE.name}」は、{AUTHOR.name}の活動拠点となる公式サイトです。
         {SITE.description}
       </p>
       <p>
-        単なる商品紹介ではなく、「実際に導入して、何が楽になったか」を軸に記事を書いています。うまくいかなかった検証も含めて記録するのが、このサイトの方針です。
+        視聴者の方にはYouTube動画と記事を、ゲーム会社・パブリッシャーの方には動画プロモーションのご相談窓口を、これからゲームを届けたい開発者の方には無料相談の入口を用意しています。
       </p>
 
-      <h2>主に扱うテーマ</h2>
+      <h2>主な活動</h2>
       <ul>
-        <li>AIツールの活用と業務自動化</li>
-        <li>動画制作・YouTube運営の効率化</li>
-        <li>配信・録画環境の構築</li>
-        <li>PC・周辺機器、ゲーム環境</li>
-        <li>個人クリエイター向けサービスと自作ツール</li>
+        <li>YouTubeチャンネル「くろろじちゃんねる」の運営（ゲーム発掘・序盤実況・おすすめまとめ）</li>
+        <li>ゲーム会社・パブリッシャー向けの動画プロモーション</li>
+        <li>ゲーム・YouTube運営に関する記事メディアの執筆</li>
+        <li>ゲームの届け方に関する相談対応</li>
       </ul>
 
       {

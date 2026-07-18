@@ -2,7 +2,7 @@
 title: Steamのゲームをテレビで遊ぶ環境を整えた話
 description: PCゲームをリビングのテレビでソファから遊びたい。Steam Linkやコントローラー設定など、実際に構築した環境と、つまずいたポイントを紹介します。
 publishedAt: 2026-04-18
-category: gaming-setup
+category: game
 tags: [Steam, ゲーム環境, リビングPC]
 affiliateDisclosure: true
 sourceLinks:

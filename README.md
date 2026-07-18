@@ -72,8 +72,7 @@ tags: [タグ1, タグ2]
 ```
 
 `category` に使える値は `src/data/categories.ts` にある slug です
-（`ai-automation` / `video-production` / `streaming-recording` / `pc-gear` /
-`gaming-setup` / `solo-business` / `diy-tools` / `lab-report`）。
+（`game`＝ゲーム / `youtube-guide`＝YouTubeの始め方）。
 
 ### 使える追加項目（任意）
 
@@ -135,6 +134,9 @@ draft: true
 ### サイト名・説明文を変える場所
 
 - サイト名・キャッチコピー・説明文・著者情報 → `src/data/site.ts`
+- チャンネル紹介・動画プロモーション・無料相談・問い合わせ種別の文言 → `src/data/business.ts`
+- YouTubeチャンネルのURL → `src/data/business.ts` の `CHANNEL.url`
+- プロフィール画像 → `public/images/profile.png` を差し替える
 - 本番のURL（ドメイン） → `astro.config.mjs` の `site`
 
 ### 機材・ツール一覧を変える場所

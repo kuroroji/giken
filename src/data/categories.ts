@@ -2,47 +2,21 @@
  * カテゴリーの一元管理。
  * カテゴリーを追加・変更するときは、この配列を編集するだけでよい。
  * slug はURLに使われるので英数字とハイフンのみ。
+ *
+ * 【方針】初期は「ゲーム」「YouTubeの始め方」の2つだけに絞る。
+ * AI・動画編集・配信・自作ツールなどの話題は「YouTubeの始め方」に含める。
+ * 記事が増えてきたら、ここに行を足すだけでカテゴリーを分離できる。
  */
 export const CATEGORIES = [
   {
-    slug: 'ai-automation',
-    name: 'AI・自動化',
-    description: 'AIツールの活用法と、面倒な作業を自動化する仕組みづくり。実際に使って役立ったものだけを記録します。',
+    slug: 'game',
+    name: 'ゲーム',
+    description: '実際に遊んだゲームの紹介、新作の序盤感想、おすすめまとめ、ジャンル解説など。YouTube動画の補足記事もここに載せます。',
   },
   {
-    slug: 'video-production',
-    name: '動画・YouTube制作',
-    description: '動画編集、サムネイル、台本づくりなど、YouTube運営に必要な制作作業の効率化とノウハウ。',
-  },
-  {
-    slug: 'streaming-recording',
-    name: '配信・録画',
-    description: 'OBSをはじめとする配信・録画環境の構築、設定、トラブル対応の記録。',
-  },
-  {
-    slug: 'pc-gear',
-    name: 'PC・機材',
-    description: 'PC本体、マイク、キャプチャーボードなど、制作を支えるハードウェアの選定と使用感。',
-  },
-  {
-    slug: 'gaming-setup',
-    name: 'ゲーム環境',
-    description: 'ゲームを快適に遊び、録るための環境づくり。SteamやコンソールとPCの連携なども扱います。',
-  },
-  {
-    slug: 'solo-business',
-    name: '個人事業・サービス',
-    description: '個人クリエイター・個人事業主に役立つサービスやお金まわりの話。',
-  },
-  {
-    slug: 'diy-tools',
-    name: '自作ツール',
-    description: '既製品で足りないところを埋めるための、小さな自作ツールやスクリプトの紹介。',
-  },
-  {
-    slug: 'lab-report',
-    name: '技研レポート',
-    description: '検証の記録、失敗談、運営の振り返りなど。くろろじ技研の活動報告です。',
+    slug: 'youtube-guide',
+    name: 'YouTubeの始め方',
+    description: 'チャンネルの始め方、OBSの設定、録画・配信、動画編集、サムネイル制作、AIを使った制作効率化まで。一人でゲームYouTubeを運営するための実践記録です。',
   },
 ] as const;
 

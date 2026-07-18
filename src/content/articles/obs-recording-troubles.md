@@ -2,7 +2,7 @@
 title: OBS録画で実際に困ったこと3つと解決までの記録
 description: 録画ファイルの破損、音ズレ、カクつき。OBSでゲームを録画していて実際に遭遇したトラブル3つについて、原因の切り分けと解決までの過程を記録します。
 publishedAt: 2026-05-30
-category: streaming-recording
+category: youtube-guide
 tags: [OBS, 録画, トラブル対応]
 sourceLinks:
   - label: OBS Studio 公式サイト
