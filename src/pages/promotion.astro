@@ -18,24 +18,21 @@ const description =
   {/* ファーストビュー(黒): トップとの反転でLPだと分かる導入 */}
   <section class="relative overflow-hidden border-b border-line bg-ink">
     <div class="relative mx-auto max-w-site px-4 py-10 sm:px-6 sm:py-16">
-      <div class="grid items-end gap-8 lg:grid-cols-[1fr_16rem]">
+      <div class="grid items-end gap-8 lg:grid-cols-[1fr_20rem]">
         <div>
-          <p class="font-mono text-xs tracking-widest text-white/50 uppercase">
-            Video Promotion
-          </p>
           {/* モバイルは丸くくり抜いた顔アイコンでコンパクトに */}
           <img
             src={AUTHOR.avatar}
             alt="くろろじ"
             width="720"
             height="720"
-            class="mt-4 size-20 rounded-full border border-white/30 object-cover object-top lg:hidden"
+            class="size-20 rounded-full border border-white/30 object-cover object-top lg:hidden"
           />
-          <h1 class="mt-4 font-serif text-3xl leading-snug font-bold text-white sm:text-5xl">
+          <h1 class="mt-4 font-serif text-2xl leading-snug font-bold text-white sm:text-5xl">
             あなたのゲームを、<br />楽しみながら広めます。
           </h1>
           <p class="mt-5 max-w-2xl text-sm leading-relaxed text-white/80 sm:text-base">
-            実況・紹介動画・まとめ企画など、タイトルの特徴に合わせたプロモーションをご提案します。「宣伝します」よりも「おすすめのゲームとして、僕自身が楽しみながら紹介する」。それがくろろじのやり方です。
+            実況・紹介動画・まとめ企画など、タイトルの特徴に合わせたプロモーションをご提案します。おすすめのゲームとして、楽しみながら紹介させていただく——そんな形で、作品の魅力をプレイヤーに届けます。
           </p>
           <div class="mt-7 flex max-w-md flex-col gap-3 sm:max-w-none sm:flex-row sm:items-center">
             <Button href="#contact-form" variant="light" class="w-full sm:w-auto"
@@ -51,7 +48,8 @@ const description =
             <li class="rounded-full border border-white/25 px-3 py-1 text-white/85">納品 最短翌日〜1週間</li>
           </ul>
         </div>
-        <div class="hidden lg:block">
+        {/* 立ち絵はセクション下端に接地させ、大きめに表示 */}
+        <div class="hidden self-end lg:block lg:-mb-16">
           <img
             src={AUTHOR.standingImage}
             alt="くろろじのイラスト"
@@ -200,19 +198,22 @@ const description =
       </p>
       <div class="mt-7 grid gap-5 sm:grid-cols-3">
         <div class="glass rounded-card p-5">
-          <h3 class="font-bold text-ink">チュートリアルの分かりやすさ</h3>
+          <p class="text-xs font-bold text-muted">ポイント1</p>
+          <h3 class="mt-1 font-bold text-ink">チュートリアルの分かりやすさ</h3>
           <p class="mt-2 text-sm leading-relaxed text-body">
             序盤で魅力が伝わるか、初見プレイヤーがつまずくポイントはどこかを、実際に遊んで共有します。
           </p>
         </div>
         <div class="glass rounded-card p-5">
-          <h3 class="font-bold text-ink">YouTubeでウケる傾向</h3>
+          <p class="text-xs font-bold text-muted">ポイント2</p>
+          <h3 class="mt-1 font-bold text-ink">YouTubeでウケる傾向</h3>
           <p class="mt-2 text-sm leading-relaxed text-body">
             実況・配信で紹介されやすいゲームの傾向や、動画映えする要素についてお伝えします。
           </p>
         </div>
         <div class="glass rounded-card p-5">
-          <h3 class="font-bold text-ink">ゲームへのフィードバック</h3>
+          <p class="text-xs font-bold text-muted">ポイント3</p>
+          <h3 class="mt-1 font-bold text-ink">ゲームへのフィードバック</h3>
           <p class="mt-2 text-sm leading-relaxed text-body">
             ゲーム序盤を数多く遊んできた経験から、序盤のゲームプレイ改善につながる率直なフィードバックをお返しします。「誰に刺さりそうか」の視点も添えて。
           </p>
