@@ -3,6 +3,7 @@ import '@/styles/global.css';
 import SeoHead from '@/components/SeoHead.astro';
 import Header from '@/components/Header.astro';
 import Footer from '@/components/Footer.astro';
+import FloatingContact from '@/components/FloatingContact.astro';
 
 interface Props {
   title: string;
@@ -34,5 +35,6 @@ const props = Astro.props;
       <slot />
     </main>
     <Footer />
+    <FloatingContact />
   </body>
 </html>

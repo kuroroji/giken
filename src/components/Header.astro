@@ -7,6 +7,7 @@ const navItems = [
   { label: 'チャンネル', href: '/#channel' },
   { label: '動画プロモーション', href: '/#promotion' },
   { label: 'コラム', href: '/articles/' },
+  { label: 'プロフィール', href: '/profile/' },
 ];
 
 const currentPath = Astro.url.pathname;
@@ -18,33 +19,95 @@ const isActive = (href: string) => {
 ---
 
 {/* 浮遊するピル型ガラスヘッダー：読み込み時にスッと降りてくる */}
-<header class="site-header sticky top-0 z-40 px-3 pt-3 sm:px-4">
+{/*
+  レイアウトは2段階のみ:
+  〜1023px: 2段（ロゴ行+メニュー行）。お問い合わせは右下のフローティングボタンに任せる
+  1024px〜: 1段（ロゴ/メニュー/お問い合わせ）。中間幅でボタンだけが折り返して孤立するのを防ぐ
+*/}
+<header class="site-header sticky top-0 z-40 px-2 pt-2 lg:px-4 lg:pt-3">
   <div
-    class="glass mx-auto flex max-w-site flex-wrap items-center justify-between gap-x-6 gap-y-1.5 rounded-[1.75rem] px-5 py-2.5 sm:rounded-full sm:px-7"
+    class="glass mx-auto flex max-w-site flex-wrap items-center gap-x-6 gap-y-0.5 rounded-[1.75rem] px-4 py-2 lg:rounded-full lg:px-7 lg:py-2.5"
   >
-    <a href="/" class="inline-block">
+    <a href="/" class="order-1 inline-block">
       <Logo />
     </a>
-    <div class="flex flex-wrap items-center gap-x-5 gap-y-1.5">
-      <nav aria-label="メインメニュー">
-        <ul class="flex flex-wrap gap-x-5 gap-y-1 text-sm">
-          {navItems.map((item) => (
-            <li>
-              <a
-                href={item.href}
-                aria-current={isActive(item.href) ? 'page' : undefined}
-                class:list={[
-                  'nav-link inline-block py-1 transition-colors',
-                  isActive(item.href) ? 'font-bold text-ink' : 'text-body hover:text-ink',
-                ]}
-              >
-                {item.label}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
+
+    {/* 〜1023px: 2段目全幅の横スクロールメニュー（左寄せ） / lg以上: 1段の通常メニュー */}
+    <nav
+      aria-label="メインメニュー"
+      class="nav-scroll order-3 w-full overflow-x-auto lg:order-2 lg:ml-auto lg:w-auto lg:overflow-visible"
+    >
+      <ul class="nav-hint flex w-max flex-nowrap gap-x-4 text-sm lg:w-auto lg:gap-x-5">
+        {navItems.map((item) => (
+          <li class="shrink-0">
+            <a
+              href={item.href}
+              aria-current={isActive(item.href) ? 'page' : undefined}
+              class:list={[
+                'nav-link inline-block py-1 whitespace-nowrap transition-colors',
+                isActive(item.href) ? 'font-bold text-ink' : 'text-body hover:text-ink',
+              ]}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    {/* 〜1023pxではヘッダーから外し、右下のフローティングボタン（FloatingContact）に任せる */}
+    <span class="order-2 hidden lg:order-3 lg:inline-block">
       <Button href="/contact/" variant="dark" size="sm">お問い合わせ</Button>
-    </div>
+    </span>
   </div>
 </header>
+
+<script>
+  const nav = document.querySelector<HTMLElement>('.nav-scroll');
+  const list = document.querySelector<HTMLElement>('.nav-hint');
+
+  /** メニューがはっきりはみ出しているときだけ、スライド案内アニメーションを再生する */
+  if (nav && list && nav.scrollWidth > nav.clientWidth + 16) {
+    list.classList.add('nav-hint-run');
+  }
+
+  /** マウスでもドラッグで横スクロールできるようにする（タッチは標準挙動のまま） */
+  if (nav) {
+    let dragging = false;
+    let dragged = false;
+    let startX = 0;
+    let startScroll = 0;
+
+    nav.addEventListener('pointerdown', (event) => {
+      if (event.pointerType !== 'mouse') return;
+      dragging = true;
+      dragged = false;
+      startX = event.clientX;
+      startScroll = nav.scrollLeft;
+    });
+
+    window.addEventListener('pointermove', (event) => {
+      if (!dragging) return;
+      const delta = event.clientX - startX;
+      if (Math.abs(delta) > 4) dragged = true;
+      nav.scrollLeft = startScroll - delta;
+    });
+
+    window.addEventListener('pointerup', () => {
+      dragging = false;
+    });
+
+    /** ドラッグ直後のクリックはリンク遷移として扱わない */
+    nav.addEventListener(
+      'click',
+      (event) => {
+        if (dragged) {
+          event.preventDefault();
+          event.stopPropagation();
+          dragged = false;
+        }
+      },
+      true,
+    );
+  }
+</script>

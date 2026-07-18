@@ -2,6 +2,7 @@
 /**
  * くろろじ技研のロゴ（明朝体のテキスト表記）。
  * フッターなど黒背景では tone="light" を指定する。
+ * モバイルでは英字表記を和名の下に回り込ませ、カラム落ちを防ぐ。
  */
 import { SITE } from '@/data/site';
 
@@ -12,16 +13,16 @@ interface Props {
 const { tone = 'dark' } = Astro.props;
 ---
 
-<span class="inline-flex items-baseline gap-2">
+<span class="inline-flex flex-col sm:flex-row sm:items-baseline sm:gap-2">
   <span
     class:list={[
-      'font-serif text-lg font-bold tracking-wide sm:text-xl',
+      'font-serif text-lg leading-tight font-bold tracking-wide sm:text-xl',
       tone === 'light' ? 'text-white' : 'text-ink',
     ]}>{SITE.name}</span
   >
   <span
     class:list={[
-      'font-mono text-[0.5625rem] tracking-[0.22em] uppercase',
+      'font-mono text-[0.5rem] tracking-[0.22em] uppercase sm:text-[0.5625rem]',
       tone === 'light' ? 'text-line-strong' : 'text-muted',
     ]}>{SITE.nameEn}</span
   >

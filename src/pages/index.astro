@@ -66,21 +66,32 @@ const bubbles = [
           <p class="font-mono text-xs tracking-widest text-muted uppercase">
             Game Discovery / YouTube / Promotion
           </p>
-          <h1 class="mt-4 text-4xl leading-[1.2] font-bold text-ink sm:text-6xl">
+          {/* 狭い画面では9文字の行が収まるようvw連動で縮む（380px未満の折り返し対策） */}
+          <h1 class="mt-4 text-[min(9.4vw,2.25rem)] leading-[1.2] font-bold text-ink sm:text-6xl">
             {SITE.taglineLines.map((line) => <span class="block">{line}</span>)}
           </h1>
           <p class="mt-5 max-w-xl text-sm leading-relaxed text-body sm:text-base">
             {SITE.description}
           </p>
-          <div class="mt-7 flex flex-wrap items-center gap-3">
-            <Button href={CHANNEL.url} variant="dark" external>YouTubeを見る</Button>
-            <Button href="/contact/" variant="glass">動画案件を相談する</Button>
-            <a
-              href="/articles/"
-              class="nav-link inline-block py-2 text-sm font-bold text-body hover:text-ink"
+          {/*
+            CTAの3段階レイアウト:
+            〜399px: 縦積み1カラム / 400px〜639px: 上2カラム+記事を読む全幅 / sm以上: 横並び
+          */}
+          <div
+            class="mt-7 grid grid-cols-1 gap-3 min-[400px]:grid-cols-2 sm:flex sm:flex-wrap sm:items-center"
+          >
+            <Button href={CHANNEL.url} variant="dark" external class="w-full sm:w-auto"
+              >YouTubeを見る</Button
             >
-              記事を読む
-            </a>
+            <Button href="/contact/" variant="glass" class="w-full sm:w-auto"
+              >動画案件を相談する</Button
+            >
+            <Button
+              href="/articles/"
+              variant="glass"
+              class="w-full min-[400px]:col-span-2 sm:w-auto"
+              >記事を読む</Button
+            >
           </div>
           {/* 信頼の裏付け（ファーストビュー内に実績を明示） */}
           <p class="mt-4 text-xs text-muted">
@@ -266,7 +277,7 @@ const bubbles = [
         }
       </ul>
 
-      <div class="mt-10 flex flex-wrap gap-3">
+      <div class="mt-10 flex flex-wrap justify-center gap-3 sm:justify-start">
         <Button href={PROMOTION.playlistUrl} variant="glass" external>
           過去のプロモーション動画を見る
         </Button>
@@ -357,7 +368,7 @@ const bubbles = [
           <p class="mt-2 text-xs text-muted">{CONSULTATION.note}</p>
         </div>
       </div>
-      <div class="mt-8">
+      <div class="mt-8 text-center sm:text-left">
         <Button href="/contact/" variant="dark">お問い合わせフォームへ</Button>
       </div>
     </div>

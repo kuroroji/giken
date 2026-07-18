@@ -14,6 +14,8 @@ interface Props {
   size?: 'md' | 'sm';
   external?: boolean;
   type?: 'button' | 'submit';
+  /** 幅指定などの追加クラス（例: "w-full sm:w-auto"） */
+  class?: string;
 }
 
 const {
@@ -22,6 +24,7 @@ const {
   size = 'md',
   external = false,
   type = 'button',
+  class: extraClass = '',
 } = Astro.props;
 
 const base =
@@ -36,7 +39,7 @@ const variants = {
     'border border-white/70 bg-surface/60 text-ink shadow-[0_8px_30px_rgb(17_17_17/0.05)] hover:border-ink',
   light: 'border border-white/40 bg-white/85 text-ink hover:bg-white',
 };
-const classes = [base, sizes[size], variants[variant]];
+const classes = [base, sizes[size], variants[variant], extraClass];
 ---
 
 {
