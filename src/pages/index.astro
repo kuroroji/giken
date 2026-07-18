@@ -35,32 +35,37 @@ const sections = {
 ---
 
 <BaseLayout title={SITE.name} description={SITE.description} isHome jsonLd={jsonLd}>
-  {/* ============ 1. ファーストビュー ============ */}
+  {/* ============ 1. ファーストビュー（白） ============ */}
   <section class="hero-bg relative overflow-hidden border-b border-line">
-    {/* 浮遊する装飾（モノクロ・CSSのみ） */}
+    {/* ダイナミックな装飾（モノクロ・CSSのみ） */}
     <div aria-hidden="true" class="pointer-events-none absolute inset-0">
-      <span class="float-slow absolute top-[12%] left-[6%] size-3 rounded-full bg-ink/15"></span>
-      <span class="float-slower absolute top-[22%] right-[12%] size-16 rounded-full border border-line-strong/60"></span>
-      <span class="float-slow absolute bottom-[24%] left-[14%] size-8 rotate-12 border border-line-strong/50"></span>
-      <span class="float-slower absolute right-[6%] bottom-[16%] size-2 rounded-full bg-ink/20"></span>
-      <span class="float-slow absolute top-[58%] left-[46%] hidden size-2 rounded-full bg-ink/10 lg:block"></span>
+      {/* 画面外にはみ出す大リング */}
+      <span
+        class="spin-slow absolute -top-32 -right-32 size-[30rem] rounded-full border border-line-strong/70 border-t-ink/40 sm:size-[36rem]"
+      ></span>
+      <span class="absolute -bottom-24 -left-24 size-[22rem] rounded-full border border-line-strong/50"></span>
+      {/* 斜めライン */}
+      <span class="absolute bottom-[26%] left-[-6%] h-px w-[46%] -rotate-6 bg-line-strong/70"></span>
+      {/* 浮遊するドット・図形 */}
+      <span class="float-slow absolute top-[16%] left-[7%] size-3 rounded-full bg-ink/20"></span>
+      <span class="float-slower absolute top-[64%] right-[9%] size-2 rounded-full bg-ink/25"></span>
+      <span class="float-slow absolute bottom-[18%] left-[18%] size-7 rotate-12 border border-line-strong/70"></span>
+      <span class="float-slower absolute top-[30%] left-[44%] hidden size-2 rounded-full bg-ink/10 lg:block"></span>
     </div>
 
-    <div
-      class="relative mx-auto flex min-h-[calc(100svh-8rem)] max-w-site flex-col justify-center px-4 py-16 sm:px-6 lg:min-h-[42rem]"
-    >
-      <div class="grid items-center gap-12 lg:grid-cols-[1fr_21rem] lg:gap-16">
+    <div class="relative mx-auto max-w-site px-4 py-12 sm:px-6 sm:py-16 lg:py-20">
+      <div class="grid items-center gap-8 lg:grid-cols-[1fr_19rem] lg:gap-14">
         <div>
           <p class="font-mono text-xs tracking-widest text-muted uppercase">
             Game Discovery / YouTube / Promotion
           </p>
-          <h1 class="mt-5 text-4xl leading-tight font-bold text-ink sm:text-5xl lg:text-6xl">
-            {SITE.tagline}
+          <h1 class="mt-4 text-4xl leading-[1.15] font-extrabold text-ink sm:text-6xl">
+            {SITE.taglineLines.map((line) => <span class="block">{line}</span>)}
           </h1>
-          <p class="mt-6 max-w-xl text-sm leading-relaxed text-body sm:text-base">
+          <p class="mt-5 max-w-xl text-sm leading-relaxed text-body sm:text-base">
             {SITE.description}
           </p>
-          <div class="mt-8 flex flex-wrap items-center gap-3">
+          <div class="mt-7 flex flex-wrap items-center gap-3">
             <a
               href={CHANNEL.url}
               target="_blank"
@@ -85,53 +90,45 @@ const sections = {
         </div>
 
         {/* プロフィール（ガラスフレーム） */}
-        <div class="relative mx-auto w-full max-w-xs lg:max-w-none">
-          <div class="glass rounded-2xl p-3">
-            <img
-              src={AUTHOR.avatar}
-              alt="くろろじのプロフィールイラスト"
-              width="720"
-              height="720"
-              class="aspect-square w-full rounded-xl object-cover object-top"
-            />
-          </div>
-          <div class="glass absolute -bottom-4 left-1/2 -translate-x-1/2 rounded-card px-4 py-2 text-center whitespace-nowrap">
-            <p class="text-sm font-bold text-ink">{AUTHOR.name}</p>
-            <p class="font-mono text-[0.625rem] tracking-widest text-muted uppercase">
-              Game Discovery YouTuber
-            </p>
-          </div>
+        <div class="glass mx-auto w-full max-w-[13rem] rounded-2xl p-2.5 sm:max-w-[15rem] lg:max-w-none">
+          <img
+            src={AUTHOR.avatar}
+            alt="くろろじのプロフィールイラスト"
+            width="720"
+            height="720"
+            class="aspect-square w-full rounded-xl object-cover object-top"
+          />
         </div>
       </div>
 
       {/* スクロール誘導 */}
-      <div aria-hidden="true" class="mt-14 flex flex-col items-center gap-2 lg:mt-16">
+      <div aria-hidden="true" class="mt-8 flex flex-col items-center gap-1.5 lg:mt-10">
         <span class="font-mono text-[0.625rem] tracking-widest text-muted uppercase">Scroll</span>
-        <span class="relative block h-10 w-px overflow-hidden bg-line-strong">
+        <span class="relative block h-8 w-px overflow-hidden bg-line-strong">
           <span class="scroll-hint-dot absolute top-0 left-1/2 h-3 w-px -translate-x-1/2 bg-ink"></span>
         </span>
       </div>
     </div>
   </section>
 
-  {/* ============ 2. くろろじちゃんねる紹介 ============ */}
-  <section id="channel" aria-labelledby="channel-heading" class="scroll-mt-24">
+  {/* ============ 2. くろろじちゃんねる紹介（黒） ============ */}
+  <section id="channel" aria-labelledby="channel-heading" class="scroll-mt-24 bg-ink text-paper">
     <div class="mx-auto max-w-site px-4 py-16 sm:px-6 sm:py-20">
-      <p class="font-mono text-xs tracking-widest text-muted uppercase">
+      <p class="font-mono text-xs tracking-widest text-line-strong uppercase">
         {sections.channel.no} — {sections.channel.en}
       </p>
-      <h2 id="channel-heading" class="mt-2 text-2xl font-bold sm:text-3xl">
+      <h2 id="channel-heading" class="mt-2 text-2xl font-extrabold text-white sm:text-3xl">
         {CHANNEL.name}
       </h2>
-      <p class="mt-4 max-w-2xl text-sm leading-relaxed text-body sm:text-base">
+      <p class="mt-4 max-w-2xl text-sm leading-relaxed text-line-strong sm:text-base">
         {CHANNEL.description}
       </p>
       <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {
           CHANNEL.features.map((feature) => (
-            <div class="glass rounded-card p-5">
-              <h3 class="text-sm font-bold text-ink">{feature.title}</h3>
-              <p class="mt-2 text-xs leading-relaxed text-muted">{feature.body}</p>
+            <div class="glass-dark rounded-card p-5">
+              <h3 class="text-sm font-bold text-white">{feature.title}</h3>
+              <p class="mt-2 text-xs leading-relaxed text-line-strong">{feature.body}</p>
             </div>
           ))
         }
@@ -141,7 +138,7 @@ const sections = {
           href={CHANNEL.url}
           target="_blank"
           rel="noopener"
-          class="inline-block rounded-card bg-ink px-6 py-3 text-sm font-bold text-white transition-colors hover:bg-body"
+          class="inline-block rounded-card bg-white px-6 py-3 text-sm font-bold text-ink transition-colors hover:bg-line"
         >
           チャンネルを見る
         </a>
@@ -149,17 +146,13 @@ const sections = {
     </div>
   </section>
 
-  {/* ============ 3. 動画プロモーション・案件実績 ============ */}
-  <section
-    id="promotion"
-    aria-labelledby="promotion-heading"
-    class="scroll-mt-24 border-y border-line bg-surface"
-  >
+  {/* ============ 3. 動画プロモーション・案件実績（白） ============ */}
+  <section id="promotion" aria-labelledby="promotion-heading" class="scroll-mt-24 bg-surface">
     <div class="mx-auto max-w-site px-4 py-16 sm:px-6 sm:py-20">
       <p class="font-mono text-xs tracking-widest text-muted uppercase">
         {sections.promotion.no} — {sections.promotion.en}
       </p>
-      <h2 id="promotion-heading" class="mt-2 text-2xl font-bold sm:text-3xl">
+      <h2 id="promotion-heading" class="mt-2 text-2xl font-extrabold sm:text-3xl">
         動画プロモーション
       </h2>
       <p class="mt-4 max-w-2xl text-sm leading-relaxed text-body sm:text-base">
@@ -230,15 +223,18 @@ const sections = {
     </div>
   </section>
 
-  {/* ============ 4. メディア記事 ============ */}
-  <section id="media" aria-labelledby="media-heading" class="scroll-mt-24">
+  {/* ============ 4. メディア記事（黒） ============ */}
+  <section id="media" aria-labelledby="media-heading" class="scroll-mt-24 bg-ink text-paper">
     <div class="mx-auto max-w-site px-4 py-16 sm:px-6 sm:py-20">
-      <p class="font-mono text-xs tracking-widest text-muted uppercase">
+      <p class="font-mono text-xs tracking-widest text-line-strong uppercase">
         {sections.media.no} — {sections.media.en}
       </p>
       <div class="mt-2 flex flex-wrap items-baseline justify-between gap-4">
-        <h2 id="media-heading" class="text-2xl font-bold sm:text-3xl">メディア</h2>
-        <a href="/articles/" class="nav-link text-sm font-bold text-body hover:text-ink">
+        <h2 id="media-heading" class="text-2xl font-extrabold text-white sm:text-3xl">メディア</h2>
+        <a
+          href="/articles/"
+          class="text-sm font-bold text-paper underline underline-offset-4 hover:text-white"
+        >
           すべての記事を見る
         </a>
       </div>
@@ -247,7 +243,7 @@ const sections = {
           CATEGORIES.map((category) => (
             <a
               href={`/category/${category.slug}/`}
-              class="rounded-card border border-line bg-surface px-3 py-1.5 text-sm text-body transition-colors hover:border-ink hover:text-ink"
+              class="rounded-card border border-white/25 px-3 py-1.5 text-sm text-paper transition-colors hover:border-white hover:text-white"
             >
               {category.name}
             </a>
@@ -260,17 +256,13 @@ const sections = {
     </div>
   </section>
 
-  {/* ============ 5. お問い合わせ ============ */}
-  <section
-    id="contact"
-    aria-labelledby="contact-heading"
-    class="scroll-mt-24 border-t border-line bg-surface"
-  >
+  {/* ============ 5. お問い合わせ（白） ============ */}
+  <section id="contact" aria-labelledby="contact-heading" class="scroll-mt-24 bg-surface">
     <div class="mx-auto max-w-site px-4 py-16 sm:px-6 sm:py-20">
       <p class="font-mono text-xs tracking-widest text-muted uppercase">
         {sections.contact.no} — {sections.contact.en}
       </p>
-      <h2 id="contact-heading" class="mt-2 text-2xl font-bold sm:text-3xl">お問い合わせ</h2>
+      <h2 id="contact-heading" class="mt-2 text-2xl font-extrabold sm:text-3xl">お問い合わせ</h2>
       <div class="mt-8 grid gap-4 lg:grid-cols-2">
         <div class="glass rounded-card p-6">
           <h3 class="font-bold text-ink">動画プロモーション・案件のご相談</h3>

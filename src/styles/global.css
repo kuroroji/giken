@@ -53,10 +53,10 @@
     line-height: 1.4;
   }
 
-  /* 大見出しは明朝体でシックに（h3以下と本文は読みやすいゴシックのまま） */
+  /* 大見出しは太いゴシックで力強く */
   h1, h2 {
-    font-family: var(--font-serif);
-    letter-spacing: 0.03em;
+    font-weight: 800;
+    letter-spacing: 0.01em;
   }
 
   /* キーボード操作時のフォーカス表示（消さない） */
@@ -206,6 +206,14 @@
   box-shadow: 0 8px 30px rgb(17 17 17 / 0.05);
 }
 
+/* 黒背景セクション用のガラス */
+@utility glass-dark {
+  background-color: rgb(255 255 255 / 0.06);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgb(255 255 255 / 0.14);
+}
+
 /* ============================================================
    ヘッダー・ナビゲーションのアニメーション（CSSのみ・軽量）
    ============================================================ */
@@ -253,18 +261,32 @@
 /* ============================================================
    ファーストビューの背景と装飾
    ============================================================ */
-/* 薄い方眼＋にじむ影：ガラスパネルのぼかしが活きる下地 */
+/* 方眼＋にじむ影：ガラスパネルのぼかしが活きる下地 */
 .hero-bg {
   background-image:
-    radial-gradient(42rem 42rem at 88% 8%, rgb(17 17 17 / 0.05), transparent 62%),
-    radial-gradient(34rem 34rem at 4% 90%, rgb(17 17 17 / 0.04), transparent 62%),
-    linear-gradient(to right, rgb(17 17 17 / 0.035) 1px, transparent 1px),
-    linear-gradient(to bottom, rgb(17 17 17 / 0.035) 1px, transparent 1px);
+    radial-gradient(46rem 46rem at 90% 0%, rgb(17 17 17 / 0.09), transparent 60%),
+    radial-gradient(36rem 36rem at 0% 100%, rgb(17 17 17 / 0.07), transparent 60%),
+    linear-gradient(to right, rgb(17 17 17 / 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(17 17 17 / 0.045) 1px, transparent 1px);
   background-size:
     auto,
     auto,
     2.5rem 2.5rem,
     2.5rem 2.5rem;
+}
+
+/* ゆっくり回転する装飾（大きなリングなどに使用） */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spin-slow {
+  animation: spin-slow 60s linear infinite;
 }
 
 /* 浮遊する装飾（ゆっくり上下） */
@@ -305,6 +327,7 @@
   .site-header,
   .float-slow,
   .float-slower,
+  .spin-slow,
   .scroll-hint-dot {
     animation: none;
   }
