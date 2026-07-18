@@ -6,12 +6,8 @@
 /** YouTubeチャンネル「くろろじちゃんねる」 */
 export const CHANNEL = {
   name: 'くろろじちゃんねる',
-  /**
-   * チャンネルのURL。
-   * TODO: 現在は案件動画の再生リストを仮置きしている。
-   * 正式なチャンネルURLに差し替えること。
-   */
-  url: 'https://www.youtube.com/playlist?list=PLv1KPd22XvLn3UE5VDmqlCSwoVOQUmO5H',
+  /** チャンネルのURL */
+  url: 'https://www.youtube.com/@KUROROJI',
   description:
     'どんなゲームなのか、どんな人におすすめなのかを、実際のプレイ映像を通して紹介するゲームYouTubeチャンネルです。新作から埋もれた良作まで、遊んでから届けます。',
   features: [

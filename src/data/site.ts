@@ -35,8 +35,8 @@ export const AUTHOR = {
    * 空文字 '' のままなら表示されない。
    */
   links: {
-    youtube: '',
-    x: '',
+    youtube: 'https://www.youtube.com/@KUROROJI',
+    x: 'https://x.com/KUROROJI',
   },
 } as const;
 
