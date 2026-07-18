@@ -75,8 +75,8 @@ const labelClass = 'block text-sm font-bold text-ink';
       <div>
         <label for="topic" class={labelClass}>相談内容の種類 <span aria-hidden="true">*</span></label>
         <select id="topic" name="topic" required class:list={['mt-1.5', inputClass]}>
-          <option value="">選択してください</option>
-          {CONTACT_TOPICS.map((topic) => <option value={topic}>{topic}</option>)}
+          
+          {CONTACT_TOPICS.map((topic, i) => <option value={topic} selected={i === 0}>{topic}</option>)}<option value="その他">その他</option>
         </select>
 
         {/* 「ゲームに関する無料相談」を選んだときだけ表示される注釈 */}
