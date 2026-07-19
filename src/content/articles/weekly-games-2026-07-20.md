@@ -200,8 +200,6 @@ Unreal Engine 5で描かれるアニメスタイルのオープンワールドAR
 
 ### お隣の天使様にいつの間にか駄目人間にされていた件 Memorial Vacation
 
-![お隣の天使様にいつの間にか駄目人間にされていた件 Memorial Vacationのキービジュアル](/images/articles/games/tenshisama.webp)
-
 | 機種 | 価格 | 開発 | ジャンル |
 | --- | --- | --- | --- |
 | Switch/Switch 2 | 通常版 ¥7,480ほか | MAGES. | 恋愛アドベンチャー |
