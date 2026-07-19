@@ -9,7 +9,7 @@ import tailwindcss from '@tailwindcss/vite';
 // この値は canonical URL・OGP・サイトマップ・RSS の生成に使われます。
 // ============================================================
 export default defineConfig({
-  site: 'https://kuroroji-giken.pages.dev',
+  site: 'https://kuroroji.site',
   output: 'static',
   integrations: [sitemap()],
   vite: {
