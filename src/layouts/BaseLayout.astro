@@ -16,12 +16,30 @@ interface Props {
 }
 
 const props = Astro.props;
+
+/** Google アナリティクス（GA4）の測定ID。プロパティ「くろろじ技研」のウェブストリーム */
+const GA_ID = 'G-DHZKV9RTNQ';
+const gaInlineScript = [
+  'window.dataLayer = window.dataLayer || [];',
+  'function gtag(){dataLayer.push(arguments);}',
+  "gtag('js', new Date());",
+  `gtag('config', '${GA_ID}');`,
+].join('\n');
 ---
 
 <!doctype html>
 <html lang="ja">
   <head>
     <SeoHead {...props} />
+    {
+      /* Google アナリティクス（GA4）。開発中のアクセスを計測しないよう本番ビルドのみ読み込む */
+      import.meta.env.PROD && (
+        <>
+          <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
+          <script is:inline set:html={gaInlineScript} />
+        </>
+      )
+    }
   </head>
   <body class={props.isHome ? 'flex min-h-svh flex-col hero-bg' : 'flex min-h-svh flex-col'}>
     <a

@@ -1,0 +1,58 @@
+<svg viewBox="0 0 720 440" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="OBSのソース選択の分岐図。PCゲームはゲームキャプチャ、SwitchやPS5は映像キャプチャデバイスを選ぶ">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="#111" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </marker>
+  </defs>
+  <style>
+    .box { fill: #fff; stroke: #111; stroke-width: 1.5; }
+    .head { fill: #111; }
+    .head-label { font-family: sans-serif; font-size: 15px; fill: #fff; font-weight: 600; }
+    .head-sub { font-family: sans-serif; font-size: 11px; fill: #ccc; }
+    .label { font-family: sans-serif; font-size: 15px; fill: #111; font-weight: 600; }
+    .item { font-family: sans-serif; font-size: 14px; fill: #111; }
+    .sub { font-family: sans-serif; font-size: 12px; fill: #555; }
+    .flow { stroke: #111; stroke-width: 1.5; fill: none; stroke-linejoin: round; }
+  </style>
+
+  <!-- 分岐元 -->
+  <rect class="box" x="235" y="20" width="250" height="56" rx="12"/>
+  <text class="label" x="360" y="54" text-anchor="middle">何のゲームを録る?</text>
+
+  <!-- 分岐線（直角） -->
+  <path class="flow" d="M 360 76 L 360 106 L 180 106 L 180 134" marker-end="url(#arrow)"/>
+  <path class="flow" d="M 360 106 L 540 106 L 540 134" marker-end="url(#arrow)"/>
+
+  <!-- 左ルート: PCゲーム -->
+  <rect class="head" x="70" y="140" width="220" height="56" rx="12"/>
+  <text class="head-label" x="180" y="164" text-anchor="middle">PCゲーム</text>
+  <text class="head-sub" x="180" y="184" text-anchor="middle">Steam など</text>
+
+  <line class="flow" x1="180" y1="196" x2="180" y2="220" marker-end="url(#arrow)"/>
+  <rect class="box" x="70" y="226" width="220" height="56" rx="10"/>
+  <text class="item" x="180" y="250" text-anchor="middle">ゲームキャプチャ</text>
+  <text class="sub" x="180" y="270" text-anchor="middle">「特定のウィンドウ」を指定</text>
+
+  <line class="flow" x1="180" y1="282" x2="180" y2="306" marker-end="url(#arrow)"/>
+  <rect class="box" x="70" y="312" width="220" height="56" rx="10"/>
+  <text class="item" x="180" y="336" text-anchor="middle">映らないときは</text>
+  <text class="sub" x="180" y="356" text-anchor="middle">ウィンドウキャプチャで代用</text>
+
+  <!-- 右ルート: 家庭用ゲーム機 -->
+  <rect class="head" x="430" y="140" width="220" height="56" rx="12"/>
+  <text class="head-label" x="540" y="164" text-anchor="middle">家庭用ゲーム機</text>
+  <text class="head-sub" x="540" y="184" text-anchor="middle">Switch / PS5 など</text>
+
+  <line class="flow" x1="540" y1="196" x2="540" y2="220" marker-end="url(#arrow)"/>
+  <rect class="box" x="430" y="226" width="220" height="56" rx="10"/>
+  <text class="item" x="540" y="250" text-anchor="middle">映像キャプチャデバイス</text>
+  <text class="sub" x="540" y="270" text-anchor="middle">キャプチャーボードを選ぶ</text>
+
+  <line class="flow" x1="540" y1="282" x2="540" y2="306" marker-end="url(#arrow)"/>
+  <rect class="box" x="430" y="312" width="220" height="56" rx="10"/>
+  <text class="item" x="540" y="336" text-anchor="middle">キャプチャーボードが必要</text>
+  <text class="sub" x="540" y="356" text-anchor="middle">PCへの接続が前提</text>
+
+  <!-- 注記 -->
+  <text class="sub" x="360" y="420" text-anchor="middle">どちらも、映ったら赤い枠のドラッグでプレビューいっぱいに広げる</text>
+</svg>

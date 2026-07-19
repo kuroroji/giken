@@ -219,6 +219,7 @@
   color: #fff;
   text-decoration: none;
   transition: opacity 0.2s ease;
+  white-space: nowrap;
 }
 
 .article-body .store-btn:hover {
@@ -237,6 +238,13 @@
     text-align: center;
     padding-inline: 0.5em;
   }
+
+  /* CTAなどボタンが1つだけのときは、2カラムに押し込まず中央に1行で表示する */
+  .article-body .store-btn:only-child {
+    grid-column: 1 / -1;
+    justify-self: center;
+    padding-inline: 1.1em;
+  }
 }
 
 /* モバイルでは表のセル折り返しをやめ、横スクロールで見せる（縦長化を防ぐ） */
@@ -252,6 +260,8 @@
 .article-body .store-btn--xbox { background-color: #107c10; }
 .article-body .store-btn--steam { background-color: #1b2838; }
 .article-body .store-btn--battlenet { background-color: #0074e0; }
+.article-body .store-btn--youtube { background-color: #ff0000; }
+.article-body .store-btn--obs { background-color: #302e31; }
 
 /* 折りたたみ（FAQ等）。Markdown内の <details><summary> に適用される */
 .article-body details {

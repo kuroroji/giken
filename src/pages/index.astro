@@ -62,7 +62,7 @@ const bubbles = [
 
     <div class="relative mx-auto max-w-site px-4 pt-12 sm:px-6 sm:pt-16 lg:pt-20">
       <div class="grid items-end gap-6 lg:grid-cols-[1fr_22rem] lg:gap-10">
-        <div class="pb-10 sm:pb-14 lg:pb-20">
+        <div class="relative z-10 pb-10 sm:pb-14 lg:pb-20">
           <p class="font-mono text-xs tracking-widest text-muted uppercase">
             Game Discovery / YouTube / Promotion
           </p>
@@ -107,8 +107,10 @@ const bubbles = [
           </div>
         </div>
 
-        {/* 立ち絵：背後のリングと方眼の上に立つ */}
-        <div class="relative mx-auto w-60 sm:w-72 lg:w-full">
+        {/* 立ち絵：lg以上は右カラムに立つ。lg未満は本文の背面に薄く回り込ませる（縦積みで場所を取らないように） */}
+        <div
+          class="pointer-events-none absolute -right-6 bottom-0 z-0 w-60 opacity-30 sm:w-72 lg:pointer-events-auto lg:relative lg:right-auto lg:bottom-auto lg:z-auto lg:mx-auto lg:w-full lg:opacity-100"
+        >
           <span
             aria-hidden="true"
             class="drift-rev absolute top-[12%] left-1/2 size-[85%] -translate-x-1/2 rounded-full border border-line-strong/80 bg-surface/50"

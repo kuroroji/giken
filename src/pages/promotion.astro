@@ -19,7 +19,7 @@ const description =
   <section class="relative overflow-hidden border-b border-line bg-ink-navy">
     <div class="relative mx-auto max-w-site px-4 py-10 sm:px-6 sm:py-16">
       <div class="grid items-end gap-8 lg:grid-cols-[1fr_20rem]">
-        <div>
+        <div class="relative z-10">
           <h1 class="mt-4 font-serif text-2xl leading-snug font-bold text-white sm:text-5xl">
             あなたのゲームを、<br />楽しみながら広めます。
           </h1>
@@ -40,8 +40,10 @@ const description =
             <li class="rounded-full border border-white/25 px-3 py-1 text-white/85">納品 最短翌日〜1週間</li>
           </ul>
         </div>
-        {/* 立ち絵はセクション下端に接地させ、大きめに表示 */}
-        <div class="hidden self-end lg:block lg:-mb-16">
+        {/* 立ち絵：lg以上はセクション下端に接地させ大きめに表示。lg未満は本文の背面に薄く回り込ませる（トップと同じ扱い） */}
+        <div
+          class="pointer-events-none absolute -right-6 bottom-0 z-0 w-60 opacity-30 sm:w-72 lg:pointer-events-auto lg:relative lg:right-auto lg:bottom-auto lg:z-auto lg:-mb-16 lg:w-full lg:self-end lg:opacity-100"
+        >
           <img
             src={AUTHOR.standingImage}
             alt="くろろじのイラスト"
