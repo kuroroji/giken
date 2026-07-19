@@ -34,16 +34,24 @@ const description =
               >過去のプロモーション動画を見る</Button
             >
           </div>
-          <ul class="mt-6 flex flex-wrap gap-2 text-xs">
-            <li class="rounded-full border border-white/25 px-3 py-1 text-white/85">チャンネル登録者 約3万人</li>
-            <li class="rounded-full border border-white/25 px-3 py-1 text-white/85">実績:{PROMOTION.clients.slice(0, 2).join('、')} ほか</li>
-            <li class="rounded-full border border-white/25 px-3 py-1 text-white/85">納品 最短翌日〜1週間</li>
-          </ul>
+          {/* 実績バッジ。lg未満は右側に丸型アバターを添える（立ち絵だと顔が隠れるため） */}
+          <div class="mt-6 flex items-end justify-between gap-3">
+            <ul class="flex flex-wrap gap-2 text-xs">
+              <li class="rounded-full border border-white/25 px-3 py-1 text-white/85">チャンネル登録者 約3万人</li>
+              <li class="rounded-full border border-white/25 px-3 py-1 text-white/85">実績:{PROMOTION.clients.slice(0, 2).join('、')} ほか</li>
+              <li class="rounded-full border border-white/25 px-3 py-1 text-white/85">納品 最短翌日〜1週間</li>
+            </ul>
+            <img
+              src={AUTHOR.avatar}
+              alt="くろろじのアイコン"
+              width="96"
+              height="96"
+              class="size-24 shrink-0 rounded-full border-2 border-white/40 object-cover object-top drop-shadow-[0_8px_20px_rgb(0_0_0/0.4)] lg:hidden"
+            />
+          </div>
         </div>
-        {/* 立ち絵：lg以上はセクション下端に接地させ大きめに表示。lg未満は本文の背面に薄く回り込ませる（トップと同じ扱い） */}
-        <div
-          class="pointer-events-none absolute -right-6 bottom-0 z-0 w-60 opacity-30 sm:w-72 lg:pointer-events-auto lg:relative lg:right-auto lg:bottom-auto lg:z-auto lg:-mb-16 lg:w-full lg:self-end lg:opacity-100"
-        >
+        {/* 立ち絵：lg以上のみセクション下端に接地させ大きめに表示。lg未満は丸型アバター（実績バッジの横）で代替 */}
+        <div class="hidden self-end lg:-mb-16 lg:block">
           <img
             src={AUTHOR.standingImage}
             alt="くろろじのイラスト"

@@ -98,19 +98,26 @@ const bubbles = [
             動画プロモーション実績：{PROMOTION.clients.slice(0, 2).join('、')} ほか
           </p>
 
-          {/* スクロール誘導 */}
-          <div aria-hidden="true" class="mt-10 flex flex-col items-start gap-1.5 lg:mt-14">
-            <span class="font-mono text-[0.625rem] tracking-widest text-muted uppercase">Scroll</span>
-            <span class="relative ml-3 block h-8 w-px overflow-hidden bg-line-strong">
-              <span class="scroll-hint-dot absolute top-0 left-1/2 h-3 w-px -translate-x-1/2 bg-ink"></span>
-            </span>
+          {/* スクロール誘導。lg未満はスペースが余る右側に丸型アバターを添える（立ち絵だと顔が隠れるため） */}
+          <div class="mt-10 flex items-end justify-between lg:mt-14">
+            <div aria-hidden="true" class="flex flex-col items-start gap-1.5">
+              <span class="font-mono text-[0.625rem] tracking-widest text-muted uppercase">Scroll</span>
+              <span class="relative ml-3 block h-8 w-px overflow-hidden bg-line-strong">
+                <span class="scroll-hint-dot absolute top-0 left-1/2 h-3 w-px -translate-x-1/2 bg-ink"></span>
+              </span>
+            </div>
+            <img
+              src={AUTHOR.avatar}
+              alt="くろろじのアイコン"
+              width="112"
+              height="112"
+              class="mr-1 size-28 shrink-0 rounded-full border-2 border-line-strong object-cover object-top drop-shadow-[0_8px_20px_rgb(17_17_17/0.15)] lg:hidden"
+            />
           </div>
         </div>
 
-        {/* 立ち絵：lg以上は右カラムに立つ。lg未満は本文の背面に薄く回り込ませる（縦積みで場所を取らないように） */}
-        <div
-          class="pointer-events-none absolute -right-6 bottom-0 z-0 w-60 opacity-30 sm:w-72 lg:pointer-events-auto lg:relative lg:right-auto lg:bottom-auto lg:z-auto lg:mx-auto lg:w-full lg:opacity-100"
-        >
+        {/* 立ち絵：lg以上のみ右カラムに表示。lg未満は丸型アバター（上のスクロール誘導の横）で代替 */}
+        <div class="relative hidden lg:block lg:w-full">
           <span
             aria-hidden="true"
             class="drift-rev absolute top-[12%] left-1/2 size-[85%] -translate-x-1/2 rounded-full border border-line-strong/80 bg-surface/50"
