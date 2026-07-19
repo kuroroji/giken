@@ -66,10 +66,22 @@ const bubbles = [
           <p class="font-mono text-xs tracking-widest text-muted uppercase">
             Game Discovery / YouTube / Promotion
           </p>
-          {/* 狭い画面では9文字の行が収まるようvw連動で縮む（380px未満の折り返し対策） */}
-          <h1 class="mt-4 text-[min(9.4vw,2.25rem)] leading-[1.2] font-bold text-ink sm:text-6xl">
-            {SITE.taglineLines.map((line) => <span class="block">{line}</span>)}
-          </h1>
+          {/*
+            メインコピー+丸型アバターの2カラム（lg未満）。
+            文字サイズは「アバター分を引いた幅に9文字の行が収まる」vw連動で縮む。lg以上はアバター非表示で右カラムの立ち絵が出る
+          */}
+          <div class="mt-4 flex items-center justify-between gap-3">
+            <h1 class="text-[min(6.2vw,3.75rem)] leading-[1.2] font-bold text-ink">
+              {SITE.taglineLines.map((line) => <span class="block">{line}</span>)}
+            </h1>
+            <img
+              src={AUTHOR.avatar}
+              alt="くろろじのアイコン"
+              width="96"
+              height="96"
+              class="size-24 shrink-0 rounded-full border-2 border-line-strong object-cover object-top drop-shadow-[0_8px_20px_rgb(17_17_17/0.15)] lg:hidden"
+            />
+          </div>
           <p class="mt-5 max-w-xl text-sm leading-relaxed text-body sm:text-base">
             {SITE.description}
           </p>
@@ -98,21 +110,12 @@ const bubbles = [
             動画プロモーション実績：{PROMOTION.clients.slice(0, 2).join('、')} ほか
           </p>
 
-          {/* スクロール誘導。lg未満はスペースが余る右側に丸型アバターを添える（立ち絵だと顔が隠れるため） */}
-          <div class="mt-10 flex items-end justify-between lg:mt-14">
-            <div aria-hidden="true" class="flex flex-col items-start gap-1.5">
-              <span class="font-mono text-[0.625rem] tracking-widest text-muted uppercase">Scroll</span>
-              <span class="relative ml-3 block h-8 w-px overflow-hidden bg-line-strong">
-                <span class="scroll-hint-dot absolute top-0 left-1/2 h-3 w-px -translate-x-1/2 bg-ink"></span>
-              </span>
-            </div>
-            <img
-              src={AUTHOR.avatar}
-              alt="くろろじのアイコン"
-              width="112"
-              height="112"
-              class="mr-1 size-28 shrink-0 rounded-full border-2 border-line-strong object-cover object-top drop-shadow-[0_8px_20px_rgb(17_17_17/0.15)] lg:hidden"
-            />
+          {/* スクロール誘導 */}
+          <div aria-hidden="true" class="mt-10 flex flex-col items-start gap-1.5 lg:mt-14">
+            <span class="font-mono text-[0.625rem] tracking-widest text-muted uppercase">Scroll</span>
+            <span class="relative ml-3 block h-8 w-px overflow-hidden bg-line-strong">
+              <span class="scroll-hint-dot absolute top-0 left-1/2 h-3 w-px -translate-x-1/2 bg-ink"></span>
+            </span>
           </div>
         </div>
 

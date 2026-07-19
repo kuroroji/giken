@@ -20,9 +20,19 @@ const description =
     <div class="relative mx-auto max-w-site px-4 py-10 sm:px-6 sm:py-16">
       <div class="grid items-end gap-8 lg:grid-cols-[1fr_20rem]">
         <div class="relative z-10">
-          <h1 class="mt-4 font-serif text-2xl leading-snug font-bold text-white sm:text-5xl">
-            あなたのゲームを、<br />楽しみながら広めます。
-          </h1>
+          {/* メインコピー+丸型アバターの2カラム（lg未満）。文字サイズはアバター分を引いた幅にvw連動 */}
+          <div class="mt-4 flex items-center justify-between gap-3">
+            <h1 class="font-serif text-[min(5.9vw,3rem)] leading-snug font-bold text-white">
+              あなたのゲームを、<br />楽しみながら広めます。
+            </h1>
+            <img
+              src={AUTHOR.avatar}
+              alt="くろろじのアイコン"
+              width="80"
+              height="80"
+              class="size-20 shrink-0 rounded-full border-2 border-white/40 object-cover object-top drop-shadow-[0_8px_20px_rgb(0_0_0/0.4)] lg:hidden"
+            />
+          </div>
           <p class="mt-5 max-w-2xl text-sm leading-relaxed text-white/80 sm:text-base">
             ゲーム序盤を実際に遊んで紹介する「序盤実況」。おすすめのゲームとして、楽しみながら紹介させていただきます。
           </p>
@@ -34,21 +44,11 @@ const description =
               >過去のプロモーション動画を見る</Button
             >
           </div>
-          {/* 実績バッジ。lg未満は右側に丸型アバターを添える（立ち絵だと顔が隠れるため） */}
-          <div class="mt-6 flex items-end justify-between gap-3">
-            <ul class="flex flex-wrap gap-2 text-xs">
-              <li class="rounded-full border border-white/25 px-3 py-1 text-white/85">チャンネル登録者 約3万人</li>
-              <li class="rounded-full border border-white/25 px-3 py-1 text-white/85">実績:{PROMOTION.clients.slice(0, 2).join('、')} ほか</li>
-              <li class="rounded-full border border-white/25 px-3 py-1 text-white/85">納品 最短翌日〜1週間</li>
-            </ul>
-            <img
-              src={AUTHOR.avatar}
-              alt="くろろじのアイコン"
-              width="96"
-              height="96"
-              class="size-24 shrink-0 rounded-full border-2 border-white/40 object-cover object-top drop-shadow-[0_8px_20px_rgb(0_0_0/0.4)] lg:hidden"
-            />
-          </div>
+          <ul class="mt-6 flex flex-wrap gap-2 text-xs">
+            <li class="rounded-full border border-white/25 px-3 py-1 text-white/85">チャンネル登録者 約3万人</li>
+            <li class="rounded-full border border-white/25 px-3 py-1 text-white/85">実績:{PROMOTION.clients.slice(0, 2).join('、')} ほか</li>
+            <li class="rounded-full border border-white/25 px-3 py-1 text-white/85">納品 最短翌日〜1週間</li>
+          </ul>
         </div>
         {/* 立ち絵：lg以上のみセクション下端に接地させ大きめに表示。lg未満は丸型アバター（実績バッジの横）で代替 */}
         <div class="hidden self-end lg:-mb-16 lg:block">
