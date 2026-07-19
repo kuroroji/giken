@@ -3,10 +3,20 @@
  * 1024px未満専用：右下に浮かぶお問い合わせボタン。
  * ヘッダーのお問い合わせボタンは1024px未満では非表示にし、こちらが常時見える導線になる。
  * （記事ページでは左下のフローティング目次と対になる配置）
+ * お問い合わせページ自身と、ページ内にお問い合わせ導線があるプロモページでは表示しない。
  */
 import Button from '@/components/Button.astro';
+
+const pathname = Astro.url.pathname.replace(/\/$/, '');
+const hidden = ['/contact', '/promotion'].includes(pathname);
 ---
 
-<div class="fixed right-4 bottom-4 z-40 lg:hidden">
-  <Button href="/contact/" variant="accent" size="sm">お問い合わせ</Button>
-</div>
+{
+  !hidden && (
+    <div class="fixed right-4 bottom-4 z-40 lg:hidden">
+      <Button href="/contact/" variant="accent" size="sm">
+        お問い合わせ
+      </Button>
+    </div>
+  )
+}
