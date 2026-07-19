@@ -44,8 +44,8 @@ featured: false
 水没していくアステカ神殿から、フック片手にひたすら上へ逃げるカートゥーン調の高難度アクション。砂をガラスに変えたり橋を武器にしたりと環境の相互作用が豊富で、手作り1000ステージ+ステージ作成機能、デイリーランまで完備。スピード系が好きな人に刺さりそうです。
 
 <div class="store-links">
-  <a class="store-btn store-btn--steam" href="https://store.steampowered.com/app/2491490/" target="_blank" rel="noopener">Steam</a>
   <a class="store-btn store-btn--switch" href="https://store-jp.nintendo.com/item/software/D70010000129662" target="_blank" rel="noopener">Switch</a>
+  <a class="store-btn store-btn--steam" href="https://store.steampowered.com/app/2491490/" target="_blank" rel="noopener">Steam</a>
 </div>
 
 ## 【7月22日(水)】スコットランド無双に地域制圧SRPG!渋めの3本!
@@ -163,9 +163,9 @@ Unreal Engine 5で描かれるアニメスタイルのオープンワールドAR
 チャンバラ映画をモデルにした、全編完全手描きの和風アクション。謎の主人公「霊」が神々との戦いに勝ち、その力を奪っていく物語です。ブラジルのスタジオが描く時代劇という取り合わせも面白く、墨絵のような画面はトレイラーを見るだけでも価値あり。
 
 <div class="store-links">
-  <a class="store-btn store-btn--steam" href="https://store.steampowered.com/app/2191280/" target="_blank" rel="noopener">Steam</a>
-  <a class="store-btn store-btn--ps" href="https://store.playstation.com/ja-jp/concept/10018780" target="_blank" rel="noopener">PS Store</a>
   <a class="store-btn store-btn--switch" href="https://store-jp.nintendo.com/item/software/D70010000117931" target="_blank" rel="noopener">Switch</a>
+  <a class="store-btn store-btn--ps" href="https://store.playstation.com/ja-jp/concept/10018780" target="_blank" rel="noopener">PS Store</a>
+  <a class="store-btn store-btn--steam" href="https://store.steampowered.com/app/2191280/" target="_blank" rel="noopener">Steam</a>
 </div>
 
 ### Staffer Retro: 超能力推理クエスト
@@ -179,8 +179,8 @@ Unreal Engine 5で描かれるアニメスタイルのオープンワールドAR
 超能力が存在する世界で、超常物質「マナ」に関わる過去の事件を、資料や文書を組み合わせながら辿っていく推理ADV。主人公ヴェリータの選択を共にし、その果ての決断を見届けます。日本語ボイスには白砂沙帆さん・藤田咲さんら豪華キャストを起用。
 
 <div class="store-links">
-  <a class="store-btn store-btn--steam" href="https://store.steampowered.com/app/3837350/Staffer_Retro" target="_blank" rel="noopener">Steam</a>
   <a class="store-btn store-btn--switch" href="https://store-jp.nintendo.com/item/software/D70010000121623" target="_blank" rel="noopener">Switch</a>
+  <a class="store-btn store-btn--steam" href="https://store.steampowered.com/app/3837350/Staffer_Retro" target="_blank" rel="noopener">Steam</a>
 </div>
 
 ### Solateria(ソラテリア)
@@ -224,8 +224,8 @@ Unreal Engine 5で描かれるアニメスタイルのオープンワールドAR
 
 <div class="store-links">
   <a class="store-btn store-btn--switch" href="https://store-jp.nintendo.com/item/software/D70010000119282" target="_blank" rel="noopener">Switch</a>
-  <a class="store-btn store-btn--switch" href="https://game.shochiku.co.jp/lp/yogsothothsyard/" target="_blank" rel="noopener">公式サイト</a>
   <a class="store-btn store-btn--steam" href="https://store.steampowered.com/app/2194530/" target="_blank" rel="noopener">Steam</a>
+  <a class="store-btn store-btn--switch" href="https://game.shochiku.co.jp/lp/yogsothothsyard/" target="_blank" rel="noopener">公式サイト</a>
 </div>
 
 ### What Comes After(PS5/PS4版)
@@ -239,8 +239,8 @@ Unreal Engine 5で描かれるアニメスタイルのオープンワールドAR
 「Coffee Talk」のモハメド・ファーミ氏が手がけた、自分を愛することを学ぶ心温まる短編ADVにPS版が登場。うっかり「あの世行きの列車」に乗ってしまった女性ヴィヴィの、行きて帰る小さな旅を描きます。1〜2時間で終わる小品ですが、気持ちを整えたい夜に効くタイプのゲームです。
 
 <div class="store-links">
-  <a class="store-btn store-btn--ps" href="https://store.playstation.com/ja-jp/search/what%20comes%20after" target="_blank" rel="noopener">PS Store</a>
   <a class="store-btn store-btn--switch" href="https://store-jp.nintendo.com/item/software/D70010000043089" target="_blank" rel="noopener">Switch</a>
+  <a class="store-btn store-btn--ps" href="https://store.playstation.com/ja-jp/search/what%20comes%20after" target="_blank" rel="noopener">PS Store</a>
   <a class="store-btn store-btn--steam" href="https://store.steampowered.com/app/1421760/What_Comes_After/" target="_blank" rel="noopener">Steam</a>
 </div>
 
@@ -271,9 +271,9 @@ Unreal Engine 5で描かれるアニメスタイルのオープンワールドAR
 ディスガイアのスタッフによる、レベル9999・億超えダメージのやり込みアクションRPGにSteam版が登場。ド派手な技をワンボタンで繰り出すスピーディなアクションに、日本一ソフトウェアおなじみのキャラも登場します。コンソール版は1月発売済みなので、PC派は今週が出番。
 
 <div class="store-links">
-  <a class="store-btn store-btn--steam" href="https://store.steampowered.com/app/4402250/" target="_blank" rel="noopener">Steam</a>
-  <a class="store-btn store-btn--ps" href="https://store.playstation.com/ja-jp/concept/10016065" target="_blank" rel="noopener">PS Store</a>
   <a class="store-btn store-btn--switch" href="https://store-jp.nintendo.com/item/software/D70010000102607" target="_blank" rel="noopener">Switch</a>
+  <a class="store-btn store-btn--ps" href="https://store.playstation.com/ja-jp/concept/10016065" target="_blank" rel="noopener">PS Store</a>
+  <a class="store-btn store-btn--steam" href="https://store.steampowered.com/app/4402250/" target="_blank" rel="noopener">Steam</a>
 </div>
 
 ### KAZUMA KANEKO'S ツクヨミ(Steam版)
@@ -287,8 +287,8 @@ Unreal Engine 5で描かれるアニメスタイルのオープンワールドAR
 女神転生シリーズの悪魔絵師・金子一馬氏の最新作がSteamに登場。現代のバベルの塔に古の神話が胎動する、モダンでソリッドなデッキ構築×タワーダンジョンRPGです。Switch版は4月に発売済み。あの画風のカードでデッキを組めるだけでも、メガテン好きにはたまらないはず。
 
 <div class="store-links">
-  <a class="store-btn store-btn--steam" href="https://store.steampowered.com/app/4677110/KAZUMA_KANEKOS/" target="_blank" rel="noopener">Steam</a>
   <a class="store-btn store-btn--switch" href="https://store-jp.nintendo.com/item/software/D70010000103745" target="_blank" rel="noopener">Switch</a>
+  <a class="store-btn store-btn--steam" href="https://store.steampowered.com/app/4677110/KAZUMA_KANEKOS/" target="_blank" rel="noopener">Steam</a>
 </div>
 
 ### リミットレスサバイバー

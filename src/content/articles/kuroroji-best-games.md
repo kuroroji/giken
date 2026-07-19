@@ -56,9 +56,9 @@ featured: true
 <p class="img-credit">画像出典: Blizzard公式サイト</p>
 
 <p class="store-links">
-  <a class="store-btn store-btn--battlenet" href="https://shop.battle.net/ja-jp/product/diablo-iii" target="_blank" rel="noopener">Battle.net</a>
   <a class="store-btn store-btn--switch" href="https://store-jp.nintendo.com/item/software/D70010000013613" target="_blank" rel="noopener">Switch</a>
   <a class="store-btn store-btn--ps" href="https://store.playstation.com/ja-jp/product/JP0082-CUSA00630_00-D3ETERNALCOLL000" target="_blank" rel="noopener">PS Store</a>
+  <a class="store-btn store-btn--battlenet" href="https://shop.battle.net/ja-jp/product/diablo-iii" target="_blank" rel="noopener">Battle.net</a>
 </p>
 
 **ハクスラARPG / PC・PS4・Switchほか**
@@ -214,9 +214,9 @@ featured: true
 <p class="img-credit">画像出典: Steamストアページ</p>
 
 <p class="store-links">
-  <a class="store-btn store-btn--steam" href="https://store.steampowered.com/app/2344520/" target="_blank" rel="noopener">Steam</a>
   <a class="store-btn store-btn--ps" href="https://store.playstation.com/ja-jp/search/%E3%83%87%E3%82%A3%E3%82%A2%E3%83%96%E3%83%AD4" target="_blank" rel="noopener">PS Store</a>
   <a class="store-btn store-btn--xbox" href="https://www.xbox.com/ja-JP/Search/Results?q=Diablo%20IV" target="_blank" rel="noopener">Xbox</a>
+  <a class="store-btn store-btn--steam" href="https://store.steampowered.com/app/2344520/" target="_blank" rel="noopener">Steam</a>
 </p>
 
 ディアブロ3の続編で、**今も進化を続けているハクスラ**です。シーズンごとのアップデートに振り回されながら、環境の変化ごと楽しんでいく。そういう付き合い方ができるゲームで、ハクスラの「今」を体験したい人におすすめしたい1本です。
@@ -307,8 +307,8 @@ featured: true
 <p class="img-credit">画像出典: Steamストアページ</p>
 
 <p class="store-links">
-  <a class="store-btn store-btn--steam" href="https://store.steampowered.com/app/1562700/" target="_blank" rel="noopener">Steam</a>
   <a class="store-btn store-btn--switch" href="https://store-jp.nintendo.com/search/?q=SANABI" target="_blank" rel="noopener">Switch</a>
+  <a class="store-btn store-btn--steam" href="https://store.steampowered.com/app/1562700/" target="_blank" rel="noopener">Steam</a>
 </p>
 
 最後は正直枠です。実はまだ、全然遊べていません。でも**チェーンアクションの気持ちよさと、感動するストーリーがすごいらしい**と聞いていて、パッケージ版までいただいているので、絶対に遊びたい1本。「もっと評価されてほしいタイトル」として名前を挙げておきます。
