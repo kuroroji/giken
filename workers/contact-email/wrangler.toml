@@ -1,0 +1,15 @@
+# お問い合わせフォームのメール送信Worker。
+# デプロイ: このディレクトリで `npx wrangler deploy`
+# ルート kuroroji.site/api/contact に割り当てられ、Pagesより優先して応答する。
+name = "kuroroji-contact-email"
+main = "src/index.js"
+compatibility_date = "2026-07-01"
+
+routes = [
+  { pattern = "kuroroji.site/api/contact", zone_name = "kuroroji.site" }
+]
+
+# Email Routing の認証済み宛先にのみ送信できる
+send_email = [
+  { name = "SEND_EMAIL", destination_address = "kuroroji.ch@gmail.com" }
+]

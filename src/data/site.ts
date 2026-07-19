@@ -42,10 +42,10 @@ export const AUTHOR = {
 
 /**
  * 問い合わせページの設定。
- * フォームの送信機能は未接続のため、送信ボタンは案内表示のみ行う。
+ * フォームは /api/contact （workers/contact-email）経由でメール送信される。
  */
 export const CONTACT = {
-  /** 公開してよい連絡先メールアドレス（未定なら空のまま） */
-  email: '',
-  note: 'フォームの送信機能は現在準備中です。お急ぎの場合は、YouTubeチャンネルのコメント欄、またはSNSのダイレクトメッセージにてご連絡ください。',
+  /** 公開してよい連絡先メールアドレス */
+  email: 'contact@kuroroji.site',
+  note: 'フォームから送信できない場合は、contact@kuroroji.site へ直接メール、またはSNSのダイレクトメッセージにてご連絡ください。',
 } as const;

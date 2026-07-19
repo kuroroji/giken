@@ -8,10 +8,8 @@ import Button from '@/components/Button.astro';
 
 /**
  * お問い合わせフォーム。
- * 【重要】送信機能はまだ接続していない。送信ボタンを押すと
- * 「準備中」の案内を表示するだけで、どこにも送信されない。
- * 将来バックエンド（Cloudflare Workersなど）を用意したら、
- * ページ下部のスクリプト内にある TODO の位置に送信処理を接続する。
+ * 送信先は /api/contact （workers/contact-email のWorker）。
+ * Worker が Cloudflare Email Routing 経由で kuroroji.ch@gmail.com にメールを届ける。
  */
 
 const inputClass =
@@ -104,19 +102,35 @@ const labelClass = 'block text-sm font-bold text-ink';
         ></textarea>
       </div>
 
-      <div>
-        <Button type="submit" variant="dark">内容を確認する</Button>
+      {/* ハニーポット（スパムボット対策）。人間には見えない欄で、埋まっていたらWorker側で破棄する */}
+      <div class="hidden" aria-hidden="true">
+        <input type="text" name="website" tabindex="-1" autocomplete="off" />
       </div>
 
-      {/* 送信未接続の案内（正直に表示する） */}
+      <div>
+        <Button type="submit" variant="dark">送信する</Button>
+      </div>
+
+      {/* 送信成功の案内 */}
       <div
-        id="form-notice"
+        id="form-success"
         hidden
         role="status"
         class="rounded-card border border-line bg-accent-faint px-4 py-3 text-sm text-body"
       >
-        <p class="font-bold text-ink">入力内容に不備はありません。</p>
-        <p class="mt-1">{CONTACT.note}</p>
+        <p class="font-bold text-ink">送信しました。お問い合わせありがとうございます!</p>
+        <p class="mt-1">内容を確認のうえ、ご記入いただいたメールアドレス宛にご連絡します。</p>
+      </div>
+
+      {/* 送信失敗の案内 */}
+      <div
+        id="form-error"
+        hidden
+        role="alert"
+        class="rounded-card border border-line bg-accent-faint px-4 py-3 text-sm text-body"
+      >
+        <p class="font-bold text-ink">送信に失敗しました。</p>
+        <p class="mt-1">時間をおいて再度お試しください。{CONTACT.note}</p>
       </div>
     </form>
   </div>
@@ -124,7 +138,8 @@ const labelClass = 'block text-sm font-bold text-ink';
 
 <script>
   const form = document.getElementById('contact-form') as HTMLFormElement | null;
-  const notice = document.getElementById('form-notice');
+  const successNotice = document.getElementById('form-success');
+  const errorNotice = document.getElementById('form-error');
 
   // 「ゲームに関する無料相談」を選んだときだけ、相談範囲の注釈を表示する
   const topicSelect = document.getElementById('topic') as HTMLSelectElement | null;
@@ -137,16 +152,42 @@ const labelClass = 'block text-sm font-bold text-ink';
     }
   });
 
-  form?.addEventListener('submit', (event) => {
+  form?.addEventListener('submit', async (event) => {
     event.preventDefault();
+    successNotice?.setAttribute('hidden', '');
+    errorNotice?.setAttribute('hidden', '');
+
     // novalidate を付けているため、ここで手動でネイティブ検証を走らせる
-    if (!form.reportValidity()) {
-      notice?.setAttribute('hidden', '');
-      return;
+    if (!form.reportValidity()) return;
+
+    const submitButton = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+    const originalLabel = submitButton?.textContent ?? '送信する';
+    if (submitButton) {
+      submitButton.disabled = true;
+      submitButton.textContent = '送信中…';
     }
-    // TODO: 送信先（Cloudflare Workers等）ができたら、ここで fetch により送信する。
-    // 現在は送信機能が未接続であることを、隠さずユーザーに案内する。
-    notice?.removeAttribute('hidden');
-    notice?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+    try {
+      const data = Object.fromEntries(new FormData(form).entries());
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      const result = (await res.json().catch(() => null)) as { ok?: boolean } | null;
+      if (!res.ok || !result?.ok) throw new Error('send failed');
+
+      form.reset();
+      successNotice?.removeAttribute('hidden');
+      successNotice?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    } catch {
+      errorNotice?.removeAttribute('hidden');
+      errorNotice?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    } finally {
+      if (submitButton) {
+        submitButton.disabled = false;
+        submitButton.textContent = originalLabel;
+      }
+    }
   });
 </script>
