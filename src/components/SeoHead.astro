@@ -42,6 +42,9 @@ const ogImageUrl = new URL(ogImage, Astro.site);
 <meta name="theme-color" content="#111111" />
 <meta name="generator" content={Astro.generator} />
 
+{/* Google Search Console の所有権確認タグ（削除すると確認が外れるので残すこと） */}
+<meta name="google-site-verification" content="lUz-9w431S-6RlvXqrfMk7rNSy82Ic4jAnb0GHrxI74" />
+
 {/* OGP */}
 <meta property="og:site_name" content={SITE.name} />
 <meta property="og:type" content={ogType} />
