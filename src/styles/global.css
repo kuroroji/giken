@@ -203,14 +203,14 @@
 }
 
 /* ストアへのリンクボタン（ブランドカラーで色分け） */
-.article-body .store-links {
+.store-links {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
   margin-top: 0.8em;
 }
 
-.article-body .store-btn {
+.store-btn {
   display: inline-block;
   border-radius: 9999px;
   padding: 0.35em 1.1em;
@@ -222,25 +222,25 @@
   white-space: nowrap;
 }
 
-.article-body .store-btn:hover {
+.store-btn:hover {
   opacity: 0.8;
   color: #fff;
 }
 
 /* 狭い画面ではボタンを2カラムのグリッドにしてカラム落ちを防ぐ */
 @media (max-width: 519px) {
-  .article-body .store-links {
+  .store-links {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .article-body .store-btn {
+  .store-btn {
     text-align: center;
     padding-inline: 0.5em;
   }
 
   /* CTAなどボタンが1つだけのときは、2カラムに押し込まず中央に1行で表示する */
-  .article-body .store-btn:only-child {
+  .store-btn:only-child {
     grid-column: 1 / -1;
     justify-self: center;
     padding-inline: 1.1em;
@@ -255,13 +255,13 @@
   }
 }
 
-.article-body .store-btn--switch { background-color: #e60012; }
-.article-body .store-btn--ps { background-color: #0070d1; }
-.article-body .store-btn--xbox { background-color: #107c10; }
-.article-body .store-btn--steam { background-color: #1b2838; }
-.article-body .store-btn--battlenet { background-color: #0074e0; }
-.article-body .store-btn--youtube { background-color: #ff0000; }
-.article-body .store-btn--obs { background-color: #302e31; }
+.store-btn--switch { background-color: #e60012; }
+.store-btn--ps { background-color: #0070d1; }
+.store-btn--xbox { background-color: #107c10; }
+.store-btn--steam { background-color: #1b2838; }
+.store-btn--battlenet { background-color: #0074e0; }
+.store-btn--youtube { background-color: #ff0000; }
+.store-btn--obs { background-color: #302e31; }
 
 /* 記事内のYouTube埋め込み。Markdown内の <div class="video-embed"><iframe> に適用される */
 .article-body .video-embed {
