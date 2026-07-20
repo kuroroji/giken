@@ -12,7 +12,13 @@ featured: false
 
 今週(2026年7月21日〜24日)に発売される新作から、僕がカレンダーでチェックしているタイトルを20本まとめました。スプラトゥーン レイダースとFFX/X-2という大物がいる週ですが、発掘好きとしてはローグライクやボスラッシュの新顔が豊作なのが見逃せません。
 
-発売日順に、機種・価格・開発元・ジャンルと、どんなゲームかの要約を並べていきます。
+この20本は**まとめ動画でも紹介しています**。映像でざっと流し見したい人はこちらをどうぞ!
+
+<div class="video-embed">
+  <iframe src="https://www.youtube.com/embed/aYTYrONH_wA" title="今週発売の新作ゲームまとめ動画" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+記事では発売日順に、機種・価格・開発元・ジャンルと、どんなゲームかの要約を並べていきます。
 
 > **この記事の読み方**
 > 価格は執筆時点の情報です。Steamの発売前タイトルは価格未発表のものが多いので、正確な価格は発売後にストアで確認してください。今週は「コンソール版が先に出ていて今週Steam版が来る」「Steam版が先で今週Switch版が来る」という移植組も多いので、機種欄をよく見て買い間違いにご注意を!

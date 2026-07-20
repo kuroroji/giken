@@ -263,6 +263,21 @@
 .article-body .store-btn--youtube { background-color: #ff0000; }
 .article-body .store-btn--obs { background-color: #302e31; }
 
+/* 記事内のYouTube埋め込み。Markdown内の <div class="video-embed"><iframe> に適用される */
+.article-body .video-embed {
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-card);
+  margin-top: 1em;
+}
+
+.article-body .video-embed iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 /* 折りたたみ（FAQ等）。Markdown内の <details><summary> に適用される */
 .article-body details {
   border: 1px solid var(--color-line);
