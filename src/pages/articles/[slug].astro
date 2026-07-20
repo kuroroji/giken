@@ -6,6 +6,7 @@ import TableOfContents from '@/components/TableOfContents.astro';
 import FloatingToc from '@/components/FloatingToc.astro';
 import AffiliateDisclosure from '@/components/AffiliateDisclosure.astro';
 import AuthorProfile from '@/components/AuthorProfile.astro';
+import ContactFormEmbed from '@/components/ContactFormEmbed.astro';
 import RelatedArticles from '@/components/RelatedArticles.astro';
 import Button from '@/components/Button.astro';
 import { getCategory } from '@/data/categories';
@@ -33,6 +34,12 @@ interface Props {
 const { article } = Astro.props;
 const { Content, headings } = await render(article);
 const data = article.data;
+
+/** 目次用の見出し一覧。本文の見出しに加え、記事の外で描画するFAQセクションも載せる */
+const tocHeadings =
+  data.faq.length > 0
+    ? [...headings, { depth: 2, slug: 'article-faq-heading', text: 'よくある質問' }]
+    : headings;
 const category = getCategory(data.category);
 
 const articles = await getPublishedArticles();
@@ -45,7 +52,7 @@ const hasReviewInfo =
 /** OGP画像。手動サムネイルがなければ自動生成画像（/og/…）を使う */
 const ogImage = data.thumbnail ?? `/og/${article.id}.png`;
 
-/** 記事の構造化データ（Article） */
+/** 記事の構造化データ（Article。FAQがある記事はFAQPageも出力） */
 const jsonLd = [
   {
     '@context': 'https://schema.org',
@@ -62,6 +69,19 @@ const jsonLd = [
     image: new URL(ogImage, Astro.site).toString(),
     mainEntityOfPage: new URL(Astro.url.pathname, Astro.site).toString(),
   },
+  ...(data.faq.length > 0
+    ? [
+        {
+          '@context': 'https://schema.org',
+          '@type': 'FAQPage',
+          mainEntity: data.faq.map((item) => ({
+            '@type': 'Question',
+            name: item.q,
+            acceptedAnswer: { '@type': 'Answer', text: item.a },
+          })),
+        },
+      ]
+    : []),
 ];
 ---
 
@@ -161,7 +181,7 @@ const jsonLd = [
       <div class="mt-6 space-y-6">
         {data.affiliateDisclosure && <AffiliateDisclosure />}
 
-        <TableOfContents headings={headings} />
+        <TableOfContents headings={tocHeadings} />
 
         {/* 記事前半のテキストCTA（読み物の邪魔をしない軽い導線） */}
         <p class="text-sm text-body">
@@ -219,6 +239,53 @@ const jsonLd = [
         <div class="article-body">
           <Content />
         </div>
+
+        {
+          data.faq.length > 0 && (
+            <section aria-labelledby="article-faq-heading">
+              <h2 id="article-faq-heading" class="font-serif text-xl font-bold text-ink sm:text-2xl">
+                よくある質問
+              </h2>
+              <div class="mt-4 border-t border-line">
+                {data.faq.map((item) => (
+                  <details class="group border-b border-line">
+                    <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-4 font-bold text-ink [&::-webkit-details-marker]:hidden">
+                      <span class="text-sm leading-relaxed sm:text-base">{item.q}</span>
+                      <span
+                        aria-hidden="true"
+                        class="shrink-0 font-serif text-xl leading-none text-muted transition-transform duration-200 group-open:rotate-45"
+                      >
+                        +
+                      </span>
+                    </summary>
+                    <p class="pb-5 text-sm leading-relaxed text-body">{item.a}</p>
+                  </details>
+                ))}
+              </div>
+            </section>
+          )
+        }
+
+        {
+          data.contactForm && (
+            <section
+              id="contact-form"
+              aria-labelledby="article-contact-heading"
+              class="rounded-card border border-line bg-surface p-6 sm:p-8"
+            >
+              <p class="font-mono text-xs tracking-widest text-muted uppercase">Contact</p>
+              <h2 id="article-contact-heading" class="mt-1.5 font-serif text-xl font-bold text-ink sm:text-2xl">
+                この記事から、そのままご相談いただけます
+              </h2>
+              <p class="mt-2 text-sm leading-relaxed text-body">
+                ゲームタイトルと想定内容をお聞かせください。「まだ検討段階」「予算をどうすればいいか相談したい」という段階でも大丈夫です。内容を確認のうえ、ご返信します。
+              </p>
+              <div class="mt-6">
+                <ContactFormEmbed idPrefix="article-cf" submitLabel="この内容で相談する" />
+              </div>
+            </section>
+          )
+        }
 
         {
           data.sourceLinks.length > 0 && (
@@ -297,6 +364,6 @@ const jsonLd = [
       <RelatedArticles articles={related} />
     </div>
 
-    <FloatingToc headings={headings} />
+    <FloatingToc headings={tocHeadings} />
   </article>
 </BaseLayout>

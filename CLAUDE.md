@@ -4,7 +4,7 @@
 ゲーム発掘YouTuber「くろろじ」の公式サイト。3つの役割を持つ：
 1. YouTubeチャンネル「くろろじちゃんねる」の紹介
 2. ゲーム会社向け動画プロモーションの案件窓口
-3. 記事メディア「くろろじコラム」（カテゴリーは「ゲーム」「YouTubeの始め方」の2つのみ）
+3. 記事メディア「くろろじコラム」（カテゴリーは「ゲーム」「YouTubeの始め方」「ゲームプロモーション」の3つ）
 
 技術: Astro 5 + TypeScript + Tailwind CSS v4（`@tailwindcss/vite`方式）。静的生成・React不使用・クライアントJSは問い合わせフォームの数行のみ。
 
@@ -25,7 +25,7 @@
 | --- | --- |
 | `src/data/site.ts` | サイト名・キャッチコピー・著者情報 |
 | `src/data/business.ts` | チャンネル・動画プロモーション・無料相談・問い合わせ種別・コラム設定 |
-| `src/data/categories.ts` | コラムのカテゴリー（2つ。増やすときはここに追記） |
+| `src/data/categories.ts` | コラムのカテゴリー（3つ。増やすときはここに追記） |
 | `src/styles/global.css` | デザイントークン一元管理（@theme）+ 背景アニメーション定義 |
 | `src/components/Button.astro` | 全ボタン共通（ピル型ガラス・3バリアント） |
 | `src/components/Logo.astro` | ロゴ（明朝体テキスト表記） |
@@ -41,7 +41,6 @@
 
 ## 仮置き・未完了（要対応）
 - `CHANNEL.url`（business.ts）: 現在は案件再生リストのURLを仮置き。正式なチャンネルURLに差し替える
-- お問い合わせフォームの送信機能: 未接続（contact.astro内のTODOにCloudflare Workers等を接続予定）
 - `AUTHOR.links`のSNSリンク: 空欄（設定すると表示される）
 - ゲームカテゴリーの記事2本は【サンプル記事】。実記事に差し替える
 - Cloudflareへの公開: 未実施

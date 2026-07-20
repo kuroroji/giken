@@ -114,6 +114,13 @@
   color: var(--color-ink);
 }
 
+/* ストアボタンは本文リンクの配色・下線を引き継がない（白文字のピルボタンを維持する） */
+.article-body a.store-btn,
+.article-body a.store-btn:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
 .article-body strong {
   color: var(--color-ink);
 }

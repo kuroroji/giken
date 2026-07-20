@@ -2,7 +2,8 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Button from '@/components/Button.astro';
 import { AUTHOR, CONTACT } from '@/data/site';
-import { PROMOTION, CONSULTATION, CONTACT_TOPICS } from '@/data/business';
+import { PROMOTION, CONSULTATION } from '@/data/business';
+import ContactFormEmbed from '@/components/ContactFormEmbed.astro';
 
 /** 見本として掲載するプロモーション動画 */
 const sampleVideos = [
@@ -47,7 +48,7 @@ const description =
           <ul class="mt-6 flex flex-wrap gap-2 text-xs">
             <li class="rounded-full border border-white/25 px-3 py-1 text-white/85">チャンネル登録者 約3万人</li>
             <li class="rounded-full border border-white/25 px-3 py-1 text-white/85">実績:{PROMOTION.clients.slice(0, 2).join('、')} ほか</li>
-            <li class="rounded-full border border-white/25 px-3 py-1 text-white/85">納品 最短翌日〜1週間</li>
+            <li class="rounded-full border border-white/25 px-3 py-1 text-white/85">納品 最短数日〜1週間</li>
           </ul>
         </div>
         {/* 立ち絵：lg以上のみセクション下端に接地させ大きめに表示。lg未満は丸型アバター（実績バッジの横）で代替 */}
@@ -241,7 +242,7 @@ const description =
           <line x1="180" y1="146" x2="180" y2="170" stroke="#111" stroke-width="1.5" marker-end="url(#pm)"/>
           <rect x="20" y="176" width="320" height="52" rx="10" fill="#111"/>
           <text x="180" y="207" text-anchor="middle" font-size="14" font-weight="600" fill="#fff">公開</text>
-          <text x="180" y="258" text-anchor="middle" font-size="11" fill="#555">納期は最短で翌日、通常でも1週間後には納品可能です</text>
+          <text x="180" y="258" text-anchor="middle" font-size="11" fill="#555">納期は最短で数日、通常でも1週間後には納品可能です</text>
           <text x="180" y="276" text-anchor="middle" font-size="11" fill="#555">公開後の振り返りも、必要に応じて対応します</text>
         </g>
       </svg>
@@ -261,7 +262,7 @@ const description =
               )}
             </>
           ))}
-          <text x="360" y="126" text-anchor="middle" font-size="12" fill="#555">納期は最短で翌日、通常でも1週間後には納品可能です</text>
+          <text x="360" y="126" text-anchor="middle" font-size="12" fill="#555">納期は最短で数日、通常でも1週間後には納品可能です</text>
           <text x="360" y="144" text-anchor="middle" font-size="12" fill="#555">公開後の振り返りも、必要に応じて対応します</text>
         </g>
       </svg>
@@ -320,40 +321,9 @@ const description =
       <p class="mt-3 text-sm leading-relaxed text-white/80">
         ゲームタイトルと想定内容をお聞かせください。内容を確認のうえ、ご返信いたします。
       </p>
-      <form class="mt-8 space-y-5" method="post" action="#contact-form">
-        <div>
-          <label for="pf-company" class="block text-sm font-bold text-white">会社名</label>
-          <input id="pf-company" name="company" type="text" placeholder="株式会社◯◯"
-            class="mt-1.5 w-full rounded-card border border-white/25 bg-white/10 px-4 py-2.5 text-sm text-white placeholder-white/40" />
-        </div>
-        <div>
-          <label for="pf-name" class="block text-sm font-bold text-white">お名前 *</label>
-          <input id="pf-name" name="name" type="text" required placeholder="山田 太郎"
-            class="mt-1.5 w-full rounded-card border border-white/25 bg-white/10 px-4 py-2.5 text-sm text-white placeholder-white/40" />
-        </div>
-        <div>
-          <label for="pf-email" class="block text-sm font-bold text-white">メールアドレス *</label>
-          <input id="pf-email" name="email" type="email" required placeholder="you@example.com"
-            class="mt-1.5 w-full rounded-card border border-white/25 bg-white/10 px-4 py-2.5 text-sm text-white placeholder-white/40" />
-        </div>
-        <div>
-          <label for="pf-topic" class="block text-sm font-bold text-white">ご用件 *</label>
-          <select id="pf-topic" name="topic" required
-            class="mt-1.5 w-full rounded-card border border-white/25 bg-white/10 px-4 py-2.5 text-sm text-white">
-            {CONTACT_TOPICS.map((topic) => (
-              <option value={topic} class="text-ink">{topic}</option>
-            ))}
-            <option value="その他" class="text-ink">その他</option>
-          </select>
-        </div>
-        <div>
-          <label for="pf-message" class="block text-sm font-bold text-white">ご相談内容 *</label>
-          <textarea id="pf-message" name="message" rows="5" required
-            placeholder="ゲームタイトル、希望される施策、時期などをご記入ください"
-            class="mt-1.5 w-full rounded-card border border-white/25 bg-white/10 px-4 py-2.5 text-sm text-white placeholder-white/40"></textarea>
-        </div>
-        <Button type="submit" variant="light" class="w-full sm:w-auto">送信する</Button>
-      </form>
+      <div class="mt-8">
+        <ContactFormEmbed variant="dark" idPrefix="promo-cf" />
+      </div>
     </div>
   </section>
 </BaseLayout>

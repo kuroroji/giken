@@ -1,0 +1,173 @@
+---
+import Button from '@/components/Button.astro';
+import { CONTACT_TOPICS } from '@/data/business';
+
+/**
+ * 記事内・LP内に埋め込める問い合わせフォーム。
+ * 送信先は contact.astro と同じ /api/contact（workers/contact-email のWorker）。
+ * 同一ページに複数置けるよう、idPrefix でラベルのidを分離し、
+ * スクリプトは data-contact-embed の付いたフォームすべてを初期化する。
+ *
+ * variant:
+ *   light … 白背景セクション用（記事内など）
+ *   dark  … 黒背景セクション用（プロモーションLPなど）
+ */
+interface Props {
+  variant?: 'light' | 'dark';
+  idPrefix?: string;
+  /** 送信ボタンのラベル */
+  submitLabel?: string;
+}
+
+const { variant = 'light', idPrefix = 'cfe', submitLabel = '送信する' } = Astro.props;
+
+const isDark = variant === 'dark';
+const inputClass = isDark
+  ? 'w-full rounded-card border border-white/25 bg-white/10 px-4 py-2.5 text-sm text-white placeholder-white/40 focus:border-white/60'
+  : 'w-full rounded-card border border-line bg-surface px-3 py-2 text-sm text-body focus:border-ink';
+const labelClass = isDark
+  ? 'block text-sm font-bold text-white'
+  : 'block text-sm font-bold text-ink';
+const noteClass = isDark ? 'text-xs text-white/60' : 'text-xs text-muted';
+const noticeClass = isDark
+  ? 'rounded-card border border-white/25 bg-white/10 px-4 py-3 text-sm text-white/90'
+  : 'rounded-card border border-line bg-accent-faint px-4 py-3 text-sm text-body';
+const noticeTitleClass = isDark ? 'font-bold text-white' : 'font-bold text-ink';
+---
+
+<form data-contact-embed class="space-y-5" novalidate>
+  <p class={noteClass}>
+    <span class={noticeTitleClass}>*</span>
+    の付いた項目は必須です。検討段階のご相談も歓迎です。
+  </p>
+
+  <div>
+    <label for={`${idPrefix}-company`} class={labelClass}>会社名・団体名</label>
+    <input
+      id={`${idPrefix}-company`}
+      name="company"
+      type="text"
+      autocomplete="organization"
+      class:list={['mt-1.5', inputClass]}
+    />
+  </div>
+
+  <div>
+    <label for={`${idPrefix}-name`} class={labelClass}>お名前 <span aria-hidden="true">*</span></label>
+    <input
+      id={`${idPrefix}-name`}
+      name="name"
+      type="text"
+      required
+      autocomplete="name"
+      class:list={['mt-1.5', inputClass]}
+    />
+  </div>
+
+  <div>
+    <label for={`${idPrefix}-email`} class={labelClass}>メールアドレス <span aria-hidden="true">*</span></label>
+    <input
+      id={`${idPrefix}-email`}
+      name="email"
+      type="email"
+      required
+      autocomplete="email"
+      class:list={['mt-1.5', inputClass]}
+    />
+  </div>
+
+  <div>
+    <label for={`${idPrefix}-topic`} class={labelClass}>相談内容の種類 <span aria-hidden="true">*</span></label>
+    <select
+      id={`${idPrefix}-topic`}
+      name="topic"
+      required
+      class:list={['mt-1.5', inputClass]}
+    >
+      {CONTACT_TOPICS.map((topic, i) => (
+        <option value={topic} selected={i === 0} class="text-ink">{topic}</option>
+      ))}<option value="その他" class="text-ink">その他</option>
+    </select>
+  </div>
+
+  <div>
+    <label for={`${idPrefix}-detail`} class={labelClass}>詳細内容 <span aria-hidden="true">*</span></label>
+    <textarea
+      id={`${idPrefix}-detail`}
+      name="detail"
+      rows="5"
+      required
+      placeholder="ゲームタイトル、希望される施策、時期などをご記入ください"
+      class:list={['mt-1.5', inputClass]}></textarea>
+  </div>
+
+  {/* ハニーポット（スパムボット対策）。人間には見えない欄で、埋まっていたらWorker側で破棄する */}
+  <div class="hidden" aria-hidden="true">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" />
+  </div>
+
+  <div>
+    <Button type="submit" variant={isDark ? 'light' : 'dark'} class="w-full sm:w-auto"
+      >{submitLabel}</Button
+    >
+  </div>
+
+  {/* 送信成功の案内 */}
+  <div data-form-success hidden role="status" class={noticeClass}>
+    <p class={noticeTitleClass}>送信しました。お問い合わせありがとうございます!</p>
+    <p class="mt-1">内容を確認のうえ、ご記入いただいたメールアドレス宛にご連絡します。</p>
+  </div>
+
+  {/* 送信失敗の案内 */}
+  <div data-form-error hidden role="alert" class={noticeClass}>
+    <p class={noticeTitleClass}>送信に失敗しました。</p>
+    <p class="mt-1">時間をおいて再度お試しください。</p>
+  </div>
+</form>
+
+<script>
+  // ページ内のすべての埋め込みフォームを初期化する（同一ページ複数設置に対応）
+  document.querySelectorAll<HTMLFormElement>('form[data-contact-embed]').forEach((form) => {
+    const successNotice = form.querySelector<HTMLElement>('[data-form-success]');
+    const errorNotice = form.querySelector<HTMLElement>('[data-form-error]');
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      successNotice?.setAttribute('hidden', '');
+      errorNotice?.setAttribute('hidden', '');
+
+      // novalidate を付けているため、ここで手動でネイティブ検証を走らせる
+      if (!form.reportValidity()) return;
+
+      const submitButton = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+      const originalLabel = submitButton?.textContent ?? '送信する';
+      if (submitButton) {
+        submitButton.disabled = true;
+        submitButton.textContent = '送信中…';
+      }
+
+      try {
+        const data = Object.fromEntries(new FormData(form).entries());
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        const result = (await res.json().catch(() => null)) as { ok?: boolean } | null;
+        if (!res.ok || !result?.ok) throw new Error('send failed');
+
+        form.reset();
+        successNotice?.removeAttribute('hidden');
+        successNotice?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } catch {
+        errorNotice?.removeAttribute('hidden');
+        errorNotice?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } finally {
+        if (submitButton) {
+          submitButton.disabled = false;
+          submitButton.textContent = originalLabel;
+        }
+      }
+    });
+  });
+</script>

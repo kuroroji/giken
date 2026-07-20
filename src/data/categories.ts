@@ -18,6 +18,11 @@ export const CATEGORIES = [
     name: 'YouTubeの始め方',
     description: 'チャンネルの始め方、OBSの設定、録画・配信、動画編集、サムネイル制作、AIを使った制作効率化まで。一人でゲームYouTubeを運営するための実践記録です。',
   },
+  {
+    slug: 'promotion',
+    name: 'ゲームプロモーション',
+    description: 'ゲーム会社・パブリッシャーの担当者様向けに、実況者への案件依頼の進め方や、動画を使った宣伝・プロモーションの考え方を、依頼される側の実況者の立場から解説します。',
+  },
 ] as const;
 
 export type Category = (typeof CATEGORIES)[number];

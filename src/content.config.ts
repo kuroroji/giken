@@ -40,6 +40,10 @@ const articles = defineCollection({
     featured: z.boolean().default(false),
     /** アフィリエイトリンクを含む記事は true（記事内に表記が出る） */
     affiliateDisclosure: z.boolean().default(false),
+    /** true にすると記事本文の直後にお問い合わせフォームが埋め込まれる（案件導線用） */
+    contactForm: z.boolean().default(false),
+    /** よくある質問。設定すると本文の直後に折りたたみ式で表示され、FAQの構造化データも出力される */
+    faq: z.array(z.object({ q: z.string(), a: z.string() })).default([]),
     /** 参考リンク */
     sourceLinks: z
       .array(z.object({ label: z.string(), url: z.string().url() }))
