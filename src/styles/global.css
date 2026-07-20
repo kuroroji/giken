@@ -161,6 +161,31 @@
   line-height: 1.7;
 }
 
+/* コードブロックのコピーボタン（記事ページのスクリプトが .article-body pre に挿入する） */
+.code-copy-wrap {
+  position: relative;
+}
+
+.code-copy-btn {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.6rem;
+  border: 1px solid rgb(255 255 255 / 0.3);
+  border-radius: 9999px;
+  background-color: rgb(255 255 255 / 0.1);
+  padding: 0.25em 0.9em;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #fff;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: background-color 0.2s ease;
+}
+
+.code-copy-btn:hover {
+  background-color: rgb(255 255 255 / 0.25);
+}
+
 .article-body pre code {
   background: none;
   border: none;

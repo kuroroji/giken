@@ -367,3 +367,41 @@ const jsonLd = [
     <FloatingToc headings={tocHeadings} />
   </article>
 </BaseLayout>
+
+<script>
+  // 記事本文のコードブロック（メールテンプレートなど）にコピーボタンを付ける
+  document.querySelectorAll<HTMLPreElement>('.article-body pre').forEach((pre) => {
+    const wrap = document.createElement('div');
+    wrap.className = 'code-copy-wrap';
+    pre.parentNode?.insertBefore(wrap, pre);
+    wrap.appendChild(pre);
+
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'code-copy-btn';
+    button.textContent = 'コピー';
+    button.addEventListener('click', async () => {
+      const text = pre.querySelector('code')?.textContent ?? '';
+      let copied = false;
+      try {
+        await navigator.clipboard.writeText(text);
+        copied = true;
+      } catch {
+        // Clipboard APIが使えない環境向けのフォールバック
+        const textarea = document.createElement('textarea');
+        textarea.value = text;
+        textarea.style.position = 'fixed';
+        textarea.style.opacity = '0';
+        document.body.appendChild(textarea);
+        textarea.select();
+        copied = document.execCommand('copy');
+        textarea.remove();
+      }
+      button.textContent = copied ? 'コピーしました!' : 'コピーできませんでした';
+      setTimeout(() => {
+        button.textContent = 'コピー';
+      }, 2000);
+    });
+    wrap.appendChild(button);
+  });
+</script>
