@@ -1,0 +1,47 @@
+<svg viewBox="0 0 360 600" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="実況者が案件を受けるか決めるまでの判断フロー。依頼メールの文面、依頼元、ゲーム内容、視聴者との相性、自分が楽しめるか、施策の目的、条件を順に確認して回答する">
+  <defs>
+    <marker id="af" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 1 L 9 5 L 0 9" fill="none" stroke="#111" stroke-width="1.5" stroke-linecap="round"/>
+    </marker>
+  </defs>
+  <g font-family="sans-serif">
+    <rect x="20" y="8" width="320" height="52" rx="10" fill="#fff" stroke="#111" stroke-width="1.5"/>
+    <text x="180" y="30" text-anchor="middle" font-size="14" font-weight="600" fill="#111">1. 依頼メールの文面</text>
+    <text x="180" y="48" text-anchor="middle" font-size="10.5" fill="#555">誠実にやり取りできそうな相手か</text>
+    <line x1="180" y1="60" x2="180" y2="82" stroke="#111" stroke-width="1.5" marker-end="url(#af)"/>
+
+    <rect x="20" y="84" width="320" height="52" rx="10" fill="#fff" stroke="#111" stroke-width="1.5"/>
+    <text x="180" y="106" text-anchor="middle" font-size="14" font-weight="600" fill="#111">2. 依頼元の確認</text>
+    <text x="180" y="124" text-anchor="middle" font-size="10.5" fill="#555">会社か個人か・公式サイトなどの情報</text>
+    <line x1="180" y1="136" x2="180" y2="158" stroke="#111" stroke-width="1.5" marker-end="url(#af)"/>
+
+    <rect x="20" y="160" width="320" height="52" rx="10" fill="#fff" stroke="#111" stroke-width="1.5"/>
+    <text x="180" y="182" text-anchor="middle" font-size="14" font-weight="600" fill="#111">3. ゲーム内容の確認</text>
+    <text x="180" y="200" text-anchor="middle" font-size="10.5" fill="#555">ストアページや動画を見る</text>
+    <line x1="180" y1="212" x2="180" y2="234" stroke="#111" stroke-width="1.5" marker-end="url(#af)"/>
+
+    <rect x="20" y="236" width="320" height="52" rx="10" fill="#fff" stroke="#111" stroke-width="1.5"/>
+    <text x="180" y="258" text-anchor="middle" font-size="14" font-weight="600" fill="#111">4. 視聴者との相性</text>
+    <text x="180" y="276" text-anchor="middle" font-size="10.5" fill="#555">チャンネルのジャンルから離れすぎていないか</text>
+    <line x1="180" y1="288" x2="180" y2="310" stroke="#111" stroke-width="1.5" marker-end="url(#af)"/>
+
+    <rect x="20" y="312" width="320" height="52" rx="10" fill="#fff" stroke="#111" stroke-width="1.5"/>
+    <text x="180" y="334" text-anchor="middle" font-size="14" font-weight="600" fill="#111">5. 自分が楽しめそうか</text>
+    <text x="180" y="352" text-anchor="middle" font-size="10.5" fill="#555">紹介する意味があるか</text>
+    <line x1="180" y1="364" x2="180" y2="386" stroke="#111" stroke-width="1.5" marker-end="url(#af)"/>
+
+    <rect x="20" y="388" width="320" height="52" rx="10" fill="#fff" stroke="#111" stroke-width="1.5"/>
+    <text x="180" y="410" text-anchor="middle" font-size="14" font-weight="600" fill="#111">6. 施策の目的との一致</text>
+    <text x="180" y="428" text-anchor="middle" font-size="10.5" fill="#555">動画が現実的に担える役割か</text>
+    <line x1="180" y1="440" x2="180" y2="462" stroke="#111" stroke-width="1.5" marker-end="url(#af)"/>
+
+    <rect x="20" y="464" width="320" height="52" rx="10" fill="#fff" stroke="#111" stroke-width="1.5"/>
+    <text x="180" y="486" text-anchor="middle" font-size="14" font-weight="600" fill="#111">7. 条件の確認</text>
+    <text x="180" y="504" text-anchor="middle" font-size="10.5" fill="#555">報酬・動画内容・公開時期</text>
+    <line x1="180" y1="516" x2="180" y2="538" stroke="#111" stroke-width="1.5" marker-end="url(#af)"/>
+
+    <rect x="20" y="540" width="320" height="52" rx="10" fill="#111"/>
+    <text x="180" y="562" text-anchor="middle" font-size="14" font-weight="600" fill="#fff">総合判断して回答</text>
+    <text x="180" y="580" text-anchor="middle" font-size="10.5" fill="#ccc">お受けする / 今回は見送る</text>
+  </g>
+</svg>
