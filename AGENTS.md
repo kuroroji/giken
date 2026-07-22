@@ -6,8 +6,8 @@ Astro 5 + TypeScript + Tailwind CSS v4。静的生成・React不使用。
 
 記事作成の詳しい反復手順はスキルに分離してある。
 
-- 記事の新規執筆・リライト(相談フェーズ→執筆→検証→公開) → `.codex/skills/article-writing/SKILL.md`
-- ゲーム紹介記事の標準処理(ストアボタン・画像・表) → `.codex/skills/game-article/SKILL.md`
+- 記事の新規執筆・リライト(相談フェーズ→執筆→検証→公開) → `.agents/skills/article-writing/SKILL.md`
+- ゲーム紹介記事の標準処理(ストアボタン・画像・表) → `.agents/skills/game-article/SKILL.md`
 
 以下は、作業内容にかかわらず常に守るルール。
 
@@ -16,7 +16,7 @@ Astro 5 + TypeScript + Tailwind CSS v4。静的生成・React不使用。
 このリポジトリは Claude Code と Codex の両方が作業する。
 
 - **作業開始時とプッシュ前に必ず `git pull origin main` する**。見覚えのないコミットがあっても異常ではない(もう一方のエージェントの作業)
-- ルール・手順に変更があったら、`AGENTS.md` と `.codex/skills/` を更新する。`CLAUDE.md` はClaude Code側の引き継ぎ資料なので、**書き換えず残す**(内容が食い違ったらユーザーに確認)
+- ルール・手順に変更があったら、`AGENTS.md` と `.agents/skills/` を更新する。`CLAUDE.md` はClaude Code側の引き継ぎ資料なので、**書き換えず残す**(内容が食い違ったらユーザーに確認)
 - 記事や機能の作りかけ(draft: true等)を見つけても、勝手に完成・削除しない。ユーザーに確認する
 
 ## 作業の進め方
